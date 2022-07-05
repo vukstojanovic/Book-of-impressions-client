@@ -1,4 +1,7 @@
 import Head from 'next/head'
+
+import { MainLayout } from '@/components/Layout'
+
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -12,4 +15,8 @@ export default function Home() {
       <h1 className="text-3xl font-bold">boi - homepage</h1>
     </div>
   )
+}
+
+Home.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>
 }
