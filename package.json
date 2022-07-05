@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 4000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install"
   },
   "dependencies": {
+    "awesome-debounce-promise": "^2.1.0",
+    "cookies-next": "^2.1.1",
     "next": "12.2.0",
     "next-intl": "^2.7.4",
     "react": "18.2.0",
@@ -17,8 +19,8 @@
     "react-error-boundary": "^3.1.4",
     "react-hook-form": "^7.33.1",
     "react-query": "^3.39.1",
-    "yup": "^0.32.11",
-    "zustand": "^4.0.0-rc.1"
+    "swiper": "^8.2.6",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",

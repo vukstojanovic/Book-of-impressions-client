@@ -1,7 +1,12 @@
-export const MainLayout = () => {
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
+
+export const MainLayout = ({ children }) => {
   return (
-    <div>
-      <h1>MAIN LAYOUT</h1>
+    <div className="flex flex-col min-h-screen overflow-hidden">
+      <Header />
+      <main className="flex-grow">{children}</main>
+      <Footer />
     </div>
   )
 }
