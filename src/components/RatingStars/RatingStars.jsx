@@ -10,8 +10,15 @@ export const RatingStars = () => {
 
   return (
     <>
-      <ReactStars count={5} size={50} isHalf={true} activeColor="#96ceb4" onChange={ratingValue} />
-      <p>Your rate this with {rating || 0} rating</p>
+      <ReactStars
+        count={5}
+        size={30}
+        isHalf={true}
+        activeColor="#FFA500"
+        color="#f7e9cd"
+        onChange={ratingValue}
+      />
+      {/* <p>Your rate this with {rating || 0} rating</p> */}
     </>
   )
 }
