@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 
 import { MainLayout } from '@/components/Layout'
 import { LoginForm } from '@/features/auth'
-import { RatingStars } from '@/components/Layout'
+import { RatingStars } from '@/components/RatingStars'
 
 import styles from '@/styles/Home.module.css'
 
