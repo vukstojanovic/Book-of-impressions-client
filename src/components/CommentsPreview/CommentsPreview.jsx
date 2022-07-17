@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslations } from 'use-intl'
 import { Comment } from '@/components/Comment'
 import { comments } from './mockupData/comments'
 
@@ -6,6 +7,7 @@ export const CommentsPreview = () => {
   const firstTwo = comments.slice(0, 2)
   const rest = comments.slice(2)
   const [blurClass, setBlurClass] = useState('blur-sm pointer-events-none')
+  const t = useTranslations('Home')
 
   function showAllComments() {
     setBlurClass('')
@@ -29,7 +31,7 @@ export const CommentsPreview = () => {
             onClick={showAllComments}
             className="absolute top-[60px] left-1/2 -translate-x-2/4 w-11/12 md:w-96 py-3 bg-yellow-600 hover:bg-yellow-500 rounded-md uppercase text-white font-medium"
           >
-            Unlock reviews
+            {t('unlockReviews')}
           </button>
         )}
       </div>
