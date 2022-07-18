@@ -5,6 +5,7 @@ import { MainLayout } from '@/components/Layout'
 import { LoginForm } from '@/features/auth'
 import { RatingStars } from '@/components/RatingStars'
 import { CommentsPreview } from '@/components/CommentsPreview'
+import { Loader } from '@/components/Loader'
 import { CompanyInfo } from '@/components/CompanyInfo'
 
 import styles from '@/styles/Home.module.css'
@@ -23,7 +24,8 @@ export default function Home() {
       <p>{t('helloWorld')}</p>
       <LoginForm />
       <RatingStars />
-      <CommentsPreview />
+      <Loader />
+      {/* <CommentsPreview /> */}
     </div>
   )
 }
