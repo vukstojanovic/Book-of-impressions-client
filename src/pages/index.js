@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl'
 import { MainLayout } from '@/components/Layout'
 import { LoginForm } from '@/features/auth'
 import { RatingStars } from '@/components/RatingStars'
+import { CommentsPreview } from '@/components/CommentsPreview'
+import { CompanyInfo } from '@/components/CompanyInfo'
 
 import styles from '@/styles/Home.module.css'
 import { Carousel } from '@/features/carousel'
@@ -24,6 +26,8 @@ export default function Home() {
       <Carousel>
         <RatingStars />
       </Carousel>
+      <RatingStars />
+      <CommentsPreview />
     </div>
   )
 }
