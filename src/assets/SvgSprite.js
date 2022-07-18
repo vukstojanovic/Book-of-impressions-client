@@ -11,7 +11,6 @@ export const IconCaret = ({ color = '#09172C' }) => {
     </svg>
   )
 }
-<<<<<<< HEAD
 export const NavArrow = () => {
   return (
     <svg
@@ -31,8 +30,9 @@ export const NavArrow = () => {
         strokeLinejoin="round"
         strokeWidth="3"
       />
-=======
-
+    </svg>
+  )
+}
 export const IconPlaceholderLogo = ({ color = '#fff' }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="27" viewBox="0 0 17 27">
@@ -48,7 +48,6 @@ export const IconPlaceholderLogo = ({ color = '#fff' }) => {
           G
         </tspan>
       </text>
->>>>>>> dev
     </svg>
   )
 }
