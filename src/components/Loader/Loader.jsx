@@ -12,62 +12,62 @@ export const Loader = () => {
         })} */}
         <div className={`absolute top-0 left-0 transform rotate-[0deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full ${styles.dot} ${styles.one}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full ${styles.dot} delay-75`}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[30deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot} ${styles.two}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot} delay-100`}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[60deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}  ${styles.three}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot} delay-300`}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[90deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}   ${styles.four}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}  delay-400 `}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[120deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}   ${styles.five}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}  delay-500 `}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[150deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}   ${styles.six}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}  `}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[180deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}   ${styles.seven}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}  `}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[210deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}   ${styles.eight}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot} `}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[240deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}   ${styles.nine}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}  `}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[270deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}    ${styles.ten}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot} `}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[300deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}    ${styles.eleven}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}  `}
           ></div>
         </div>
         <div className={`absolute top-0 left-0 transform rotate-[330deg] h-full w-full`}>
           <div
-            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot}    ${styles.twelve}`}
+            className={`absolute w-6 h-6 bg-yellow-500 top-0 left-0 rounded-full  ${styles.dot} `}
           ></div>
         </div>
       </div>
