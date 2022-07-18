@@ -6,6 +6,7 @@ import { LoginForm } from '@/features/auth'
 import { RatingStars } from '@/components/RatingStars'
 import { CommentsPreview } from '@/components/CommentsPreview'
 // import { CompanyInfo } from '@/components/CompanyInfo'
+import { MainAccordion } from './../features/Accordion'
 
 import styles from '@/styles/Home.module.css'
 import { Carousel } from '@/features/carousel'
@@ -26,6 +27,7 @@ export default function Home() {
       <Carousel />
       <RatingStars />
       <CommentsPreview />
+      <MainAccordion />
     </div>
   )
 }
