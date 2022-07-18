@@ -3,6 +3,9 @@ import { useTranslations } from 'next-intl'
 
 import { MainLayout } from '@/components/Layout'
 import { LoginForm } from '@/features/auth'
+import { RatingStars } from '@/components/RatingStars'
+import { CommentsPreview } from '@/components/CommentsPreview'
+import { CompanyInfo } from '@/components/CompanyInfo'
 
 import styles from '@/styles/Home.module.css'
 
@@ -19,6 +22,8 @@ export default function Home() {
       <h1 className="text-3xl font-bold">boi - homepage</h1>
       <p>{t('helloWorld')}</p>
       <LoginForm />
+      <RatingStars />
+      <CommentsPreview />
     </div>
   )
 }
