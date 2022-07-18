@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import Image from 'next/image'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { useTranslations } from 'next-intl'
 import { CommentsPreview } from '@/components/CommentsPreview'
 import styles from './MainAccordion.module.css'
 
-import icon from '@/assets/G.svg'
+import * as SvgSprite from '@/assets/SvgSprite'
 
 export const MainAccordion = () => {
   const [innerAccordion, setInnerAccordion] = useState(null)
@@ -18,7 +17,7 @@ export const MainAccordion = () => {
         <div className="flex justify-between items-center p-6 text-white">
           <div className="flex items-center">
             <div className={`${styles.elipse} flex items-center justify-center`}>
-              <Image src={icon} />
+              <SvgSprite.IconPlaceholderLogo />
             </div>
             <p className="ml-2">{t('aboutGarni')}</p>
           </div>
