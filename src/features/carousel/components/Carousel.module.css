@@ -1,0 +1,14 @@
+.swiper-pagination-custom {
+  transform: translateX(-36px);
+}
+
+#bulletWrapper {
+  width: auto;
+}
+
+#bulletWrapper > span {
+  width: 13px;
+  height: 13px;
+  padding-top: 2px;
+  background-color: #46494b;
+}
