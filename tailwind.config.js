@@ -3,7 +3,14 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        box: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+        box: '0px 1px 8px #CECECE',
+      },
+      backgroundColor: {
+        btnConfirm: '#ff6500',
+        btnGoBack: '#f5f5f5',
+      },
+      colors: {
+        textGray: '#ADADAD',
       },
     },
   },
