@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
+import { useTranslations } from 'next-intl'
+import { CommentsPreview } from '@/components/CommentsPreview'
 import styles from './MainAccordion.module.css'
-import { RatingStars } from '@/components/RatingStars'
 
 import icon from '@/assets/G.svg'
 
-import { questions } from './data'
-
 export const MainAccordion = () => {
   const [innerAccordion, setInnerAccordion] = useState(null)
+
+  const t = useTranslations('Home')
 
   return (
     <div className="container mx-auto max-w-sm mt-10">
@@ -19,22 +20,22 @@ export const MainAccordion = () => {
             <div className={`${styles.elipse} flex items-center justify-center`}>
               <Image src={icon} />
             </div>
-            <p className="ml-2">About Garni</p>
+            <p className="ml-2">{t('aboutGarni')}</p>
           </div>
           <div className="flex items-center cursor-pointer">
-            <p>Read more</p>
+            <p>{t('readMore')}</p>
             <IoIosArrowDown className="ml-2" />
           </div>
         </div>
       </div>
       <div onClick={() => setInnerAccordion(!innerAccordion)}>
         <div className="flex justify-between items-center p-5 cursor-pointer">
-          <h4>See other reviews</h4>
+          <h4>{t('seeOtherReviews')}</h4>
           {innerAccordion ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </div>
       </div>
       <div className="p-3">
-        {innerAccordion && (
+        {/* {innerAccordion && (
           <div>
             {questions.map((q, i) => {
               const { name, question, rating } = q
@@ -47,7 +48,8 @@ export const MainAccordion = () => {
               )
             })}
           </div>
-        )}
+        )} */}
+        {innerAccordion && <CommentsPreview />}
       </div>
     </div>
   )

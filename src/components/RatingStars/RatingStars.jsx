@@ -5,7 +5,6 @@ export const RatingStars = ({ value }) => {
   const [starValue, setStarValue] = useState(value)
 
   const ratingValue = (currentRating) => {
-    console.log('radi')
     setStarValue(currentRating)
   }
 

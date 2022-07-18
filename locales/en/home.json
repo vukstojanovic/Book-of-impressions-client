@@ -1,5 +1,9 @@
 {
   "Home": {
-    "helloWorld": "Hello world"
+    "helloWorld": "Hello world",
+    "unlockReviews": "Unlock reviews",
+    "aboutGarni": "About Garni",
+    "readMore": "Read more",
+    "seeOtherReviews": "See other reviews"
   }
 }
