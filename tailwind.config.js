@@ -8,10 +8,20 @@ module.exports = {
       backgroundColor: {
         btnConfirm: '#ff6500',
         btnGoBack: '#f5f5f5',
+        spinnerLoader: '#ff6900',
       },
       colors: {
         textGray: '#ADADAD',
       },
+    },
+    keyframes: {
+      spin: {
+        '0%': { transform: 'scale(1)', opacity: 1 },
+        '100%': { transform: 'scale(0)', opacity: 0 },
+      },
+    },
+    animation: {
+      spinLoader: 'spin 1.2s linear infinite',
     },
   },
   plugins: [require('tailwindcss-animation-delay')],

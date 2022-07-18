@@ -7,7 +7,7 @@ import { RatingStars } from '@/components/RatingStars'
 import { CommentsPreview } from '@/components/CommentsPreview'
 import { Loader } from '@/components/Loader'
 import { CompanyInfo } from '@/components/CompanyInfo'
-// import { CompanyInfo } from '@/components/CompanyInfo'
+import { RingContainer } from '@/components/RingContainer'
 import { MainAccordion } from './../features/Accordion'
 
 import styles from '@/styles/Home.module.css'
@@ -28,7 +28,9 @@ export default function Home() {
       <LoginForm />
       <Carousel />
       <RatingStars />
-      <Loader />
+      <RingContainer>
+        <Loader />
+      </RingContainer>
       {/* <CommentsPreview /> */}
       <CommentsPreview />
       <MainAccordion />
