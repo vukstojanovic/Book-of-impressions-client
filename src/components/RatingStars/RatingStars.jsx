@@ -12,7 +12,7 @@ export const RatingStars = ({ value }) => {
     <>
       <ReactStars
         count={5}
-        size={30}
+        size={50}
         value={starValue}
         isHalf={true}
         activeColor="#ff6900"
