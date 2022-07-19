@@ -18,9 +18,11 @@
     "react-dom": "18.2.0",
     "react-error-boundary": "^3.1.4",
     "react-hook-form": "^7.33.1",
+    "react-icons": "^4.4.0",
     "react-query": "^3.39.1",
     "react-rating-stars-component": "^2.2.0",
     "swiper": "^8.2.6",
+    "tailwindcss-animation-delay": "^1.0.7",
     "vercel": "^27.1.5",
     "yup": "^0.32.11"
   },

@@ -1,24 +1,24 @@
 import { useState } from 'react'
 import ReactStars from 'react-rating-stars-component'
 
-export const RatingStars = () => {
-  const [_rating, setRating] = useState(null)
+export const RatingStars = ({ value }) => {
+  const [starValue, setStarValue] = useState(value)
 
   const ratingValue = (currentRating) => {
-    setRating(currentRating)
+    setStarValue(currentRating)
   }
 
   return (
     <>
       <ReactStars
         count={5}
-        size={35}
+        size={45}
+        value={starValue}
         isHalf={true}
-        activeColor="#FFA500"
-        color="#f7e9cd"
+        activeColor="#ff6900"
+        color="#fbe9db"
         onChange={ratingValue}
       />
-      {/* <p>Your rate this with {rating || 0} rating</p> */}
     </>
   )
 }
