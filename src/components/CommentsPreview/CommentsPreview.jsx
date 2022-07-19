@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslations } from 'use-intl'
-import { Comment } from '@/components/Comment'
+import { ReviewFirst } from '@/components/ReviewFirst'
 import { comments } from './mockupData/comments'
 
 export const CommentsPreview = () => {
@@ -17,13 +17,13 @@ export const CommentsPreview = () => {
     <>
       <section>
         {firstTwo.map((comment) => (
-          <Comment key={comment.name} name={comment.name} message={comment.message} />
+          <ReviewFirst key={comment.name} name={comment.name} message={comment.message} />
         ))}
       </section>
       <div className="relative">
         <section className={`${blurClass}`}>
           {rest.map((comment) => (
-            <Comment key={comment.name} name={comment.name} message={comment.message} />
+            <ReviewFirst key={comment.name} name={comment.name} message={comment.message} />
           ))}
         </section>
         {rest.length > 0 && blurClass && (
