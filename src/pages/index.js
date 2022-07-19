@@ -5,8 +5,6 @@ import { MainLayout } from '@/components/Layout'
 import { LoginForm } from '@/features/auth'
 import { RatingStars } from '@/components/RatingStars'
 import { CommentsPreview } from '@/components/CommentsPreview'
-import { Garni } from '@/components/GarniAccordion'
-
 // import { CompanyInfo } from '@/components/CompanyInfo'
 import { MainAccordion } from './../features/Accordion'
 
@@ -25,10 +23,10 @@ export default function Home() {
 
       <h1 className="text-3xl font-bold">boi - homepage</h1>
       <p>{t('helloWorld')}</p>
-      {/* <LoginForm /> */}
-      {/* <Carousel />
+      <LoginForm />
+      <Carousel />
       <RatingStars />
-      <CommentsPreview /> */}
+      <CommentsPreview />
       <MainAccordion />
     </div>
   )
