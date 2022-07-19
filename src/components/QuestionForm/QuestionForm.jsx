@@ -30,7 +30,11 @@ export const QuestionForm = ({ form }) => {
       )
     default:
       return (
-        <div className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-4">
+        <div
+          className={`shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 ${
+            form.type === 'short' ? 'space-y-3' : 'space-y-4'
+          } `}
+        >
           {form.questions.map((question, i) => {
             return (
               <div key={question} className="space-y-2">
@@ -43,7 +47,7 @@ export const QuestionForm = ({ form }) => {
             type="text"
             name={'name'}
             id={'id'}
-            className="border-b-[1px] border-b-[#e3e3e3] outline-none py-3 px-1"
+            className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
             placeholder="Enter text here"
           />
         </div>
