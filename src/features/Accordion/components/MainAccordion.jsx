@@ -3,6 +3,7 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { useTranslations } from 'next-intl'
 import { Garni } from '@/components/GarniAccordion'
 import { CommentsPreview } from '@/components/CommentsPreview'
+import { ReviewTypeTwo } from '@/features/ReviewTypeTwo'
 
 export const MainAccordion = () => {
   const [innerAccordion, setInnerAccordion] = useState(null)
@@ -33,7 +34,8 @@ export const MainAccordion = () => {
             })}
           </div>
         )} */}
-        {innerAccordion && <CommentsPreview />}
+        {/* {innerAccordion && <CommentsPreview />} */}
+        {innerAccordion && <ReviewTypeTwo />}
       </div>
     </div>
   )
