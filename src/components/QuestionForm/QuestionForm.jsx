@@ -11,8 +11,8 @@ export const QuestionForm = ({ form }) => {
             e.preventDefault()
           }}
         >
-          <div key={question} className="space-y-2">
-            <p>{question}</p>
+          <div className="space-y-2">
+            <p>{form.question}</p>
             <RatingStars />
           </div>
           <input

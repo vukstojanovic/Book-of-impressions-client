@@ -13,7 +13,7 @@ import { QuestionForm } from '@/components/QuestionForm'
 export const Carousel = () => {
   const form1 = {
     type: 'short',
-    questions: ['This is form with only 1 question'],
+    question: 'This is form with only 1 question',
   }
   const form2 = {
     type: 'long',
@@ -45,7 +45,7 @@ export const Carousel = () => {
       style={{ overflow: 'unset', marginTop: '68px' }}
     >
       <SwiperSlide className="pb-6">
-        <QuestionForm form={form2} />
+        <QuestionForm form={form3} />
       </SwiperSlide>
       <SwiperSlide className="pb-6">
         <div className="shadow-box rounded-lg grid justify-center p-4">
