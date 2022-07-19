@@ -45,7 +45,7 @@ export const Carousel = () => {
       style={{ overflow: 'unset', marginTop: '68px' }}
     >
       <SwiperSlide className="pb-6">
-        <QuestionForm form={form1} />
+        <QuestionForm form={form2} />
       </SwiperSlide>
       <SwiperSlide className="pb-6">
         <div className="shadow-box rounded-lg grid justify-center p-4">

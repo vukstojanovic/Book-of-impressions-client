@@ -30,10 +30,10 @@ export const QuestionForm = ({ form }) => {
       )
     default:
       return (
-        <div className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9">
+        <div className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-4">
           {form.questions.map((question, i) => {
             return (
-              <div key={question} className="space-y-7 mb-9">
+              <div key={question} className="space-y-2">
                 <p>{question}</p>
                 <RatingStars />
               </div>
