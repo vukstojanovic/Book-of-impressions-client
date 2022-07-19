@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { useTranslations } from 'next-intl'
+import { Garni } from '@/components/GarniAccordion'
 import { CommentsPreview } from '@/components/CommentsPreview'
-import styles from './MainAccordion.module.css'
-
-import * as SvgSprite from '@/assets/SvgSprite'
 
 export const MainAccordion = () => {
   const [innerAccordion, setInnerAccordion] = useState(null)
@@ -13,20 +11,7 @@ export const MainAccordion = () => {
 
   return (
     <div className="container mx-auto max-w-sm mt-10">
-      <div className={`${styles.upperAccordion} ${styles.wrapper}`}>
-        <div className="flex justify-between items-center p-6 text-white">
-          <div className="flex items-center">
-            <div className={`${styles.elipse} flex items-center justify-center`}>
-              <SvgSprite.IconPlaceholderLogo />
-            </div>
-            <p className="ml-2">{t('aboutGarni')}</p>
-          </div>
-          <div className="flex items-center cursor-pointer">
-            <p>{t('readMore')}</p>
-            <IoIosArrowDown className="ml-2" />
-          </div>
-        </div>
-      </div>
+      <Garni />
       <div onClick={() => setInnerAccordion(!innerAccordion)}>
         <div className="flex justify-between items-center p-5 cursor-pointer">
           <h4>{t('seeOtherReviews')}</h4>
