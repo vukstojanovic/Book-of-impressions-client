@@ -72,7 +72,7 @@ export const Carousel = () => {
         <div className="shadow-box flex-col flex space-y-3 justify-center pt-9 pb-16 px-6 rounded-md">
           <div className="px-3">
             <p className="font-medium">Lorem Title</p>
-            <p>Lorem text</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, provident?</p>
           </div>
           <div className="flex space-x-3 w-full">
             <button className="rounded-md w-full bg-btnGoBack p-2 text-textGray">Go Back</button>
@@ -83,18 +83,14 @@ export const Carousel = () => {
         </div>
       </SwiperSlide>
 
-      <div className={`flex items-center justify-center space-x-2`}>
-        <button
-          className={`button-prev w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 rotate-180 hover:opacity-90 disabled:opacity-50`}
-        >
+      <div className="flex items-center justify-center space-x-2">
+        <button className="button-prev w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 rotate-180 hover:opacity-90 disabled:opacity-50">
           <NavArrow />
         </button>
 
-        <div className={`pagination`} id={styles.bulletWrapper}></div>
+        <div className="pagination" id={styles.bulletWrapper}></div>
 
-        <button
-          className={`button-next w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 hover:opacity-90 disabled:opacity-50`}
-        >
+        <button className="button-next w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 hover:opacity-90 disabled:opacity-50">
           <NavArrow />
         </button>
       </div>
