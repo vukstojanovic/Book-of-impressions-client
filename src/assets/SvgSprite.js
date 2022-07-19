@@ -51,3 +51,28 @@ export const IconPlaceholderLogo = ({ color = '#fff' }) => {
     </svg>
   )
 }
+
+export const CheckedSymbol = ({ color = '#009e2f' }) => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="98" height="98" viewBox="0 0 98 98">
+      <g id="Group_206" data-name="Group 206" transform="translate(-263.465 -1617.547)">
+        <circle
+          id="Ellipse_20"
+          data-name="Ellipse 20"
+          cx="49"
+          cy="49"
+          r="49"
+          transform="translate(263.465 1617.547)"
+          fill={color}
+        />
+        <path
+          id="Path_239"
+          data-name="Path 239"
+          d="M600.073,2000a4.861,4.861,0,0,0-3.448,1.433l-31.04,31.04-10.345-10.347a4.878,4.878,0,0,0-6.9,6.9l13.8,13.8a4.869,4.869,0,0,0,6.9,0l34.488-34.489a4.881,4.881,0,0,0-3.45-8.33Z"
+          transform="translate(-263.692 -355.805)"
+          fill="#f0f0f0"
+        />
+      </g>
+    </svg>
+  )
+}

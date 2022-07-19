@@ -9,6 +9,8 @@ module.exports = {
         btnConfirm: '#ff6500',
         btnGoBack: '#f5f5f5',
         spinnerLoader: '#ff6900',
+        btnUnlockReviews: '#ff6900',
+        btnUnlockReviewsHover: '#ff7a00',
       },
       colors: {
         textGray: '#ADADAD',

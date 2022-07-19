@@ -4,9 +4,8 @@ import { useTranslations } from 'next-intl'
 import { MainLayout } from '@/components/Layout'
 import { LoginForm } from '@/features/auth'
 import { RatingStars } from '@/components/RatingStars'
-import { CommentsPreview } from '@/components/CommentsPreview'
 import { Loader } from '@/components/Loader'
-import { CompanyInfo } from '@/components/CompanyInfo'
+import { Success } from '@/features/Success'
 import { RingContainer } from '@/components/RingContainer'
 import { MainAccordion } from './../features/Accordion'
 
@@ -31,8 +30,7 @@ export default function Home() {
       <RingContainer>
         <Loader />
       </RingContainer>
-      {/* <CommentsPreview /> */}
-      <CommentsPreview />
+      <Success />
       <MainAccordion />
     </div>
   )
