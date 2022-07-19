@@ -5,7 +5,9 @@ import { MainLayout } from '@/components/Layout'
 import { LoginForm } from '@/features/auth'
 import { RatingStars } from '@/components/RatingStars'
 import { CommentsPreview } from '@/components/CommentsPreview'
-// import { CompanyInfo } from '@/components/CompanyInfo'
+import { Loader } from '@/components/Loader'
+import { CompanyInfo } from '@/components/CompanyInfo'
+import { RingContainer } from '@/components/RingContainer'
 import { MainAccordion } from './../features/Accordion'
 
 import styles from '@/styles/Home.module.css'
@@ -26,6 +28,10 @@ export default function Home() {
       <LoginForm />
       <Carousel />
       <RatingStars />
+      <RingContainer>
+        <Loader />
+      </RingContainer>
+      {/* <CommentsPreview /> */}
       <CommentsPreview />
       <MainAccordion />
     </div>
