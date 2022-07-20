@@ -1,8 +1,9 @@
 import * as SvgSprite from '@/assets/SvgSprite'
+import { ReviewWrapper } from '@/components/ReviewWrapper'
 
-export const SingleReview = ({ name, description, review }) => {
+export const SingleReviewTypeThree = ({ name, description, review }) => {
   return (
-    <div className="w-200 p-6 border border-solid my-4 rounded-lg shadow-md">
+    <ReviewWrapper>
       <div className="flex justify-between items-center">
         <h3 className="max-w-[30%] text-lg mb-1.5 font-medium uppercase mb-0 break-words">
           {name}
@@ -12,6 +13,6 @@ export const SingleReview = ({ name, description, review }) => {
           {review === 'like' ? <SvgSprite.ThumbsUpRounded /> : <SvgSprite.ThumbsDownRounded />}
         </div>
       </div>
-    </div>
+    </ReviewWrapper>
   )
 }

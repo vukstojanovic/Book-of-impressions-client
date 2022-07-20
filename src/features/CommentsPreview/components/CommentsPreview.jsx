@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useTranslations } from 'use-intl'
-import { ReviewFirst } from '@/components/ReviewFirst'
-import { comments } from './mockupData/comments'
+import { comments, ReviewFirst } from '@/features/CommentsPreview'
 
 export const CommentsPreview = () => {
   const firstTwo = comments.slice(0, 2)
