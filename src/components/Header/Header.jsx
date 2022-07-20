@@ -9,7 +9,7 @@ import { Logo } from '@/components/Logo'
 import { LanguagePicker } from '@/components/LanguagePicker'
 
 export const Header = () => {
-  const { asPath } = useRouter()
+  const { asPath, pathname } = useRouter()
   const [navbarToggle, setNavbarToggle] = useState(false)
   const [top, setTop] = useState(true)
 
@@ -28,8 +28,14 @@ export const Header = () => {
     return () => window.removeEventListener('scroll', scrollHandler)
   }, [top])
 
+  const isHomePage = pathname === '/'
+
   return (
-    <header className={`flex justify-center fixed min-w-full z-[100] ${!top && 'bg-hero'}`}>
+    <header
+      className={`flex justify-center fixed min-w-full z-[100] ${
+        !top || !isHomePage ? 'bg-header' : ''
+      }`}
+    >
       <div className="w-full max-w-7xl py-2 px-4 flex items-center">
         <div className="w-16 lg:w-20 translate-y-1 lg:translate-y-2">
           <Logo />

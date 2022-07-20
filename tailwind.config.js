@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         textGray: '#adadad',
         hero: '#04375b',
+        header: '#054A7B',
         boiOrange: '#ff6700',
         titleWhite: '#f3f3f3',
       },

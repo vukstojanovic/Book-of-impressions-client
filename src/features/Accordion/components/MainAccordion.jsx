@@ -1,24 +1,22 @@
 import { useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { useTranslations } from 'next-intl'
-import { Garni } from '@/components/GarniAccordion'
 import { CommentsPreview } from '@/components/CommentsPreview'
 
 export const MainAccordion = () => {
-  const [innerAccordion, setInnerAccordion] = useState(null)
+  const [innerAccordion, setInnerAccordion] = useState(true)
 
   const t = useTranslations('Home')
 
   return (
-    <div className="container mx-auto max-w-sm mt-10">
-      <Garni />
+    <>
       <div onClick={() => setInnerAccordion(!innerAccordion)}>
-        <div className="flex justify-between items-center p-5 cursor-pointer">
+        <div className="flex justify-between items-center py-2 px-6 cursor-pointer font-semibold">
           <h4>{t('seeOtherReviews')}</h4>
           {innerAccordion ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </div>
       </div>
-      <div className="p-3">
+      <div className="px-6">
         {/* {innerAccordion && (
           <div>
             {questions.map((q, i) => {
@@ -35,6 +33,6 @@ export const MainAccordion = () => {
         )} */}
         {innerAccordion && <CommentsPreview />}
       </div>
-    </div>
+    </>
   )
 }

@@ -7,11 +7,11 @@ export const Hero = () => {
 
   return (
     <div className="flex justify-center bg-hero w-screen min-h-screen overflow-hidden">
-      <div className="w-full max-w-7xl py-2 px-4 py-10 flex flex-col-reverse items-center justify-between lg:flex-row">
+      <div className="w-full max-w-7xl px-4 py-10 flex flex-col-reverse items-center justify-between lg:flex-row">
         <div className="z-20 max-w-md pl-10 lg:pl-20">
           <h1 className="text-titleWhite text-6xl"> {t('hero:title')}</h1>
           <p className="mt-10 text-white text-2xl">{t('hero:message')}</p>
-          <Link href={'/#contact'}>
+          <Link href={'/review'}>
             <a className="block w-max	text-white rounded-md bg-boiOrange py-4 px-16 mt-10">
               {t('hero:button')}
             </a>
