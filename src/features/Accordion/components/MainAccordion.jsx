@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { Garni } from '@/components/GarniAccordion'
 import { CommentsPreview } from '@/components/CommentsPreview'
 import { ReviewTypeTwo } from '@/features/ReviewTypeTwo'
+import { ReviewTypeThree } from '@/features/ReviewTypeThree'
 
 export const MainAccordion = () => {
   const [innerAccordion, setInnerAccordion] = useState(null)
@@ -35,7 +36,7 @@ export const MainAccordion = () => {
           </div>
         )} */}
         {/* {innerAccordion && <CommentsPreview />} */}
-        {innerAccordion && <ReviewTypeTwo />}
+        {innerAccordion && <ReviewTypeThree />}
       </div>
     </div>
   )
