@@ -67,6 +67,75 @@ export const ThumbsDown = () => {
   )
 }
 
+export const ThumbsUpRounded = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="37.062"
+      height="37.062"
+      viewBox="0 0 37.062 37.062"
+    >
+      <g id="Group_3" data-name="Group 3" transform="translate(-0.276 -0.292)">
+        <circle
+          id="Oval"
+          cx="18.531"
+          cy="18.531"
+          r="18.531"
+          transform="translate(0.276 0.292)"
+          fill="#4f9d0c"
+        />
+        <g id="like" transform="translate(11.629 10.874)">
+          <path
+            id="Combined_Shape"
+            data-name="Combined Shape"
+            d="M11.85,14.67H0V8H2.724L5.449,0h.681A2.025,2.025,0,0,1,8.173,2V5.335h4.454a2.061,2.061,0,0,1,1.544.69,1.971,1.971,0,0,1,.479,1.593l-.778,5.335a1.989,1.989,0,0,1-.683,1.228A2.069,2.069,0,0,1,11.85,14.67Z"
+            transform="translate(0)"
+            fill="none"
+            stroke="#fff"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+          />
+        </g>
+      </g>
+    </svg>
+  )
+}
+export const ThumbsDownRounded = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="37.062"
+      height="37.062"
+      viewBox="0 0 37.062 37.062"
+    >
+      <g id="Group_3" data-name="Group 3" transform="translate(-0.276 -0.292)">
+        <circle
+          id="Oval"
+          cx="18.531"
+          cy="18.531"
+          r="18.531"
+          transform="translate(0.276 0.292)"
+          fill="#d01010"
+        />
+        <g id="like" transform="translate(11.629 12.874)">
+          <path
+            id="Combined_Shape"
+            data-name="Combined Shape"
+            d="M11.851,0H0V6.668H2.724l2.725,8h.681a2.025,2.025,0,0,0,2.044-2V9.335h4.454a2.062,2.062,0,0,0,1.544-.69,1.971,1.971,0,0,0,.479-1.593l-.778-5.335A1.989,1.989,0,0,0,13.189.489,2.069,2.069,0,0,0,11.851,0Z"
+            transform="translate(0 0)"
+            fill="none"
+            stroke="#fff"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+          />
+        </g>
+      </g>
+    </svg>
+  )
+}
+
 export const IconPlaceholderLogo = ({ color = '#fff' }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="27" viewBox="0 0 17 27">
