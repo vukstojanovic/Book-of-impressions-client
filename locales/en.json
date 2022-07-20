@@ -17,5 +17,13 @@
     "aboutGarni": "About Garni",
     "readMore": "Read more",
     "seeOtherReviews": "See other reviews"
+  },
+  "Form": {
+    "header": "Enter your details",
+    "namePlaceholder": "Name and surname",
+    "emailPlaceholder": "Email",
+    "contactMe": "contact me",
+    "goBack": "Go back",
+    "confirm": "Confirm"
   }
 }
