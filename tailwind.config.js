@@ -3,15 +3,16 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        box: '0px 1px 8px #CECECE',
+        box: '0px 1px 8px #cecece',
       },
-      backgroundColor: {
-        btnConfirm: '#ff6500',
-        btnGoBack: '#f5f5f5',
-        spinnerLoader: '#ff6900',
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
       colors: {
-        textGray: '#ADADAD',
+        textGray: '#adadad',
+        hero: '#04375b',
+        boiOrange: '#ff6700',
+        titleWhite: '#f3f3f3',
       },
     },
     keyframes: {

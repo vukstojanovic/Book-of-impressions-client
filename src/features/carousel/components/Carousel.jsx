@@ -75,8 +75,10 @@ export const Carousel = () => {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, provident?</p>
           </div>
           <div className="flex space-x-3 w-full">
-            <button className="rounded-md w-full bg-btnGoBack p-2 text-textGray">Go Back</button>
-            <button className="rounded-md w-full bg-btnConfirm p-2 text-white font-bold">
+            <button className="rounded-md w-full bg-decoration-neutral-100 p-2 text-textGray">
+              Go Back
+            </button>
+            <button className="rounded-md w-full bg-boiOrange p-2 text-white font-bold">
               Confirm
             </button>
           </div>
