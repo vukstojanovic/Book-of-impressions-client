@@ -1,7 +1,9 @@
+import { useSwiper } from 'swiper/react'
 import { ThumbsDown, ThumbsUp } from '@/assets/SvgSprite'
 import { RatingStars } from '../RatingStars'
 
 export const QuestionForm = ({ form }) => {
+  const swiper = useSwiper()
   switch (form.type) {
     case 'short':
       return (
@@ -9,6 +11,7 @@ export const QuestionForm = ({ form }) => {
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-3"
           onSubmit={(e) => {
             e.preventDefault()
+            swiper.slideNext()
           }}
         >
           <div className="space-y-2">
@@ -30,6 +33,7 @@ export const QuestionForm = ({ form }) => {
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-4"
           onSubmit={(e) => {
             e.preventDefault()
+            swiper.slideNext()
           }}
         >
           {form.questions.map((question, i) => {
@@ -58,6 +62,7 @@ export const QuestionForm = ({ form }) => {
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-[70px] px-9"
           onSubmit={(e) => {
             e.preventDefault()
+            swiper.slideNext()
           }}
         >
           <p className="pb-14">This is yes or no form</p>

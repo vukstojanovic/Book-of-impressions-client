@@ -3,7 +3,15 @@
     "helloWorld": "Zdravo svete",
     "unlockReviews": "Otključaj recenzije",
     "aboutGarni": "O Garniju",
-    "readMore": "Procitaj vise",
+    "readMore": "Procitaj više",
     "seeOtherReviews": "Vidi druge recenzije"
+  },
+  "Form": {
+    "header": "Unesite vaše podatke",
+    "namePlaceholder": "Ime i prezime",
+    "emailPlaceholder": "Email",
+    "contactMe": "obavestite me",
+    "goBack": "Nazad",
+    "confirm": "Pošalji"
   }
 }
