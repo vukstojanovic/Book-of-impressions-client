@@ -1,8 +1,9 @@
 import { RatingStars } from '@/components/RatingStars'
+import { ReviewWrapper } from '@/components/ReviewWrapper'
 
-export const ReviewSecond = ({ name, reviews }) => {
+export const SingleReviewTypeTwo = ({ name, reviews }) => {
   return (
-    <div className="w-200 p-6 border border-solid my-4 rounded-lg shadow-md">
+    <ReviewWrapper>
       <h3 className="text-lg mb-1.5 font-medium uppercase">{name}</h3>
       {reviews.map((review, index) => {
         const { text, rating } = review
@@ -13,6 +14,6 @@ export const ReviewSecond = ({ name, reviews }) => {
           </div>
         )
       })}
-    </div>
+    </ReviewWrapper>
   )
 }
