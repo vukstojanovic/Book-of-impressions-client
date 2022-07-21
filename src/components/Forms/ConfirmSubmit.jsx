@@ -19,13 +19,13 @@ export const ConfirmSubmit = () => {
         <button
           type="button"
           onClick={() => swiper.slidePrev()}
-          className="rounded-md w-full bg-btnGoBack px-6 py-3 text-textGray leading-7 tracking-[.65px]"
+          className="rounded-md w-full bg-neutral-100 px-6 py-3 text-textGray leading-7 tracking-[.65px]"
         >
           {t('goBack')}
         </button>
         <button
           type="submit"
-          className="rounded-md w-full bg-btnConfirm px-7 py-3 text-white font-bold leading-7 tracking-[.65px]"
+          className="rounded-md w-full bg-boiOrange px-7 py-3 text-white font-bold leading-7 tracking-[.65px]"
         >
           {t('confirm')}
         </button>

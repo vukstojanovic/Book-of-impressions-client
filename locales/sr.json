@@ -1,0 +1,30 @@
+
+{
+  "General": {
+    "header:title": "boi",
+    "navbar:home": "Početna",
+    "navbar:about": "O nama",
+    "navbar:features": "Mogućnosti",
+    "navbar:price": "Cene",
+    "navbar:contact": "Kontakt",
+    "navbar:signUp": "Registruj se"
+  },
+  "Home": {
+    "hero:title": "Utisci su budućnost",
+    "hero:message": "Svi utisci na jednom mestu",
+    "hero:button": "Registruj se",
+    "helloWorld": "Zdravo svete",
+    "unlockReviews": "Otključaj recenzije",
+    "aboutGarni": "O Garniju",
+    "readMore": "Procitaj vise",
+    "seeOtherReviews": "Vidi druge recenzije"
+  },
+  "Form": {
+    "header": "Unesite vaše podatke",
+    "namePlaceholder": "Ime i prezime",
+    "emailPlaceholder": "Email",
+    "contactMe": "obavestite me",
+    "goBack": "Nazad",
+    "confirm": "Pošalji"
+  }
+}

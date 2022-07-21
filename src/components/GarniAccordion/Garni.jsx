@@ -17,7 +17,6 @@ export const Garni = () => {
           <p className="ml-2">{t('aboutGarni')}</p>
         </div>
         <div className="flex items-center cursor-pointer" onClick={() => setToggle(!toggle)}>
-          <p>{toggle ? null : t('readMore')}</p>
           {toggle ? <IoIosArrowUp className="ml-2" /> : <IoIosArrowDown className="ml-2" />}
         </div>
       </div>

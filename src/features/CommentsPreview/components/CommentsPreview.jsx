@@ -28,7 +28,7 @@ export const CommentsPreview = () => {
         {rest.length > 0 && blurClass && (
           <button
             onClick={showAllComments}
-            className="absolute top-[60px] left-1/2 -translate-x-2/4 w-11/12 md:w-96 py-3 bg-btnUnlockReviews hover:bg-btnUnlockReviewsHover rounded-md uppercase text-white font-medium"
+            className="absolute top-[60px] left-1/2 -translate-x-2/4 w-11/12 md:w-96 py-3 bg-boiOrange hover:bg-boiOrangeHover rounded-md uppercase text-white font-medium"
           >
             {t('unlockReviews')}
           </button>
