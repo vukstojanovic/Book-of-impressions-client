@@ -26,4 +26,14 @@ export const CONSTS = {
       type: 'button',
     },
   ],
+  Locales: [
+    {
+      key: 'sr',
+      flag: '/img/f-sr.svg',
+    },
+    {
+      key: 'en',
+      flag: '/img/f-gb.svg',
+    },
+  ],
 }
