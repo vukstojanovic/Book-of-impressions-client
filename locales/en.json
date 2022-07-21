@@ -6,7 +6,9 @@
     "navbar:features": "Feature",
     "navbar:price": "Prices",
     "navbar:contact": "Contact",
-    "navbar:signUp": "Sign up"
+    "navbar:signUp": "Sign up",
+    "locale:en": "English",
+    "locale:sr": "Srpski"
   },
   "Home": {
     "hero:title": "Future of reviews",

@@ -7,7 +7,9 @@
     "navbar:features": "Mogućnosti",
     "navbar:price": "Cene",
     "navbar:contact": "Kontakt",
-    "navbar:signUp": "Registruj se"
+    "navbar:signUp": "Registruj se",
+    "locale:en": "English",
+    "locale:sr": "Srpski"
   },
   "Home": {
     "hero:title": "Utisci su budućnost",
