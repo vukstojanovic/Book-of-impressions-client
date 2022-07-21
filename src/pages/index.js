@@ -5,6 +5,8 @@ import { MainLayout } from '@/components/Layout'
 
 import styles from '@/styles/Home.module.css'
 import { Hero } from '@/components/Hero'
+import { Testimonials } from '@/components/Testimonials'
+import { Footer } from '@/components/Footer'
 
 export default function Home() {
   const t = useTranslations('Home')
@@ -17,6 +19,7 @@ export default function Home() {
       </Head>
 
       <Hero />
+      <Testimonials />
     </div>
   )
 }
