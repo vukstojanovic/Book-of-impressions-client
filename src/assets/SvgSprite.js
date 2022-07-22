@@ -762,3 +762,64 @@ export const ApplicationIcon = ({ color = '#08191e' }) => {
     </svg>
   )
 }
+
+export const DesignRectangle = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width="86"
+      height="90"
+      viewBox="0 0 86 90"
+    >
+      <defs>
+        <filter id="Rectangle" x="0" y="0" width="86" height="90" filterUnits="userSpaceOnUse">
+          <feOffset dy="1" input="SourceAlpha" />
+          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feFlood floodColor="#ef6b03" floodOpacity="0.345" />
+          <feComposite operator="in" in2="blur" />
+          <feComposite in="SourceGraphic" />
+        </filter>
+      </defs>
+      <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Rectangle)">
+        <rect
+          id="Rectangle-2"
+          data-name="Rectangle"
+          width="62"
+          height="66"
+          rx="5"
+          transform="translate(12 11)"
+          fill="#04375b"
+        />
+      </g>
+    </svg>
+  )
+}
+
+export const EcommerceRectangle = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="66" viewBox="0 0 62 66">
+      <path
+        id="Rectangle_Copy_2"
+        data-name="Rectangle Copy 2"
+        d="M5,0H57a5,5,0,0,1,5,5V61a5,5,0,0,1-5,5H5a5,5,0,0,1-5-5V5A5,5,0,0,1,5,0Z"
+        fill="#188ef5"
+      />
+    </svg>
+  )
+}
+
+export const ApplicationRectangle = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="62" height="66" viewBox="0 0 62 66">
+      <rect
+        id="Rectangle_Copy_3"
+        data-name="Rectangle Copy 3"
+        width="62"
+        height="66"
+        rx="16"
+        fill="#0093a0"
+      />
+    </svg>
+  )
+}

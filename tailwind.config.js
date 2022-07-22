@@ -14,6 +14,7 @@ module.exports = {
         header: '#054A7B',
         boiOrange: '#ff6700',
         boiNavyBlue: '#0988E3',
+        boiLightBlue: '#1893fc',
         boiLightGray: '#f7f7f7',
         boiGray: '#919191',
         titleWhite: '#f3f3f3',

@@ -18,7 +18,7 @@ export default function Home() {
       </Head>
 
       <Hero />
-      <div className="p-32">
+      <div className="p-8 lg:p-32">
         <FirstSection />
       </div>
     </div>
