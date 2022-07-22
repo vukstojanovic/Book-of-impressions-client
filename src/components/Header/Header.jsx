@@ -30,52 +30,62 @@ export const Header = () => {
 
   const isHomePage = pathname === '/'
 
+  const renderNavLinks = () =>
+    CONSTS.NavbarLinks.map((item) => {
+      return (
+        <li key={item.key} className="px-3 py-2 font-semibold text-white">
+          <Link href={item.href}>
+            <a
+              className={`${
+                item.type !== 'button'
+                  ? `py-1 border-b-2 border-boiOrange hover:border-solid ${
+                      asPath === item.href ? 'border-solid' : 'border-hidden'
+                    }
+                `
+                  : 'rounded-md bg-boiOrange py-2 px-3'
+              }`}
+            >
+              {t(item.key)}
+            </a>
+          </Link>
+        </li>
+      )
+    })
+
   return (
     <header
       className={`flex justify-center fixed min-w-full z-[100] ${
         !top || !isHomePage ? 'bg-header' : ''
       }`}
     >
-      <div className="w-full max-w-7xl py-2 px-4 flex items-center">
-        <div className="w-16 lg:w-20 translate-y-1 lg:translate-y-2">
-          <Logo />
+      <div className="relative w-full justify-center lg:flex">
+        <div className="w-full max-w-7xl py-2 px-4 flex items-center">
+          <div className="w-16 lg:w-20 translate-y-1 lg:translate-y-2">
+            <Logo />
+          </div>
+          <div className="grow" />
+          <ul className="hidden lg:flex items-center">{renderNavLinks()}</ul>
+          <LanguagePicker />
+          <button
+            className="block lg:hidden"
+            onClick={() => {
+              setNavbarToggle(!navbarToggle)
+            }}
+          >
+            {navbarToggle ? (
+              <IoMdClose size="2em" color="white" />
+            ) : (
+              <IoMdMenu size="2em" color="white" />
+            )}
+          </button>
         </div>
-        <div className="grow" />
-        <ul className="hidden lg:flex items-center">
-          {CONSTS.NavbarLinks.map((item) => {
-            return (
-              <li key={item.key} className="px-3 py-2 font-semibold text-white">
-                <Link href={item.href}>
-                  <a
-                    className={`${
-                      item.type !== 'button'
-                        ? `py-1 border-b-2 border-boiOrange hover:border-solid ${
-                            asPath === item.href ? 'border-solid' : 'border-hidden'
-                          }
-                        `
-                        : 'rounded-md bg-boiOrange py-2 px-3'
-                    }`}
-                  >
-                    {t(item.key)}
-                  </a>
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-        <LanguagePicker />
-        <button
-          className="block lg:hidden"
-          onClick={() => {
-            setNavbarToggle(!navbarToggle)
-          }}
+        <ul
+          className={`${
+            navbarToggle ? 'flex' : 'hidden'
+          } lg:hidden  flex-col items-center absolute w-full bg-hero origin-top-right py-6`}
         >
-          {navbarToggle ? (
-            <IoMdClose size="2em" color="white" />
-          ) : (
-            <IoMdMenu size="2em" color="white" />
-          )}
-        </button>
+          {renderNavLinks()}
+        </ul>
       </div>
     </header>
   )
