@@ -7,19 +7,14 @@ export const Footer = () => {
 
   return (
     <>
-      <footer className="text-white text-center text-base font-light after:absolute after:top-0 after:right-0 after:w-full after:h-full after:clip-path-footer after:-z-50 after:bg-footer relative mt-10 px-6 pb-6 pt-24 lg:text-start lg:mt-24 lg:px-32 lg:pb-14 lg:pt-60 flex flex-col">
+      <footer className="text-white text-center text-base font-light after:absolute after:top-0 after:right-0 after:w-full after:h-full after:clip-path-footer after:-z-50 after:bg-footer relative mt-10 px-6 pb-6 pt-24 lg:text-start lg:mt-24 lg:px-32 lg:pb-14 lg:pt-56 flex flex-col">
         <div
           className="
             hidden
             lg:block
             absolute
-            right-[207px]
-            top-12
-            text-right
-            -translate-y-28
-            translate-x-14
-            min-w-[150px] 
-            min-h-[150px]
+            lg:right-[110px]
+            lg:top-11
             md:-translate-y-[295px]
             md:w-[600px]
             md:h-[600px]
@@ -32,8 +27,8 @@ export const Footer = () => {
         </div>
         <div className="grid grid-cols-2 justify-items-center gap-y-4 lg:flex lg:justify-between pr-8">
           <div className="space-y-2 lg:space-y-9">
-            <p className="font-medium">SERVICES</p>
-            <div className="grid space-y-4 font-light">
+            <p className="font-semibold">SERVICES</p>
+            <div className="grid space-y-4">
               <Link href="/">
                 <a>Strategy Design</a>
               </Link>
@@ -52,8 +47,8 @@ export const Footer = () => {
             </div>
           </div>
           <div className="space-y-2 lg:space-y-9">
-            <p className="font-medium">HELP AND ADVICE</p>
-            <div className="grid space-y-4 font-light">
+            <p className="font-semibold">HELP AND ADVICE</p>
+            <div className="grid space-y-4">
               <Link href="/">
                 <a>How it works</a>
               </Link>
@@ -69,8 +64,8 @@ export const Footer = () => {
             </div>
           </div>
           <div className="space-y-2 lg:space-y-9">
-            <p className="font-medium">COMPANY</p>
-            <div className="grid space-y-4 font-light">
+            <p className="font-semibold">COMPANY</p>
+            <div className="grid space-y-4">
               <Link href="/">
                 <a>About</a>
               </Link>
@@ -87,8 +82,8 @@ export const Footer = () => {
           </div>
           <div className="min-h-full mb-6 border-l border-l-white hidden lg:block"></div>
           <div className="space-y-2 lg:space-y-9">
-            <p className="font-medium">GET IN TOUCH</p>
-            <div className="grid space-y-4 font-light">
+            <p className="font-semibold">GET IN TOUCH</p>
+            <div className="grid space-y-4">
               <Link href="/">
                 <a>Feel free to get in touch with us via email</a>
               </Link>

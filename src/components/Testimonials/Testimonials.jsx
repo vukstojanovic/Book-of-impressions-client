@@ -58,32 +58,41 @@ export const Testimonials = () => {
     },
   ]
   return (
-    <Swiper
-      modules={[Pagination, Scrollbar, A11y, Autoplay]}
-      autoplay={{ delay: 1000, pauseOnMouseEnter: true, disableOnInteraction: false }}
-      spaceBetween={35}
-      slidesPerView={1}
-      loop
-      pagination={{
-        type: 'bullets',
-        clickable: true,
-      }}
-      setWrapperSize
-    >
-      {testemonials.map((testemonial) => (
-        <SwiperSlide key={testemonial.id}>
-          <div className="grid">
-            <p>{testemonial.text}</p>
-            <div className="flex">
-              <div>{testemonial.avatar}</div>
-              <div>
-                <p>{testemonial.name}</p>
-                <p>{testemonial.company}</p>
+    <div className="p-6 lg:p-32">
+      <Swiper
+        modules={[Pagination, Scrollbar, A11y, Autoplay]}
+        autoplay={{ delay: 5000, pauseOnMouseEnter: true, disableOnInteraction: false }}
+        spaceBetween={35}
+        slidesPerView={1}
+        loop
+        pagination={{
+          type: 'bullets',
+          clickable: true,
+          el: '.testemonial-pagination',
+        }}
+        setWrapperSize
+      >
+        {testemonials.map((testemonial, i) => {
+          if (i >= 5) {
+            return
+          }
+          return (
+            <SwiperSlide key={testemonial.id}>
+              <div className="grid space-y-10">
+                <p>{testemonial.text}</p>
+                <div className="flex space-x-2">
+                  <div>{testemonial.avatar}</div>
+                  <div>
+                    <p>{testemonial.name}</p>
+                    <p>{testemonial.company}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+            </SwiperSlide>
+          )
+        })}
+        <div className="testemonial-pagination text-center space-x-3 mt-11 [&>span]:bg-[#ff6700] [&>span]:w-5 [&>span]:h-5"></div>
+      </Swiper>
+    </div>
   )
 }
