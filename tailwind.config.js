@@ -10,6 +10,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'footer-img': "url('/img/people.png')",
       },
       colors: {
         textGray: '#adadad',
