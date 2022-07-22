@@ -5,6 +5,7 @@ import { MainLayout } from '@/components/Layout'
 
 import styles from '@/styles/Home.module.css'
 import { Hero } from '@/components/Hero'
+import { FirstSection } from '@/features/FirstSection'
 
 export default function Home() {
   const t = useTranslations('Home')
@@ -17,6 +18,9 @@ export default function Home() {
       </Head>
 
       <Hero />
+      <div className="p-8 lg:p-32">
+        <FirstSection />
+      </div>
     </div>
   )
 }
