@@ -30,10 +30,10 @@ export const Header = () => {
 
   const isHomePage = pathname === '/'
 
-  const renderNavLinks = () =>
-    CONSTS.NavbarLinks.map((item) => {
+  const renderNavLinks = (items) =>
+    items.map((item) => {
       return (
-        <li key={item.key} className="px-3 py-2 font-semibold text-white">
+        <li key={item.key} className="px-3 py-2 font-semibold text-white" onClick={item.onclick}>
           <Link href={item.href}>
             <a
               className={`${
@@ -64,7 +64,7 @@ export const Header = () => {
             <Logo />
           </div>
           <div className="grow" />
-          <ul className="hidden lg:flex items-center">{renderNavLinks()}</ul>
+          <ul className="hidden lg:flex items-center">{renderNavLinks(CONSTS.NavbarLinks)}</ul>
           <LanguagePicker />
           <button
             className="block lg:hidden"
@@ -84,7 +84,14 @@ export const Header = () => {
             navbarToggle ? 'flex' : 'hidden'
           } lg:hidden  flex-col items-center absolute w-full bg-hero origin-top-right py-6`}
         >
-          {renderNavLinks()}
+          {renderNavLinks(
+            CONSTS.NavbarLinks.map((l) => ({
+              ...l,
+              onclick: () => {
+                setNavbarToggle(false)
+              },
+            }))
+          )}
         </ul>
       </div>
     </header>
