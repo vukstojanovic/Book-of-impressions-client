@@ -21,8 +21,8 @@ export default function Home() {
 
       <Hero />
       <div className="p-8 lg:p-32">
-        <Testimonials />
         <FirstSection />
+        <Testimonials />
       </div>
     </div>
   )

@@ -25,7 +25,7 @@ export const Footer = () => {
         <div className="lg:w-[5.5rem] lg:h-[4.75rem] absolute top-16">
           <Logo variant="white" />
         </div>
-        <div className="grid grid-cols-2 justify-items-center gap-y-4 lg:flex lg:justify-between pr-8">
+        <div className="grid justify-items-center gap-y-4 lg:flex lg:justify-between pr-8">
           <div className="space-y-2 lg:space-y-9">
             <p className="font-semibold">SERVICES</p>
             <div className="grid space-y-4">

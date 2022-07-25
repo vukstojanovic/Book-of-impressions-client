@@ -58,7 +58,7 @@ export const Testimonials = () => {
     },
   ]
   return (
-    <div className="p-6 lg:p-32">
+    <div>
       <Swiper
         modules={[Pagination, Scrollbar, A11y, Autoplay]}
         autoplay={{ delay: 5000, pauseOnMouseEnter: true, disableOnInteraction: false }}
