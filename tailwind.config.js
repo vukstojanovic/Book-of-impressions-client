@@ -5,6 +5,9 @@ module.exports = {
       boxShadow: {
         box: '0px 1px 8px #cecece',
       },
+      backgroundColor: {
+        footer: '#0988E3',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
@@ -12,6 +15,9 @@ module.exports = {
         textGray: '#adadad',
         hero: '#04375b',
         header: '#054A7B',
+        designRectangle: '#04375b',
+        ecommerceRectangle: '#188EF5',
+        applicationRectangle: '#0093A0',
         boiOrange: '#ff6700',
         boiNavyBlue: '#0988E3',
         boiLightBlue: '#1893fc',
