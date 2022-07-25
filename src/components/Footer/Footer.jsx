@@ -21,7 +21,7 @@ export const Footer = () => {
             "
         >
           <Image src={'/img/people.png'} alt="group" width={500} height={500} />
-        </div>{' '}
+        </div>
         <div className="lg:w-[5.5rem] lg:h-[4.75rem] absolute top-16">
           <Logo variant="white" />
         </div>
