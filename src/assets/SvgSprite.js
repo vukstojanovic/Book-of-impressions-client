@@ -765,7 +765,13 @@ export const ApplicationIcon = ({ color = '#08191e' }) => {
 
 export const ManagerImage = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="578" height="474.916" viewBox="0 0 578 474.916">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      // width={width}
+      // height={height}
+      className="max-w-full lg:min-w-[578px] lg:min-h-[474.92px] xl:min-w-[578px] xl:min-h-[474.92px]"
+      viewBox="0 0 578 474.916"
+    >
       <g id="Group_218" data-name="Group 218" transform="translate(-1103 -572.437)">
         <ellipse
           id="Ellipse_10"

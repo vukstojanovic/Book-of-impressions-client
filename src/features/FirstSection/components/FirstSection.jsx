@@ -1,21 +1,21 @@
 import { useTranslations } from 'next-intl'
 import { Card } from '@/features/FirstSection'
 import { Carousel } from '@/features/FirstSection'
-import { cardsData, images } from '../data'
+import { cardsData, images } from '../data/index'
 
 export const FirstSection = () => {
   const t = useTranslations('Home')
 
   return (
-    <div>
+    <div className="mb-[140px]">
       <section className="mb-[127px]">
         <h3 className="text-[40px] mb-[31px] font-semibold">{t('weBuildExperience')}</h3>
         <p className=" mb-[82px] text-[23px]">{t('weBuildExperienceText')}</p>
-        {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-11">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-11">
           {cardsData.map((item, index) => (
             <Card key={`card-${index}`} {...item} />
           ))}
-        </div> */}
+        </div>
       </section>
 
       <section className="mb-[169px] flex flex-col xl:flex-row">

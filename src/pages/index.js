@@ -23,9 +23,8 @@ export default function Home() {
 
       <Hero />
       <div className="p-8 lg:p-32">
-        {/* <FirstSection /> */}
+        <FirstSection />
         <Benefits />
-        {/* <FirstSection /> */}
         <PlanSection />
         <Testimonials />
       </div>
