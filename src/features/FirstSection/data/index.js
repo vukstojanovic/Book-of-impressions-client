@@ -14,27 +14,27 @@ export const cardsData = [
     description: 'Lorem ipsum bla bla bla bla dolor sit amet bla bla bla',
   },
   {
-    icon: (
-      <div className="w-fit relative">
-        <SvgSprite.EcommerceRectangle />
-        <div className="absolute top-0 -left-2">
-          <SvgSprite.EcommerceIcon color={'#1893fc'} />
-        </div>
-      </div>
-    ),
+    icon:
+      // <div className="w-fit relative">
+      //   <SvgSprite.EcommerceRectangle />
+      //   <div className="absolute top-0 -left-2">
+      //     <SvgSprite.EcommerceIcon color={'#1893fc'} />
+      //   </div>
+      // </div>
+      'img',
     name: 'Ecommerce',
     description:
       'Lorem ipsum bla bla bla bla dolor sit amet bla bla bla artjeojdoerigjdoerigjeorgji',
   },
   {
-    icon: (
-      <div className="w-fit relative">
-        <SvgSprite.ApplicationRectangle />
-        <div className="absolute -top-2 -left-1">
-          <SvgSprite.ApplicationIcon color={'#0093A0'} />
-        </div>
-      </div>
-    ),
+    icon:
+      // <div className="w-fit relative">
+      //   <SvgSprite.ApplicationRectangle />
+      //   <div className="absolute -top-2 -left-1">
+      //     <SvgSprite.ApplicationIcon color={'#0093A0'} />
+      //   </div>
+      // </div>
+      'img',
     name: 'Application',
     description: 'Lorem ipsum bla bla bla bla dolor sit amet bla bla bla',
   },

@@ -52,11 +52,11 @@ export const FirstSection = () => {
         <p className=" mb-[82px] text-[23px]">
           Lorem ispum dolor sit amer, coectetur adipiscing elit. Suspendisse varius enim in er.
         </p>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-11">
+        {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-11">
           {cardsData.map((item, index) => (
             <Card key={`card-${index}`} {...item} />
           ))}
-        </div>
+        </div> */}
       </section>
 
       <section className="mb-[169px] flex flex-col lg:flex-row">
