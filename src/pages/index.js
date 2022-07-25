@@ -7,6 +7,7 @@ import styles from '@/styles/Home.module.css'
 import { Hero } from '@/components/Hero'
 import { Testimonials } from '@/components/Testimonials'
 import { Footer } from '@/components/Footer'
+import { FirstSection } from '@/features/FirstSection'
 
 export default function Home() {
   const t = useTranslations('Home')
@@ -19,7 +20,10 @@ export default function Home() {
       </Head>
 
       <Hero />
-      <Testimonials />
+      <div className="p-8 lg:p-32">
+        <Testimonials />
+        <FirstSection />
+      </div>
     </div>
   )
 }

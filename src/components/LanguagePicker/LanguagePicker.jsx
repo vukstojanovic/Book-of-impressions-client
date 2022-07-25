@@ -42,7 +42,7 @@ export const LanguagePicker = () => {
       </div>
       {opened && (
         <div
-          className="origin-top-right absolute -right-2 mt-4 w-auto rounded-md shadow-lg bg-white"
+          className="origin-top-right absolute -right-2 mt-4 w-auto rounded-md shadow-lg bg-white z-10"
           tabIndex={1}
         >
           <div className="py-2 px-2">
