@@ -1,4 +1,3 @@
-
 {
   "General": {
     "header:title": "boi",
@@ -19,7 +18,22 @@
     "unlockReviews": "Otključaj recenzije",
     "aboutGarni": "O Garniju",
     "readMore": "Procitaj vise",
-    "seeOtherReviews": "Vidi druge recenzije"
+    "seeOtherReviews": "Vidi druge recenzije",
+    "weBuildExperience": "Mi gradimo iskustvo",
+    "weBuildExperienceText": "Lorem ispum dolor sit amer, coectetur adipiscing elit. Suspendisse varius enim in er.",
+    "design": "Dizajn",
+    "designText": "Lorem ispum dolor sit amer, coectetur adipiscing elit. Suspenvarius en.",
+    "ecommerce": "Ecommerce",
+    "ecommerceText": "Lorem ispum dolor sit amer, coectetur adipiscing elit. Suspendisse varius enim in.",
+    "application": "Aplikacija",
+    "applicationText": "Lorem ispum dolor sit amer, coectetur adipiscing elit. Suspendisse varius.",
+    "learnMore": "Saznaj više",
+    "youCanMonitorOtherPeoplesReviews": "Možete pratiti recenzije drugih",
+    "youCanMonitorOtherPeoplesReviewsText": "Lorem ispum dolor sit amer, coectetur adipiscing elit. Suspendisse varius enimLorem ipsum dolor sit amet.",
+    "getStarted": "Počni",
+    "getStartedTodayAndTry30DaysForFree": "Počni danas i probaj 30 dana besplatno",
+    "getStartedTodayAndTry30DaysForFreeText": "Bez kontakta, bez troškova montiranja, samo sjajan način da organizuješ svoj posao.",
+    "watchDemo": "Pogledaj demo"
   },
   "Form": {
     "header": "Unesite vaše podatke",

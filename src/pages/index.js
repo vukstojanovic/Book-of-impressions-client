@@ -8,6 +8,7 @@ import { Hero } from '@/components/Hero'
 import { Testimonials } from '@/components/Testimonials'
 import { FirstSection } from '@/features/FirstSection'
 import { ExampleSection } from '@/features/ExampleSection'
+import { PlanSection } from '@/components/PlanSection'
 
 export default function Home() {
   const t = useTranslations('Home')
@@ -23,6 +24,7 @@ export default function Home() {
       <div className="p-8 lg:p-32">
         <FirstSection />
         <ExampleSection />
+        <PlanSection />
         <Testimonials />
       </div>
     </div>
