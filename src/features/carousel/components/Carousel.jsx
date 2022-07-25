@@ -8,7 +8,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import 'swiper/css/keyboard'
 import { NavArrow } from '@/assets/SvgSprite'
-import { QuestionForm } from '@/components/QuestionForm'
+import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
 
 export const Carousel = () => {
   const form1 = {
@@ -45,43 +45,10 @@ export const Carousel = () => {
       style={{ overflow: 'unset', marginTop: '68px' }}
     >
       <SwiperSlide className="pb-6">
-        <QuestionForm form={form3} />
+        {({ isActive }) => isActive && <QuestionForm form={form2} />}
       </SwiperSlide>
-      <SwiperSlide className="pb-6">
-        <div className="shadow-box rounded-lg grid justify-center p-4">
-          <form action="" className="space-y-2">
-            <p>Enter your details</p>
-            <input
-              type="text"
-              placeholder="Name and surname"
-              className="bg-[#f5f5f5] rounded-sm pl-2 bg-none outline-none"
-            />
-            <input
-              type="text"
-              placeholder="Email"
-              className="bg-[#f5f5f5] rounded-sm pl-2 bg-none outline-none"
-            />
-            <label className="items-center flex">
-              <input type="checkbox" className="mr-1 mt-1" />
-              contact me
-            </label>
-          </form>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide className="pb-6">
-        <div className="shadow-box flex-col flex space-y-3 justify-center pt-9 pb-16 px-6 rounded-md">
-          <div className="px-3">
-            <p className="font-medium">Lorem Title</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, provident?</p>
-          </div>
-          <div className="flex space-x-3 w-full">
-            <button className="rounded-md w-full bg-btnGoBack p-2 text-textGray">Go Back</button>
-            <button className="rounded-md w-full bg-btnConfirm p-2 text-white font-bold">
-              Confirm
-            </button>
-          </div>
-        </div>
-      </SwiperSlide>
+      <SwiperSlide className="pb-6">{({ isActive }) => isActive && <DetailsForm />}</SwiperSlide>
+      <SwiperSlide className="pb-6">{({ isActive }) => isActive && <ConfirmSubmit />}</SwiperSlide>
 
       <div className="flex items-center justify-center space-x-2">
         <button className="button-prev w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 rotate-180 hover:opacity-90 disabled:opacity-50">

@@ -1,0 +1,31 @@
+{
+  "General": {
+    "header:title": "boi",
+    "navbar:home": "Home",
+    "navbar:about": "About",
+    "navbar:features": "Feature",
+    "navbar:price": "Prices",
+    "navbar:contact": "Contact",
+    "navbar:signUp": "Sign up",
+    "locale:en": "English",
+    "locale:sr": "Srpski"
+  },
+  "Home": {
+    "hero:title": "Future of reviews",
+    "hero:message": "All reviews at one plece",
+    "hero:button": "Sign up",
+    "helloWorld": "Hello world",
+    "unlockReviews": "Unlock reviews",
+    "aboutGarni": "About Garni",
+    "readMore": "Read more",
+    "seeOtherReviews": "See other reviews"
+  },
+  "Form": {
+    "header": "Enter your details",
+    "namePlaceholder": "Name and surname",
+    "emailPlaceholder": "Email",
+    "contactMe": "contact me",
+    "goBack": "Go back",
+    "confirm": "Confirm"
+  }
+}
