@@ -91,7 +91,7 @@ export const Testimonials = () => {
             </SwiperSlide>
           )
         })}
-        <div className="testemonial-pagination text-center space-x-3 mt-11 [&>span]:bg-[#ff6700] [&>span]:w-5 [&>span]:h-5"></div>
+        <div className="testemonial-pagination text-center space-x-3 mt-11 [&>span]:bg-boiOrange [&>span]:w-5 [&>span]:h-5"></div>
       </Swiper>
     </div>
   )
