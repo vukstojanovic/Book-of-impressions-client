@@ -5,6 +5,9 @@ module.exports = {
       boxShadow: {
         box: '0px 1px 8px #cecece',
       },
+      backgroundColor: {
+        footer: '#0988E3',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
