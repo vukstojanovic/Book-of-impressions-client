@@ -4,39 +4,38 @@ export const cardsData = [
   {
     icon: (
       <div className="w-fit relative">
-        <SvgSprite.DesignRectangle />
-        <div className="absolute top-0 left-4">
+        <div className="bg-designRectangle w-[62px] h-[66px] rounded-md"></div>
+        <div className="absolute -top-2 left-[5px]">
           <SvgSprite.DesignIcon color={'#04375B'} />
         </div>
       </div>
     ),
-    name: 'Design',
-    description: 'Lorem ipsum bla bla bla bla dolor sit amet bla bla bla',
+    name: 'design',
+    description: 'designText',
   },
   {
     icon: (
       <div className="w-fit relative">
-        <SvgSprite.EcommerceRectangle />
+        <div className="bg-ecommerceRectangle w-[62px] h-[66px] rounded-md"></div>
         <div className="absolute top-0 -left-2">
           <SvgSprite.EcommerceIcon color={'#1893fc'} />
         </div>
       </div>
     ),
-    name: 'Ecommerce',
-    description:
-      'Lorem ipsum bla bla bla bla dolor sit amet bla bla bla artjeojdoerigjdoerigjeorgji',
+    name: 'ecommerce',
+    description: 'ecommerceText',
   },
   {
     icon: (
       <div className="w-fit relative">
-        <SvgSprite.ApplicationRectangle />
-        <div className="absolute -top-2 -left-1">
+        <div className="bg-applicationRectangle w-[62px] h-[66px] rounded-xl"></div>
+        <div className="absolute -top-2.5 -left-1">
           <SvgSprite.ApplicationIcon color={'#0093A0'} />
         </div>
       </div>
     ),
-    name: 'Application',
-    description: 'Lorem ipsum bla bla bla bla dolor sit amet bla bla bla',
+    name: 'application',
+    description: 'applicationText',
   },
 ]
 
