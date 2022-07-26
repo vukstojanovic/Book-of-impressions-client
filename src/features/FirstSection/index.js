@@ -1,3 +1,6 @@
 export * from './components/FirstSection'
 export * from './components/Card'
 export * from './components/Carousel'
+export * from './components/DesignIcon'
+export * from './components/EcommerceIcon'
+export * from './components/ApplicationIcon'
