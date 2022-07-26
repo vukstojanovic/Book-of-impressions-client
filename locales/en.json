@@ -39,6 +39,26 @@
     "whatCanYoDoWithBoiApplication": "What can you do with Boi application",
     "whatCanYoDoWithBoiApplicationText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt odit harum obcaecati repudiandae ex error fuga libero totam aliquam asperiores"
   },
+  "Footer": {
+    "services": "Services",
+    "strategyDesign": "Strategy Design",
+    "productDesign": "Product Design",
+    "contentStrategy": "Content Strategy",
+    "brandStrategy": "Brand Strategy",
+    "development": "Development",
+    "helpAndAdvice": "Help and advice",
+    "howItWorks": "How it works",
+    "contactSupport": "Contact Support",
+    "privacyPolicy": "Privacy Policy",
+    "FAQ": "FAQ",
+    "company": "Company",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "jobs": "Jobs",
+    "getInTouch": "Get in touch",
+    "getInTouchWithUs": "Feel free to get in touch with us via email"
+  },
   "Form": {
     "header": "Enter your details",
     "namePlaceholder": "Name and surname",
