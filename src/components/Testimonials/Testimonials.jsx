@@ -5,54 +5,57 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import 'swiper/css/autoplay'
+
+import Image from 'next/image'
+
 export const Testimonials = () => {
   const testemonials = [
     {
       id: 1,
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum labore neque similique atque repellat suscipit voluptates expedita vel sit veritatis doloremque dolore, ipsum repellendus architecto veniam id perferendis, et adipisci!',
-      avatar: 'Avatar',
+      avatar: '/img/Coffee.png',
       name: 'Firstname Lastname',
       company: 'Wolt Customer',
     },
     {
       id: 2,
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum labore neque similique atque repellat suscipit voluptates expedita vel sit veritatis doloremque dolore, ipsum repellendus architecto veniam id perferendis, et adipisci!',
-      avatar: 'Avatar',
+      avatar: '/img/Coffee.png',
       name: 'Firstname Lastname',
       company: 'Wolt Customer',
     },
     {
       id: 3,
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum labore neque similique atque repellat suscipit voluptates expedita vel sit veritatis doloremque dolore, ipsum repellendus architecto veniam id perferendis, et adipisci!',
-      avatar: 'Avatar',
+      avatar: '/img/Coffee.png',
       name: 'Firstname Lastname',
       company: 'Wolt Customer',
     },
     {
       id: 4,
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum labore neque similique atque repellat suscipit voluptates expedita vel sit veritatis doloremque dolore, ipsum repellendus architecto veniam id perferendis, et adipisci!',
-      avatar: 'Avatar',
+      avatar: '/img/Coffee.png',
       name: 'Firstname Lastname',
       company: 'Wolt Customer',
     },
     {
       id: 5,
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum labore neque similique atque repellat suscipit voluptates expedita vel sit veritatis doloremque dolore, ipsum repellendus architecto veniam id perferendis, et adipisci!',
-      avatar: 'Avatar',
+      avatar: '/img/Coffee.png',
       name: 'Firstname Lastname',
       company: 'Wolt Customer',
     },
     {
       id: 6,
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum labore neque similique atque repellat suscipit voluptates expedita vel sit veritatis doloremque dolore, ipsum repellendus architecto veniam id perferendis, et adipisci!',
-      avatar: 'Avatar',
+      avatar: '/img/Coffee.png',
       name: 'Firstname Lastname',
       company: 'Wolt Customer',
     },
     {
       id: 7,
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum labore neque similique atque repellat suscipit voluptates expedita vel sit veritatis doloremque dolore, ipsum repellendus architecto veniam id perferendis, et adipisci!',
-      avatar: 'Avatar',
+      avatar: '/img/Coffee.png',
       name: 'Firstname Lastname',
       company: 'Wolt Customer',
     },
@@ -79,11 +82,19 @@ export const Testimonials = () => {
           return (
             <SwiperSlide key={testemonial.id}>
               <div className="grid space-y-10">
-                <p>{testemonial.text}</p>
-                <div className="flex space-x-2">
-                  <div>{testemonial.avatar}</div>
-                  <div>
-                    <p>{testemonial.name}</p>
+                <p className="italic text-[24px]">{testemonial.text}</p>
+                <div className="flex items-center">
+                  <div className="relative">
+                    <Image
+                      src={testemonial.avatar}
+                      alt={testemonial.avatar}
+                      width={'85px'}
+                      height={'85px'}
+                      className="rounded-full"
+                    />
+                  </div>
+                  <div className="text-[21px] ml-6">
+                    <p className="font-semibold">{testemonial.name}</p>
                     <p>{testemonial.company}</p>
                   </div>
                 </div>
