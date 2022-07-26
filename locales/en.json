@@ -33,7 +33,11 @@
     "getStarted": "Get started",
     "getStartedTodayAndTry30DaysForFree": "Get started today and try 30 days free",
     "getStartedTodayAndTry30DaysForFreeText": "No contact, no set-up costs, just awesome way to organise your business.",
-    "watchDemo": "Watch Demo"
+    "watchDemo": "Watch Demo",
+    "asAManagerYouCanSeeEachReviewOnline": "As a manager you can see each review online",
+    "asAManagerYouCanSeeEachReviewOnlineText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident saepe libero, tempora rem at labore cumque",
+    "whatCanYoDoWithBoiApplication": "What can you do with Boi application",
+    "whatCanYoDoWithBoiApplicationText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt odit harum obcaecati repudiandae ex error fuga libero totam aliquam asperiores"
   },
   "Form": {
     "header": "Enter your details",
