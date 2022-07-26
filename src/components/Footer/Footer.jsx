@@ -1,9 +1,13 @@
 import Image from 'next/image'
 
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { Logo } from '@/components/Logo'
+
 export const Footer = () => {
   const date = new Date()
+
+  const t = useTranslations('Footer')
 
   return (
     <>
@@ -27,65 +31,65 @@ export const Footer = () => {
         </div>
         <div className="grid justify-items-center gap-y-4 lg:flex lg:justify-between lg:pr-8">
           <div className="space-y-2 lg:space-y-9">
-            <p className="font-semibold">SERVICES</p>
+            <p className="font-semibold uppercase">{t('services')}</p>
             <div className="grid space-y-4">
               <Link href="/">
-                <a>Strategy Design</a>
+                <a>{t('strategyDesign')}</a>
               </Link>
               <Link href="/">
-                <a>Product Design</a>
+                <a>{t('productDesign')}</a>
               </Link>
               <Link href="/">
-                <a>Content Strategy</a>
+                <a>{t('contentStrategy')}</a>
               </Link>
               <Link href="/">
-                <a>Brand Strategy</a>
+                <a>{t('brandStrategy')}</a>
               </Link>
               <Link href="/">
-                <a>Development</a>
+                <a>{t('development')}</a>
               </Link>
             </div>
           </div>
           <div className="space-y-2 lg:space-y-9">
-            <p className="font-semibold">HELP AND ADVICE</p>
+            <p className="font-semibold uppercase">{t('helpAndAdvice')}</p>
             <div className="grid space-y-4">
               <Link href="/">
-                <a>How it works</a>
+                <a>{t('howItWorks')}</a>
               </Link>
               <Link href="/">
-                <a>Contact Support</a>
+                <a>{t('contactSupport')}</a>
               </Link>
               <Link href="/">
-                <a>Privacy Policy</a>
+                <a>{t('privacyPolicy')}</a>
               </Link>
               <Link href="/">
-                <a>FAQ</a>
+                <a>{t('FAQ')}</a>
               </Link>
             </div>
           </div>
           <div className="space-y-2 lg:space-y-9">
-            <p className="font-semibold">COMPANY</p>
+            <p className="font-semibold uppercase">{t('company')}</p>
             <div className="grid space-y-4">
               <Link href="/">
-                <a>About</a>
+                <a>{t('about')}</a>
               </Link>
               <Link href="/">
-                <a>Blog</a>
+                <a>{t('blog')}</a>
               </Link>
               <Link href="/">
-                <a>Contact</a>
+                <a>{t('contact')}</a>
               </Link>
               <Link href="/">
-                <a>Jobs</a>
+                <a>{t('jobs')}</a>
               </Link>
             </div>
           </div>
           <div className="min-h-full mb-6 border-l border-l-white hidden lg:block"></div>
           <div className="space-y-2 lg:space-y-9">
-            <p className="font-semibold">GET IN TOUCH</p>
+            <p className="font-semibold uppercase">{t('getInTouch')}</p>
             <div className="grid space-y-4">
               <Link href="/">
-                <a>Feel free to get in touch with us via email</a>
+                <a>{t('getInTouchWithUs')}</a>
               </Link>
               <p className="text-lg lg:text-2xl font-bold">info.boi@gmail.com</p>
               <div className="flex justify-center space-x-3 lg:justify-start">
