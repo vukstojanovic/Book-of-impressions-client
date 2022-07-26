@@ -93,7 +93,7 @@ export const Testimonials = () => {
                       className="rounded-full"
                     />
                   </div>
-                  <div className="text-[22px] ml-6">
+                  <div className="text-[21px] ml-6">
                     <p className="font-semibold">{testemonial.name}</p>
                     <p>{testemonial.company}</p>
                   </div>
