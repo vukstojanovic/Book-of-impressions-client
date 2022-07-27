@@ -8,13 +8,16 @@ import 'swiper/css/scrollbar'
 import 'swiper/css/keyboard'
 import { NavArrow } from '@/assets/SvgSprite'
 import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
+import { useFormStore } from '@/zustand/store'
 
 export const Carousel = () => {
   const form1 = {
+    id: '1',
     type: 'short',
     question: 'This is form with only 1 question',
   }
   const form2 = {
+    id: '2',
     type: 'long',
     questions: [
       '1.This is form with 3 questions',
@@ -23,9 +26,11 @@ export const Carousel = () => {
     ],
   }
   const form3 = {
+    id: '3',
     type: 'yes/no',
     questions: ['Yes', 'No'],
   }
+
   return (
     <Swiper
       modules={[Keyboard, Navigation, Pagination, Scrollbar, A11y]}
@@ -34,6 +39,7 @@ export const Carousel = () => {
       navigation={{
         nextEl: '.button-next',
         prevEl: '.button-prev',
+        navigationDisabledClass: 'swiper-navigation-disabled',
       }}
       pagination={{
         type: 'bullets',
@@ -41,6 +47,7 @@ export const Carousel = () => {
       }}
       centeredSlides={true}
       setWrapperSize
+      noSwipingClass="swiper-slide"
       style={{ overflow: 'unset', marginTop: '68px' }}
     >
       <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={form1} />}</SwiperSlide>
