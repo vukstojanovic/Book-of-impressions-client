@@ -43,7 +43,7 @@ export const Carousel = () => {
       setWrapperSize
       style={{ overflow: 'unset', marginTop: '68px' }}
     >
-      <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={form2} />}</SwiperSlide>
+      <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={form1} />}</SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <DetailsForm />}</SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <ConfirmSubmit />}</SwiperSlide>
 

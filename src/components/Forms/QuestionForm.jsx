@@ -1,9 +1,14 @@
 import { useSwiper } from 'swiper/react'
 import { ThumbsDown, ThumbsUp } from '@/assets/SvgSprite'
 import { RatingStars } from '../RatingStars'
+import { useFormStore } from '@/zustand/store'
 
 export const QuestionForm = ({ form }) => {
   const swiper = useSwiper()
+  const setFormOne = useFormStore((state) => state.setFormOne)
+  const setFormTwo = useFormStore((state) => state.setFormTwo)
+  const setFormThree = useFormStore((state) => state.setFormThree)
+
   switch (form.type) {
     case 'short':
       return (
@@ -18,13 +23,14 @@ export const QuestionForm = ({ form }) => {
             <p>{form.question}</p>
             <RatingStars />
           </div>
-          <input
-            type="text"
-            name={'name'}
-            id={'id'}
-            className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="1"
             placeholder="Enter text here"
-          />
+            className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
+          ></textarea>
         </form>
       )
     case 'long':
@@ -47,13 +53,14 @@ export const QuestionForm = ({ form }) => {
               </div>
             )
           })}
-          <input
-            type="text"
-            name={'name'}
-            id={'id'}
-            className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="1"
             placeholder="Enter text here"
-          />
+            className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
+          ></textarea>
         </form>
       )
     case 'yes/no':
