@@ -33,7 +33,31 @@
     "getStarted": "Počni",
     "getStartedTodayAndTry30DaysForFree": "Počni danas i probaj 30 dana besplatno",
     "getStartedTodayAndTry30DaysForFreeText": "Bez kontakta, bez troškova montiranja, samo sjajan način da organizuješ svoj posao.",
-    "watchDemo": "Pogledaj demo"
+    "watchDemo": "Pogledaj demo",
+    "asAManagerYouCanSeeEachReviewOnline": "Kao menadžer možete videti svaku recenziju dok ste na vezi",
+    "asAManagerYouCanSeeEachReviewOnlineText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident saepe libero, tempora rem at labore cumque",
+    "whatCanYoDoWithBoiApplication": "Šta možete uraditi sa Boi aplikacijom",
+    "whatCanYoDoWithBoiApplicationText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt odit harum obcaecati repudiandae ex error fuga libero totam aliquam asperiores"
+  }, 
+  "Footer": {
+    "services": "Usluge",
+    "strategyDesign": "Dizajn Strategije",
+    "productDesign": "Dizajn Proizvoda",
+    "contentStrategy": "Strategija Sadržaja",
+    "brandStrategy": "Strategija Brenda",
+    "development": "Razvijanje",
+    "helpAndAdvice": "Pomoc i saveti",
+    "howItWorks": "Kako radi",
+    "contactSupport": "Kontaktirajte podršku",
+    "privacyPolicy": "Politika Privatnosti",
+    "FAQ": "FAQ",
+    "company": "Kompanija",
+    "about": "O nama",
+    "blog": "Blog",
+    "contact": "Kontakt",
+    "jobs": "Poslovi",
+    "getInTouch": "Kontaktirajte nas",
+    "getInTouchWithUs": "Uvek smo dostupni na nasem E-mailu"
   },
   "Form": {
     "header": "Unesite vaše podatke",
