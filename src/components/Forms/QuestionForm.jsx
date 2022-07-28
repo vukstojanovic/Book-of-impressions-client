@@ -1,5 +1,6 @@
 import { useSwiper } from 'swiper/react'
 import { useEffect, useState } from 'react'
+import { useForm, Controller } from 'react-hook-form'
 import { ThumbsDown, ThumbsUp } from '@/assets/SvgSprite'
 import { RatingStars } from '../RatingStars'
 import { useFormStore } from '@/zustand/store'
@@ -11,14 +12,35 @@ export const QuestionForm = ({ form }) => {
   const setFormOne = useFormStore((state) => state.setFormOne)
   const setFormTwo = useFormStore((state) => state.setFormTwo)
   const setFormThree = useFormStore((state) => state.setFormThree)
-  const setRating = useFormStore((state) => state.setRating)
   const setRatings = useFormStore((state) => state.setRatings)
   const [formOneMessage, setFormOneMessage] = useState(formOneData.message)
   const [formTwoMessage, setFormTwoMessage] = useState(formTwoData.message)
 
-  function submitFormOne(e) {
-    e.preventDefault()
-    setFormOne({ formId: form.id, message: formOneMessage })
+  const {
+    register: registerShort,
+    handleSubmit: handleSubmitShort,
+    control: controlShort,
+  } = useForm()
+
+  const { register: registerLong, handleSubmit: handleSubmitLong, control: controlLong } = useForm()
+
+  // function submitFormOne(e) {
+  //   e.preventDefault()
+  //   setFormOne({ formId: form.id, message: formOneMessage })
+  //   swiper.slideNext()
+  // }
+
+  function submitDataShort(data) {
+    console.log(data)
+    setFormOne(data)
+    swiper.slideNext()
+  }
+
+  function submitDataLong(data) {
+    console.log(data)
+    console.log(Object.keys(data))
+    // Object.keys(data).filter(key => key.includes('rating')).map(k => data[k])
+    // setFormTwo(data)
     swiper.slideNext()
   }
 
@@ -37,11 +59,18 @@ export const QuestionForm = ({ form }) => {
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-3"
-          onSubmit={submitFormOne}
+          onSubmit={handleSubmitShort(submitDataShort)}
         >
           <div className="space-y-2">
             <p>{form.question}</p>
-            <RatingStars value={formOneData.rating} onRatingChange={setRating} />
+            <Controller
+              control={controlShort}
+              name="rating"
+              defaultValue={formOneData.rating}
+              render={({ field: { onChange, value } }) => (
+                <RatingStars value={value} onRatingChange={onChange} />
+              )}
+            />
           </div>
           <input
             name="message"
@@ -50,8 +79,9 @@ export const QuestionForm = ({ form }) => {
             rows="1"
             placeholder="Enter text here"
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
-            value={formOneMessage}
-            onChange={(e) => setFormOneMessage(e.target.value)}
+            // value={formOneMessage}
+            // onChange={(e) => setFormOneMessage(e.target.value)}
+            {...registerShort('message')}
           />
         </form>
       )
@@ -59,7 +89,7 @@ export const QuestionForm = ({ form }) => {
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-4"
-          onSubmit={submitFormTwo}
+          onSubmit={handleSubmitLong(submitDataLong)}
         >
           {form.questions.map((question, i) => {
             if (i > 2) {
@@ -68,20 +98,29 @@ export const QuestionForm = ({ form }) => {
             return (
               <div key={question} className="space-y-2">
                 <p>{question}</p>
-                <RatingStars onRatingChange={() => setRatings((index = i))} />
+                <Controller
+                  control={controlLong}
+                  name={`rating-${i}`}
+                  defaultValue={formTwoData.ratings[i]}
+                  render={({ field: { onChange, value } }) => (
+                    <RatingStars value={value} onRatingChange={onChange} />
+                  )}
+                />
+                {/* <RatingStars value={formTwoData.ratings[i]} onRatingChange={() => setRatings()} /> */}
               </div>
             )
           })}
-          <textarea
+          <input
             name="message"
             id="message"
-            cols="30"
-            rows="1"
+            // cols="30"
+            // rows="1"
             placeholder="Enter text here"
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
-            value={formTwoMessage}
-            onChange={(e) => setFormTwoMessage(e.target.value)}
-          ></textarea>
+            // value={formTwoMessage}
+            // onChange={(e) => setFormTwoMessage(e.target.value)}
+            {...registerLong('message')}
+          />
         </form>
       )
     case 'yes/no':
