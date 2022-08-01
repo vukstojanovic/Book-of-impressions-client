@@ -1,6 +1,7 @@
 import { Keyboard, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useFormData } from '@/features/carousel'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -9,23 +10,11 @@ import 'swiper/css/keyboard'
 import { NavArrow } from '@/assets/SvgSprite'
 import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
 
-export const Carousel = () => {
-  const form1 = {
-    type: 'short',
-    question: 'This is form with only 1 question',
-  }
-  const form2 = {
-    type: 'long',
-    questions: [
-      '1.This is form with 3 questions',
-      '2.This is form with 3 questions',
-      '3.This is form with 3 questions',
-    ],
-  }
-  const form3 = {
-    type: 'yes/no',
-    questions: ['Yes', 'No'],
-  }
+export const Carousel = (id) => {
+  // const { data } = useFormData(id)
+  // console.log(data)
+  // const { type } = data
+  const type = { type: 'short' }
   return (
     <Swiper
       modules={[Keyboard, Navigation, Pagination, Scrollbar, A11y]}
@@ -43,7 +32,7 @@ export const Carousel = () => {
       setWrapperSize
       style={{ overflow: 'unset', marginTop: '68px' }}
     >
-      <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={form2} />}</SwiperSlide>
+      <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={type} />}</SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <DetailsForm />}</SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <ConfirmSubmit />}</SwiperSlide>
 

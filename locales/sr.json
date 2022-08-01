@@ -17,6 +17,7 @@
     "helloWorld": "Zdravo svete",
     "unlockReviews": "Otključaj recenzije",
     "aboutGarni": "O Garniju",
+    "about": "O",
     "readMore": "Procitaj vise",
     "seeOtherReviews": "Vidi druge recenzije",
     "weBuildExperience": "Mi gradimo iskustvo",
@@ -38,7 +39,7 @@
     "asAManagerYouCanSeeEachReviewOnlineText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident saepe libero, tempora rem at labore cumque",
     "whatCanYoDoWithBoiApplication": "Šta možete uraditi sa Boi aplikacijom",
     "whatCanYoDoWithBoiApplicationText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt odit harum obcaecati repudiandae ex error fuga libero totam aliquam asperiores"
-  }, 
+  },
   "Footer": {
     "services": "Usluge",
     "strategyDesign": "Dizajn Strategije",

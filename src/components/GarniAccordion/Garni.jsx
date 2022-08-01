@@ -4,7 +4,7 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
 import * as SvgSprite from '@/assets/SvgSprite'
 
-export const Garni = () => {
+export const Garni = ({ companyName, companyLogo, companyDescription }) => {
   const [toggle, setToggle] = useState(false)
 
   const t = useTranslations('Home')
@@ -13,8 +13,12 @@ export const Garni = () => {
     <div className="bg-[#04375B]">
       <div className="flex justify-between items-center p-6 text-white">
         <div className="flex items-center">
-          <SvgSprite.IconPlaceholderLogo />
-          <p className="ml-2">{t('aboutGarni')}</p>
+          {/* <SvgSprite.IconPlaceholderLogo /> */}
+          {/* company Logo */}
+          {companyLogo}
+          <p className="ml-2">
+            {t('about')} {companyName}
+          </p>
         </div>
         <div className="flex items-center cursor-pointer" onClick={() => setToggle(!toggle)}>
           {toggle ? <IoIosArrowUp className="ml-2" /> : <IoIosArrowDown className="ml-2" />}
@@ -23,10 +27,8 @@ export const Garni = () => {
       {toggle && (
         <div className="bg-[#04375B] px-6 pb-6">
           <p className="text-white">
-            Maecenas semper nisi neque, semper semper dui vestibulum nec. Ut vitae vulputate purus.
-            Suspendisse odio velit, fringilla id pretium quis, vestibulum ac sapien. Nullam
-            porttitor porttitor egestas. Maecenas a dui dapibus, egestas magna maximus, maximus
-            ipsum.
+            {/*Company Description*/}
+            {companyDescription}
           </p>
         </div>
       )}

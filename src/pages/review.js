@@ -15,6 +15,15 @@ export default function Review() {
   const t = useTranslations('General')
   const [loading, setLoading] = useState(true)
 
+  // const { data: companyData } = useCompany(id)
+
+  const companyData = {
+    id: 32,
+    name: 'Garni',
+    logo: 'G',
+    description:
+      'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.',
+  }
   useEffect(() => {
     const interval = setTimeout(() => {
       setLoading(false)
@@ -39,10 +48,14 @@ export default function Review() {
         ) : (
           <div className="w-full max-w-2xl pt-16 overflow-hidden">
             <div className="mt-1 lg:mt-20">
-              <Garni />
+              <Garni
+                companyName={companyData.name}
+                companyLogo={companyData.logo}
+                companyDescription={companyData.description}
+              />
             </div>
             <div className="mx-4 mb-8">
-              <Carousel />
+              <Carousel formType={companyData.id} />
             </div>
             <MainAccordion />
           </div>
