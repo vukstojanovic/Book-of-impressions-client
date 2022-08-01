@@ -12,9 +12,9 @@ export const QuestionForm = ({ form }) => {
   const setFormOne = useFormStore((state) => state.setFormOne)
   const setFormTwo = useFormStore((state) => state.setFormTwo)
   const setFormThree = useFormStore((state) => state.setFormThree)
-  const setRatings = useFormStore((state) => state.setRatings)
-  const [formOneMessage, setFormOneMessage] = useState(formOneData.message)
-  const [formTwoMessage, setFormTwoMessage] = useState(formTwoData.message)
+  // const setRatings = useFormStore((state) => state.setRatings)
+  // const [formOneMessage, setFormOneMessage] = useState(formOneData.message)
+  // const [formTwoMessage, setFormTwoMessage] = useState(formTwoData.message)
 
   const {
     register: registerShort,
@@ -23,6 +23,12 @@ export const QuestionForm = ({ form }) => {
   } = useForm()
 
   const { register: registerLong, handleSubmit: handleSubmitLong, control: controlLong } = useForm()
+
+  const {
+    register: registerYesNo,
+    handleSubmit: handleSubmitYesNo,
+    control: controlYesNo,
+  } = useForm()
 
   // function submitFormOne(e) {
   //   e.preventDefault()
@@ -39,20 +45,29 @@ export const QuestionForm = ({ form }) => {
   function submitDataLong(data) {
     console.log(data)
     console.log(Object.keys(data))
-    // Object.keys(data).filter(key => key.includes('rating')).map(k => data[k])
-    // setFormTwo(data)
+    const arrOfRatings = Object.keys(data)
+      .filter((key) => key.includes('rating'))
+      .map((k) => data[k])
+    const modifiedData = { message: data.message, ratings: arrOfRatings }
+    setFormTwo(modifiedData)
     swiper.slideNext()
   }
 
-  function submitFormTwo(e) {
-    e.preventDefault()
-    setFormTwo({ formId: form.id, message: formTwoMessage })
+  function submitDataYesNo(data) {
+    console.log(data)
+    // setFormOne(data)
     swiper.slideNext()
   }
+
+  // function submitFormTwo(e) {
+  //   e.preventDefault()
+  //   setFormTwo({ formId: form.id, message: formTwoMessage })
+  //   swiper.slideNext()
+  // }
 
   useEffect(() => {
-    console.log(formOneData)
-  }, [formOneData])
+    console.log(formTwoData)
+  }, [formTwoData])
 
   switch (form.type) {
     case 'short':
@@ -127,22 +142,21 @@ export const QuestionForm = ({ form }) => {
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-[70px] px-9"
-          onSubmit={(e) => {
-            e.preventDefault()
-            swiper.slideNext()
-          }}
+          onSubmit={handleSubmitYesNo(submitDataYesNo)}
         >
           <p className="pb-14">This is yes or no form</p>
           <div className="flex space-x-7 justify-center">
             <button
               type="submit"
               className="rounded-full bg-[#e3f0d9] active:bg-opacity-60 hover:bg-green-400 hover:bg-opacity-80"
+              {...registerYesNo('yes')}
             >
               <ThumbsUp />
             </button>
             <button
               type="submit"
               className="rounded-full bg-[#ffd5d5] active:bg-opacity-60 hover:bg-red-400 hover:bg-opacity-80"
+              {...registerYesNo('no')}
             >
               <ThumbsDown />
             </button>
