@@ -1,5 +1,5 @@
 import { useSwiper } from 'swiper/react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { ThumbsDown, ThumbsUp } from '@/assets/SvgSprite'
 import { RatingStars } from '../RatingStars'
@@ -7,95 +7,78 @@ import { useFormStore } from '@/zustand/store'
 
 export const QuestionForm = ({ form }) => {
   const swiper = useSwiper()
-  const formOneData = useFormStore((state) => state.formOneData)
-  const formTwoData = useFormStore((state) => state.formTwoData)
-  const setFormOne = useFormStore((state) => state.setFormOne)
-  const setFormTwo = useFormStore((state) => state.setFormTwo)
-  const setFormThree = useFormStore((state) => state.setFormThree)
-  // const setRatings = useFormStore((state) => state.setRatings)
-  // const [formOneMessage, setFormOneMessage] = useState(formOneData.message)
-  // const [formTwoMessage, setFormTwoMessage] = useState(formTwoData.message)
+  const formData = useFormStore((state) => state.formData)
+  const setFormData = useFormStore((state) => state.setFormData)
 
   const {
     register: registerShort,
-    handleSubmit: handleSubmitShort,
     control: controlShort,
-  } = useForm()
-
-  const { register: registerLong, handleSubmit: handleSubmitLong, control: controlLong } = useForm()
+    watch: watchShort,
+  } = useForm({ defaultValues: { message: formData?.message } })
 
   const {
-    register: registerYesNo,
-    handleSubmit: handleSubmitYesNo,
-    control: controlYesNo,
-  } = useForm()
+    register: registerLong,
+    control: controlLong,
+    watch: watchLong,
+  } = useForm({ defaultValues: { message: formData?.message } })
 
-  // function submitFormOne(e) {
-  //   e.preventDefault()
-  //   setFormOne({ formId: form.id, message: formOneMessage })
-  //   swiper.slideNext()
-  // }
-
-  function submitDataShort(data) {
-    console.log(data)
-    setFormOne(data)
-    swiper.slideNext()
-  }
-
-  function submitDataLong(data) {
-    console.log(data)
-    console.log(Object.keys(data))
-    const arrOfRatings = Object.keys(data)
-      .filter((key) => key.includes('rating'))
-      .map((k) => data[k])
-    const modifiedData = { message: data.message, ratings: arrOfRatings }
-    setFormTwo(modifiedData)
-    swiper.slideNext()
-  }
-
-  function submitDataYesNo(data) {
-    console.log(data)
-    // setFormOne(data)
-    swiper.slideNext()
-  }
-
-  // function submitFormTwo(e) {
-  //   e.preventDefault()
-  //   setFormTwo({ formId: form.id, message: formTwoMessage })
-  //   swiper.slideNext()
-  // }
+  const { register: registerYesNo, watch: watchYesNo } = useForm({
+    defaultValues: { answer: formData?.answer },
+  })
 
   useEffect(() => {
-    console.log(formTwoData)
-  }, [formTwoData])
+    const subscription = watchShort((data) => {
+      const modifiedData = { formId: form.id, message: data.message.trim(), ...data }
+      setFormData(modifiedData)
+    })
+    return () => subscription.unsubscribe()
+  }, [watchShort])
+
+  useEffect(() => {
+    const subscription = watchLong((data) => {
+      console.log(Object.keys(data))
+      const arrOfRatings = Object.keys(data)
+        .filter((key) => key.includes('rating'))
+        .map((k) => data[k])
+      const modifiedData = { formId: form.id, message: data.message.trim(), ratings: arrOfRatings }
+      setFormData(modifiedData)
+    })
+    return () => subscription.unsubscribe()
+  }, [watchLong])
+
+  useEffect(() => {
+    const subscription = watchYesNo((data) => {
+      const modifiedData = { formId: form.id, ...data }
+      setFormData(modifiedData)
+    })
+    return () => subscription.unsubscribe()
+  }, [watchYesNo])
 
   switch (form.type) {
     case 'short':
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-3"
-          onSubmit={handleSubmitShort(submitDataShort)}
+          // onSubmit={handleSubmitShort(submitDataShort)}
         >
           <div className="space-y-2">
             <p>{form.question}</p>
             <Controller
               control={controlShort}
               name="rating"
-              defaultValue={formOneData.rating}
+              defaultValue={formData.rating ? formData.rating : 0}
               render={({ field: { onChange, value } }) => (
                 <RatingStars value={value} onRatingChange={onChange} />
               )}
             />
           </div>
-          <input
+          <textarea
             name="message"
             id="message"
             cols="30"
             rows="1"
             placeholder="Enter text here"
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
-            // value={formOneMessage}
-            // onChange={(e) => setFormOneMessage(e.target.value)}
             {...registerShort('message')}
           />
         </form>
@@ -104,7 +87,7 @@ export const QuestionForm = ({ form }) => {
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-4"
-          onSubmit={handleSubmitLong(submitDataLong)}
+          // onSubmit={handleSubmitLong(submitDataLong)}
         >
           {form.questions.map((question, i) => {
             if (i > 2) {
@@ -116,24 +99,19 @@ export const QuestionForm = ({ form }) => {
                 <Controller
                   control={controlLong}
                   name={`rating-${i}`}
-                  defaultValue={formTwoData.ratings[i]}
+                  defaultValue={formData.ratings ? formData?.ratings[i] : 0}
                   render={({ field: { onChange, value } }) => (
                     <RatingStars value={value} onRatingChange={onChange} />
                   )}
                 />
-                {/* <RatingStars value={formTwoData.ratings[i]} onRatingChange={() => setRatings()} /> */}
               </div>
             )
           })}
           <input
             name="message"
             id="message"
-            // cols="30"
-            // rows="1"
             placeholder="Enter text here"
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
-            // value={formTwoMessage}
-            // onChange={(e) => setFormTwoMessage(e.target.value)}
             {...registerLong('message')}
           />
         </form>
@@ -142,24 +120,41 @@ export const QuestionForm = ({ form }) => {
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-[70px] px-9"
-          onSubmit={handleSubmitYesNo(submitDataYesNo)}
+          // onSubmit={handleSubmitYesNo(submitDataYesNo)}
         >
           <p className="pb-14">This is yes or no form</p>
           <div className="flex space-x-7 justify-center">
-            <button
-              type="submit"
-              className="rounded-full bg-[#e3f0d9] active:bg-opacity-60 hover:bg-green-400 hover:bg-opacity-80"
-              {...registerYesNo('yes')}
-            >
-              <ThumbsUp />
-            </button>
-            <button
-              type="submit"
-              className="rounded-full bg-[#ffd5d5] active:bg-opacity-60 hover:bg-red-400 hover:bg-opacity-80"
-              {...registerYesNo('no')}
-            >
-              <ThumbsDown />
-            </button>
+            <div className="flex">
+              <input
+                type="radio"
+                id="thumbsUp"
+                value={true}
+                {...registerYesNo('answer')}
+                className="peer hidden"
+              />
+              <label
+                htmlFor="thumbsUp"
+                className="rounded-full bg-[#e3f0d9] peer-checked:bg-green-400"
+              >
+                <ThumbsUp />
+              </label>
+            </div>
+            <div className="flex">
+              <input
+                type="radio"
+                id="thumbsDown"
+                value={false}
+                {...registerYesNo('answer')}
+                className="peer hidden"
+              />
+              <label
+                htmlFor="thumbsDown"
+                className="rounded-full bg-[#ffd5d5] peer-checked:bg-red-400"
+              >
+                <ThumbsDown />
+              </label>
+            </div>
+            <input type="submit" value="Submit" className="hidden" />
           </div>
         </form>
       )

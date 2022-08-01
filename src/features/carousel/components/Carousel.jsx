@@ -31,15 +31,20 @@ export const Carousel = () => {
     questions: ['Yes', 'No'],
   }
 
+  const formData = useFormStore((state) => state.formData)
+  const isFirstNextAllowed = !!(formData.message && formData.rating)
+  const isSecondNextAllowed = !!(formData.message && !formData?.ratings?.includes(0))
+  const isThirdNextAllowed = !!formData.answer
+
   return (
     <Swiper
       modules={[Keyboard, Navigation, Pagination, Scrollbar, A11y]}
+      allowSlideNext={isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed}
       spaceBetween={35}
       slidesPerView={1}
       navigation={{
         nextEl: '.button-next',
         prevEl: '.button-prev',
-        navigationDisabledClass: 'swiper-navigation-disabled',
       }}
       pagination={{
         type: 'bullets',
@@ -50,7 +55,7 @@ export const Carousel = () => {
       noSwipingClass="swiper-slide"
       style={{ overflow: 'unset', marginTop: '68px' }}
     >
-      <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={form3} />}</SwiperSlide>
+      <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={form2} />}</SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <DetailsForm />}</SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <ConfirmSubmit />}</SwiperSlide>
 
