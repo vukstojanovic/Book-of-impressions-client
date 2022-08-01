@@ -6,7 +6,7 @@ import { RatingStars } from '../RatingStars'
 import { useFormStore } from '@/zustand/store'
 
 export const QuestionForm = ({ form }) => {
-  const swiper = useSwiper()
+  // const swiper = useSwiper()
   const formData = useFormStore((state) => state.formData)
   const setFormData = useFormStore((state) => state.setFormData)
 
