@@ -19,7 +19,6 @@ export const DetailsForm = () => {
 
   useEffect(() => {
     const subscription = watch((data) => {
-      console.log(formData)
       setFormData({ name: data.name.trim(), email: data.email.trim(), ...data })
     })
 
