@@ -29,7 +29,7 @@ export const ConfirmSubmit = () => {
         </button>
         <input
           type="submit"
-          className="rounded-md w-full bg-boiOrange px-7 py-3 text-white font-bold leading-7 tracking-[.65px]"
+          className="rounded-md w-full bg-boiOrange px-7 py-3 text-white font-bold leading-7 tracking-[.65px] cursor-pointer"
           value={t('confirm')}
         />
       </form>

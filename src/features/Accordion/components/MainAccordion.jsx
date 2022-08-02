@@ -35,8 +35,8 @@ export const MainAccordion = () => {
           </div>
         )} */}
         {innerAccordion && <CommentsPreview />}
-        {innerAccordion && <ReviewTypeThree />}
-        {innerAccordion && <ReviewTypeTwo />}
+        {/* {innerAccordion && <ReviewTypeThree />}
+        {innerAccordion && <ReviewTypeTwo />} */}
       </div>
     </>
   )
