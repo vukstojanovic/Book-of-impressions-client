@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import ReactStars from 'react-rating-stars-component'
 
-export const RatingStars = ({ value }) => {
+export const RatingStars = ({ value, onRatingChange }) => {
   const [starValue, setStarValue] = useState(value)
 
   const ratingValue = (currentRating) => {
     setStarValue(currentRating)
+    if (onRatingChange) onRatingChange(currentRating)
   }
 
   return (

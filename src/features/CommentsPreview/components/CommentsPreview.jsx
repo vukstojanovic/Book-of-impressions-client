@@ -16,13 +16,23 @@ export const CommentsPreview = () => {
     <>
       <section>
         {firstTwo.map((comment) => (
-          <ReviewFirst key={comment.name} name={comment.name} message={comment.message} />
+          <ReviewFirst
+            key={comment.name}
+            name={comment.name}
+            message={comment.message}
+            rating={comment.rating}
+          />
         ))}
       </section>
       <div className="relative">
         <section className={`${blurClass}`}>
           {rest.map((comment) => (
-            <ReviewFirst key={comment.name} name={comment.name} message={comment.message} />
+            <ReviewFirst
+              key={comment.name}
+              name={comment.name}
+              message={comment.message}
+              rating={comment.rating}
+            />
           ))}
         </section>
         {rest.length > 0 && blurClass && (
