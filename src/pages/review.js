@@ -6,12 +6,11 @@ import { MainLayout } from '@/components/Layout'
 import { Loader } from '@/components/Loader'
 import { RingContainer } from '@/components/RingContainer'
 import { Garni } from '@/components/GarniAccordion'
-
 import styles from '@/styles/Home.module.css'
 import { Carousel } from '@/features/carousel'
 import { MainAccordion } from '@/features/Accordion'
 import { Success } from '@/features/Success'
-import { useFormStore } from '@/zustand/store'
+import { useFormStore } from '@/stores/form'
 
 export default function Review() {
   const t = useTranslations('General')

@@ -7,7 +7,7 @@ import { comments, ReviewFirst } from '@/features/CommentsPreview'
 import { ReviewTypeTwo } from '@/features/ReviewTypeTwo'
 import { ReviewTypeThree } from '@/features/ReviewTypeThree'
 import { RatingStars } from '@/components/RatingStars'
-import { useFormStore } from '@/zustand/store'
+import { useFormStore } from '@/stores/form'
 
 export const MainAccordion = () => {
   const [innerAccordion, setInnerAccordion] = useState(true)

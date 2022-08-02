@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useFormStore } from '@/zustand/store'
+
+import { useFormStore } from '@/stores/form'
 
 export const DetailsForm = () => {
   const swiper = useSwiper()

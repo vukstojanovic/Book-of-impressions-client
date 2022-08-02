@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { useSwiper } from 'swiper/react'
-import { useFormStore } from '@/zustand/store'
+
+import { useFormStore } from '@/stores/form'
 
 export const ConfirmSubmit = () => {
   const swiper = useSwiper()

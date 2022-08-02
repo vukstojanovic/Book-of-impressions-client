@@ -1,14 +1,14 @@
 import { Keyboard, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
-
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import 'swiper/css/keyboard'
+
 import { NavArrow } from '@/assets/SvgSprite'
 import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
-import { useFormStore } from '@/zustand/store'
+import { useFormStore } from '@/stores/form'
 
 export const Carousel = () => {
   const form1 = {

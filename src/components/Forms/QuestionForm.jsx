@@ -1,12 +1,12 @@
-import { useSwiper } from 'swiper/react'
 import { useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { ThumbsDown, ThumbsUp } from '@/assets/SvgSprite'
+
 import { RatingStars } from '../RatingStars'
-import { useFormStore } from '@/zustand/store'
+
+import { ThumbsDown, ThumbsUp } from '@/assets/SvgSprite'
+import { useFormStore } from '@/stores/form'
 
 export const QuestionForm = ({ form }) => {
-  // const swiper = useSwiper()
   const formData = useFormStore((state) => state.formData)
   const setFormData = useFormStore((state) => state.setFormData)
 
