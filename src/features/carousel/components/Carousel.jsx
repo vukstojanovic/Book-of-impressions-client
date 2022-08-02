@@ -11,8 +11,8 @@ import { NavArrow } from '@/assets/SvgSprite'
 import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
 
 export const Carousel = (id) => {
-  // const { data } = useFormData(id)
-  // console.log(data)
+  const { data } = useFormData(id)
+  console.log(data)
   // const { type } = data
   const type = { type: 'short' }
   return (

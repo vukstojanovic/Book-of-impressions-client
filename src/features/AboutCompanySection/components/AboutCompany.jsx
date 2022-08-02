@@ -7,6 +7,8 @@ import * as SvgSprite from '@/assets/SvgSprite'
 export const CompanyInfo = ({ companyName, companyLogo, companyDescription }) => {
   const [toggle, setToggle] = useState(false)
 
+  const { data } = useCompany()
+
   const t = useTranslations('Home')
 
   return (

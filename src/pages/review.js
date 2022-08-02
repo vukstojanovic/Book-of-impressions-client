@@ -5,11 +5,11 @@ import { useTranslations } from 'next-intl'
 import { MainLayout } from '@/components/Layout'
 import { Loader } from '@/components/Loader'
 import { RingContainer } from '@/components/RingContainer'
-import { Garni } from '@/components/GarniAccordion'
 
 import styles from '@/styles/Home.module.css'
 import { Carousel } from '@/features/carousel'
 import { MainAccordion } from '@/features/Accordion'
+import { CompanyInfo } from '@/components/CompanyInfo'
 
 export default function Review() {
   const t = useTranslations('General')
@@ -27,7 +27,7 @@ export default function Review() {
   useEffect(() => {
     const interval = setTimeout(() => {
       setLoading(false)
-    }, 3000)
+    }, 10)
 
     return () => clearTimeout(interval)
   }, [])
@@ -48,7 +48,7 @@ export default function Review() {
         ) : (
           <div className="w-full max-w-2xl pt-16 overflow-hidden">
             <div className="mt-1 lg:mt-20">
-              <Garni
+              <CompanyInfo
                 companyName={companyData.name}
                 companyLogo={companyData.logo}
                 companyDescription={companyData.description}

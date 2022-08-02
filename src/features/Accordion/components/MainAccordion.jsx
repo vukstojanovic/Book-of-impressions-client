@@ -14,7 +14,7 @@ export const MainAccordion = () => {
   return (
     <>
       <div onClick={() => setInnerAccordion(!innerAccordion)}>
-        <div className="flex justify-between items-center py-2 px-6 cursor-pointer font-semibold">
+        <div className="flex justify-between items-center py-2 px-6 mb-40 cursor-pointer font-semibold">
           <h4>{t('seeOtherReviews')}</h4>
           {innerAccordion ? <IoIosArrowUp /> : <IoIosArrowDown />}
         </div>
