@@ -2,8 +2,8 @@ import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { BiCaretDown } from 'react-icons/bi'
-
 import { useRouter } from 'next/router'
+
 import { CONSTS } from '@/config/consts'
 import { useOutsideClick } from '@/hooks/useOutsideClick'
 
