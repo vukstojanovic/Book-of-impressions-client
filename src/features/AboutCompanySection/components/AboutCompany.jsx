@@ -18,9 +18,8 @@ export const AboutCompany = () => {
         <div className="flex items-center">
           {/* <SvgSprite.IconPlaceholderLogo /> */}
           {/* company Logo */}
-          {companyLogo}
           <p className="ml-2">
-            {t('about')} {companyName}
+            {t('about')} {/* {companyName} */}
           </p>
         </div>
         <div className="flex items-center cursor-pointer" onClick={() => setToggle(!toggle)}>
@@ -29,10 +28,7 @@ export const AboutCompany = () => {
       </div>
       {toggle && (
         <div className="bg-[#04375B] px-6 pb-6">
-          <p className="text-white">
-            {/*Company Description*/}
-            {companyDescription}
-          </p>
+          <p className="text-white">{/*Company Description*/}</p>
         </div>
       )}
     </div>

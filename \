@@ -4,7 +4,7 @@ import { axios } from '@/lib/axios'
 export const getCompanyData = (id) => {
   return axios({
     method: 'get',
-    url: `/public/company/${id}`,
+    url: /public/company/${id}`,
   })
 }
 
