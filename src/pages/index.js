@@ -2,14 +2,13 @@ import Head from 'next/head'
 import { useTranslations } from 'next-intl'
 
 import { MainLayout } from '@/components/Layout'
-
-import styles from '@/styles/Home.module.css'
 import { Hero } from '@/components/Hero'
 import { Testimonials } from '@/components/Testimonials'
 import { FirstSection } from '@/features/FirstSection'
 import { Benefits } from '@/features/Benefits'
 import { ExampleSection } from '@/features/ExampleSection'
 import { PlanSection } from '@/components/PlanSection'
+import styles from '@/styles/Home.module.css'
 
 export default function Home() {
   const t = useTranslations('Home')

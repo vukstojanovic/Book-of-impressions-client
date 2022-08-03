@@ -1,7 +1,7 @@
 import Image from 'next/image'
-
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+
 import { Logo } from '@/components/Logo'
 
 export const Footer = () => {
