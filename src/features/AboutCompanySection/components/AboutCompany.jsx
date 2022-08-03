@@ -4,10 +4,10 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import { useCompany } from '@/features/AboutCompanySection'
 import * as SvgSprite from '@/assets/SvgSprite'
 
-export const CompanyInfo = ({ companyName, companyLogo, companyDescription }) => {
+export const AboutCompany = () => {
   const [toggle, setToggle] = useState(false)
 
-  const { data } = useCompany('fdb425c9-3fe7-4f4b-b0e9-1d795405b92d')
+  const { data } = useCompany(id)
 
   console.log(data)
   const t = useTranslations('Home')

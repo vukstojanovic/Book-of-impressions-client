@@ -41,7 +41,6 @@ export default function Review() {
             <div className="mt-1 lg:mt-20">
               <AboutCompany />
             </div>
-
             <div className="mx-4 mb-8">
               <Carousel id={'e8f87aa1-19af-49dc-8475-a8f22c1bf1c0'} />
             </div>

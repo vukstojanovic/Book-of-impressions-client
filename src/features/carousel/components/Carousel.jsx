@@ -12,9 +12,9 @@ import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
 
 export const Carousel = (id) => {
   const { data } = useFormData(id)
-  console.log(data)
-  // const { type } = data
+
   const type = { type: 'short' }
+
   return (
     <Swiper
       modules={[Keyboard, Navigation, Pagination, Scrollbar, A11y]}
