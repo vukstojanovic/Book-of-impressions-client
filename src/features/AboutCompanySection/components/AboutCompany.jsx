@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-
+import { useCompany } from '@/features/AboutCompanySection'
 import * as SvgSprite from '@/assets/SvgSprite'
 
 export const CompanyInfo = ({ companyName, companyLogo, companyDescription }) => {
   const [toggle, setToggle] = useState(false)
 
-  const { data } = useCompany()
+  const { data } = useCompany('fdb425c9-3fe7-4f4b-b0e9-1d795405b92d')
 
+  console.log(data)
   const t = useTranslations('Home')
 
   return (

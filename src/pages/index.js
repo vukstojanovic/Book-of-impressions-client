@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useTranslations } from 'next-intl'
-
+import { useQuery } from 'react-query'
+import { axios } from '@/lib/axios'
 import { MainLayout } from '@/components/Layout'
 
 import styles from '@/styles/Home.module.css'
@@ -14,6 +15,21 @@ import { PlanSection } from '@/components/PlanSection'
 export default function Home() {
   const t = useTranslations('Home')
 
+  const getCompany = async () => {
+    return axios({
+      method: 'get',
+      url: `/public/company/fdb425c9-3fe7-4f4b-b0e9-1d795405b92d`,
+      headers: {
+        Authorization:
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmNTZhOTcyZC05NDU4LTQ2NjQtYWMxNy05N2E2YzI5NjJlNzUiLCJuYW1lIjoicXdlIHJzdCIsImVtYWlsIjoiZGFuaWxvbS5hcmtpY2V2aWNAcXVhbnRveC5jb20iLCJyb2xlIjoiU3VwZXJVc2VyIiwiaWF0IjoxNjU5NTI3OTkwLCJleHAiOjE2NTk1Mjg4OTB9.gW9isVyc9VDi_Y5_JClMLDBuHZ7BryG_5G-b3dFw6MY',
+      },
+    })
+  }
+  const { data } = useQuery('company', getCompany)
+
+  // const { data: companyData } = useCompany(id)
+
+  console.log(data)
   return (
     <div className={styles.container}>
       <Head>
