@@ -1,23 +1,34 @@
 import { Keyboard, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
-
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { useFormData } from '@/features/carousel'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/scrollbar'
 import 'swiper/css/keyboard'
+
 import { NavArrow } from '@/assets/SvgSprite'
 import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
+import { useFormStore } from '@/stores/form'
+import { useFormData } from '@/features/carousel'
 
 export const Carousel = (id) => {
   const { data } = useFormData(id)
 
   const type = { type: 'short' }
 
+  const formData = useFormStore((state) => state.formData)
+  const isFirstNextAllowed = !!(formData.message && formData.rating)
+  const isSecondNextAllowed = !!(formData.message && !formData?.ratings?.includes(0))
+  const isThirdNextAllowed = !!formData.answer
+  const allowsSliding = isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed
+  const allowsSlidingClass = allowsSliding ? '' : 'opacity-50 hover:opacity-50 pointer-events-none'
+
   return (
     <Swiper
       modules={[Keyboard, Navigation, Pagination, Scrollbar, A11y]}
+      allowSlideNext={allowsSliding}
+      allowSlidePrev={allowsSliding}
       spaceBetween={35}
       slidesPerView={1}
       navigation={{
@@ -30,6 +41,7 @@ export const Carousel = (id) => {
       }}
       centeredSlides={true}
       setWrapperSize
+      noSwipingClass="swiper-slide"
       style={{ overflow: 'unset', marginTop: '68px' }}
     >
       <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={type} />}</SwiperSlide>
@@ -41,9 +53,13 @@ export const Carousel = (id) => {
           <NavArrow />
         </button>
 
-        <div className="pagination space-x-3 [&>span]:w-[13px] [&>span]:h-[13px] [&>span]:pt-[2px] [&>span]:bg-[#46494b]"></div>
+        <div
+          className={`pagination space-x-3 [&>span]:w-[13px] [&>span]:h-[13px] [&>span]:pt-[2px] [&>span]:bg-[#46494b] ${allowsSlidingClass}`}
+        ></div>
 
-        <button className="button-next w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 hover:opacity-90 disabled:opacity-50">
+        <button
+          className={`button-next w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 hover:opacity-90 disabled:opacity-50 ${allowsSlidingClass}`}
+        >
           <NavArrow />
         </button>
       </div>
