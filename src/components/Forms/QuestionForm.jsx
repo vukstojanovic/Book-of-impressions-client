@@ -55,14 +55,14 @@ export const QuestionForm = ({ form }) => {
   }, [watchYesNo])
 
   switch (form.type) {
-    case 'short':
+    case 'Rating':
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-3"
           // onSubmit={handleSubmitShort(submitDataShort)}
         >
           <div className="space-y-2">
-            <p>{form.question}</p>
+            {/* <p>{form.question}</p> */}
             <Controller
               control={controlShort}
               name="rating"
@@ -83,13 +83,13 @@ export const QuestionForm = ({ form }) => {
           />
         </form>
       )
-    case 'long':
+    case 'Ratings':
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-4"
           // onSubmit={handleSubmitLong(submitDataLong)}
         >
-          {form.questions.map((question, i) => {
+          {/* {form.questions.map((question, i) => {
             if (i > 2) {
               return
             }
@@ -106,7 +106,7 @@ export const QuestionForm = ({ form }) => {
                 />
               </div>
             )
-          })}
+          })} */}
           <input
             name="message"
             id="message"
@@ -116,7 +116,7 @@ export const QuestionForm = ({ form }) => {
           />
         </form>
       )
-    case 'yes/no':
+    case 'Answer':
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-[70px] px-9"

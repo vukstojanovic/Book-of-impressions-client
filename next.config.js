@@ -6,6 +6,9 @@ const nextConfig = {
     defaultLocale: 'sr',
     localeDetection: false,
   },
+  images: {
+    domains: ['lorempixel.com'],
+  },
 }
 
 module.exports = nextConfig

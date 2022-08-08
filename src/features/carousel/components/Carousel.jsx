@@ -10,20 +10,14 @@ import 'swiper/css/keyboard'
 import { NavArrow } from '@/assets/SvgSprite'
 import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
 import { useFormStore } from '@/stores/form'
-import { useFormData } from '@/features/carousel'
 
-export const Carousel = (id) => {
-  const { data } = useFormData(id)
-
-  const type = { type: 'short' }
-
+export const Carousel = ({ form }) => {
   const formData = useFormStore((state) => state.formData)
   const isFirstNextAllowed = !!(formData.message && formData.rating)
   const isSecondNextAllowed = !!(formData.message && !formData?.ratings?.includes(0))
   const isThirdNextAllowed = !!formData.answer
   const allowsSliding = isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed
   const allowsSlidingClass = allowsSliding ? '' : 'opacity-50 hover:opacity-50 pointer-events-none'
-
   return (
     <Swiper
       modules={[Keyboard, Navigation, Pagination, Scrollbar, A11y]}
@@ -44,7 +38,9 @@ export const Carousel = (id) => {
       noSwipingClass="swiper-slide"
       style={{ overflow: 'unset', marginTop: '68px' }}
     >
-      <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={type} />}</SwiperSlide>
+      <SwiperSlide>
+        {({ isActive }) => isActive && form && <QuestionForm form={form} />}
+      </SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <DetailsForm />}</SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <ConfirmSubmit />}</SwiperSlide>
 
