@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import { useQuery } from 'react-query'
+// import { dehydrate, QueryClient } from 'react-query'
 import { useTranslations } from 'next-intl'
 
 import { MainLayout } from '@/components/Layout'
@@ -12,6 +12,7 @@ import { Carousel } from '@/features/carousel'
 import { MainAccordion } from '@/features/Accordion'
 import { Success } from '@/features/Success'
 import { useFormStore } from '@/stores/form'
+// import { getReviews } from '@/api/getReviews'
 
 export default function Review() {
   const t = useTranslations('General')
@@ -71,9 +72,15 @@ Review.getLayout = function getLayout(page) {
 }
 
 export async function getServerSideProps({ locale }) {
+  // const queryClient = new QueryClient()
+  // await queryClient.prefetchQuery('reviews', () => {
+  //   getReviews()
+  // })
+
   return {
     props: {
       textContent: (await import(`../../locales/${locale}.json`)).default,
+      // dehydratedState: dehydrate(queryClient),
     },
   }
 }
