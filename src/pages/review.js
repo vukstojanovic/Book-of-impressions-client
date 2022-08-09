@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
+import { useQuery } from 'react-query'
 import { useTranslations } from 'next-intl'
 
 import { MainLayout } from '@/components/Layout'
