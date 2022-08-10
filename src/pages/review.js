@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import { useTranslations } from 'next-intl'
 import { dehydrate, QueryClient } from 'react-query'
+import { useTranslations } from 'next-intl'
 
 import { MainLayout } from '@/components/Layout'
 import { Loader } from '@/components/Loader'
@@ -12,10 +12,17 @@ import { MainAccordion } from '@/features/Accordion'
 import { AboutCompany } from '@/features/AboutCompanySection'
 import { Success } from '@/features/Success'
 import { useFormStore } from '@/stores/form'
+import { getReviews, useReviews } from '@/api/getReviews'
 import { useFormData } from '@/hooks/forms/useGetFormData'
 import { getFormData } from '@/services/form'
 
 export default function Review() {
+  // const router = useRouter()
+  // const id = router.query.id
+
+  // here also we should use dynamic id which we get from props.id who send getServerSideProps
+  const { status, isError, data, error } = useReviews('0a4a52a1-f4db-4832-9c0b-93478fa58954')
+
   const t = useTranslations('General')
   const { data: form, isLoading: formIsLoading } = useFormData({
     id: '0a4a52a1-f4db-4832-9c0b-93478fa58954',
@@ -62,7 +69,7 @@ export default function Review() {
               </div>
             )}
           </div>
-          <MainAccordion />
+          <MainAccordion status={status} isError={isError} data={data} error={error} />
         </div>
       </div>
     </div>
@@ -78,10 +85,16 @@ export async function getServerSideProps({ locale }) {
   await queryClient.prefetchQuery(['formData', '0a4a52a1-f4db-4832-9c0b-93478fa58954'], () =>
     getFormData({ id: '0a4a52a1-f4db-4832-9c0b-93478fa58954' })
   )
+
+  await queryClient.prefetchQuery('reviews', () => {
+    // here we should put dynamic id extracted from context
+    getReviews('0a4a52a1-f4db-4832-9c0b-93478fa58954')
+  })
+
   return {
     props: {
       textContent: (await import(`../../locales/${locale}.json`)).default,
-      dehydratedState: dehydrate(queryClient),
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
     },
   }
 }
