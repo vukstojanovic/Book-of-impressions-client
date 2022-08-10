@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-// import { dehydrate, QueryClient } from 'react-query'
+import { dehydrate, QueryClient } from 'react-query'
 import { useTranslations } from 'next-intl'
 
 import { MainLayout } from '@/components/Layout'
@@ -12,9 +12,15 @@ import { Carousel } from '@/features/carousel'
 import { MainAccordion } from '@/features/Accordion'
 import { Success } from '@/features/Success'
 import { useFormStore } from '@/stores/form'
-// import { getReviews } from '@/api/getReviews'
+import { getReviews, useReviews } from '@/api/getReviews'
 
 export default function Review() {
+  // const router = useRouter()
+  // const id = router.query.id
+
+  // here also we should use dynamic id which we get from props.id who send getServerSideProps
+  const { status, isError, data, error } = useReviews('0a4a52a1-f4db-4832-9c0b-93478fa58954')
+
   const t = useTranslations('General')
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
@@ -60,7 +66,7 @@ export default function Review() {
             )}
             {!isLoading && !isSuccess && <Carousel />}
           </div>
-          <MainAccordion />
+          <MainAccordion status={status} isError={isError} data={data} error={error} />
         </div>
       </div>
     </div>
@@ -71,16 +77,19 @@ Review.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>
 }
 
-export async function getServerSideProps({ locale }) {
-  // const queryClient = new QueryClient()
-  // await queryClient.prefetchQuery('reviews', () => {
-  //   getReviews()
-  // })
+export async function getServerSideProps(context) {
+  // const id = context.query.id
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery('reviews', () => {
+    // here we should put dynamic id extracted from context
+    getReviews('0a4a52a1-f4db-4832-9c0b-93478fa58954')
+  })
 
   return {
     props: {
-      textContent: (await import(`../../locales/${locale}.json`)).default,
-      // dehydratedState: dehydrate(queryClient),
+      textContent: (await import(`../../locales/${context.locale}.json`)).default,
+      dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+      // id: context.query.id
     },
   }
 }

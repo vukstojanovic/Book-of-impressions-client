@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useTranslations } from 'use-intl'
+
 import { comments, ReviewFirst } from '@/features/CommentsPreview'
 
-export const CommentsPreview = () => {
-  const firstTwo = comments.slice(0, 2)
-  const rest = comments.slice(2)
+export const CommentsPreview = ({ data }) => {
+  const firstTwo = data.slice(0, 2)
+  const rest = data.slice(2)
   const [blurClass, setBlurClass] = useState('blur-sm pointer-events-none')
   const t = useTranslations('Home')
 
@@ -15,23 +16,23 @@ export const CommentsPreview = () => {
   return (
     <>
       <section>
-        {firstTwo.map((comment) => (
+        {firstTwo.map((review) => (
           <ReviewFirst
-            key={comment.name}
-            name={comment.name}
-            message={comment.message}
-            rating={comment.rating}
+            key={review.reviewName}
+            reviewName={review.reviewName}
+            comment={review.comment}
+            rating={review.rating}
           />
         ))}
       </section>
       <div className="relative">
         <section className={`${blurClass}`}>
-          {rest.map((comment) => (
+          {rest.map((review) => (
             <ReviewFirst
-              key={comment.name}
-              name={comment.name}
-              message={comment.message}
-              rating={comment.rating}
+              key={review.reviewName}
+              reviewName={review.reviewName}
+              comment={review.comment}
+              rating={review.rating}
             />
           ))}
         </section>

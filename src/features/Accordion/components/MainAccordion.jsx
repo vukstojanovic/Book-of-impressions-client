@@ -9,10 +9,14 @@ import { ReviewTypeThree } from '@/features/ReviewTypeThree'
 import { RatingStars } from '@/components/RatingStars'
 import { useFormStore } from '@/stores/form'
 
-export const MainAccordion = () => {
+export const MainAccordion = ({ status, isError, data, error }) => {
   const [innerAccordion, setInnerAccordion] = useState(true)
   const t = useTranslations('Home')
   const isSuccess = useFormStore((state) => state.isSuccess)
+
+  if (status === 'loading') {
+    return <div>Loading...</div>
+  }
 
   return (
     <>
@@ -25,20 +29,12 @@ export const MainAccordion = () => {
       <div className="px-6">
         {isSuccess && innerAccordion && (
           <div>
-            {comments.map((comment, i) => {
-              const { name, message, rating } = comment
-              return (
-                // <div key={i} className="p-3 my-3.5 shadow-lg">
-                //   <h4 className="mb-2 ">{name}</h4>
-                //   <p>{message}</p>
-                //   <RatingStars value={rating} />
-                // </div>
-                <ReviewFirst key={`comment-${i}`} {...comment} />
-              )
+            {data?.map((review, i) => {
+              return <ReviewFirst key={`comment-${i}`} {...review} />
             })}
           </div>
         )}
-        {!isSuccess && innerAccordion && <CommentsPreview />}
+        {!isSuccess && innerAccordion && <CommentsPreview data={data} />}
         {/* {innerAccordion && <ReviewTypeThree />}
         {innerAccordion && <ReviewTypeTwo />} */}
       </div>
