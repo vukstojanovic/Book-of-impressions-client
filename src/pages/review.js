@@ -12,7 +12,8 @@ import { MainAccordion } from '@/features/Accordion'
 import { AboutCompany } from '@/features/AboutCompanySection'
 import { Success } from '@/features/Success'
 import { useFormStore } from '@/stores/form'
-import { getFormData, useFormData } from '@/hooks/forms/useGetFormData'
+import { useFormData } from '@/hooks/forms/useGetFormData'
+import { getFormData } from '@/services/form'
 
 export default function Review() {
   const t = useTranslations('General')
