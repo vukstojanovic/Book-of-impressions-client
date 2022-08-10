@@ -59,7 +59,6 @@ export const QuestionForm = ({ form }) => {
     return () => subscription.unsubscribe()
   }, [watchYesNo])
 
-  console.log(form.questions[0])
   switch (form.type) {
     case 'Rating':
       return (
