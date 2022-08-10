@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-import { appConfig } from '@/config/'
+import { appConfig } from '@/config/appConfig'
 
 function authRequestInterceptor(config) {
   // const token = storage.getToken();

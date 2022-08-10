@@ -1,5 +1,6 @@
 import { Keyboard, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -10,34 +11,13 @@ import { NavArrow } from '@/assets/SvgSprite'
 import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
 import { useFormStore } from '@/stores/form'
 
-export const Carousel = () => {
-  const form1 = {
-    id: '1',
-    type: 'short',
-    question: 'This is form with only 1 question',
-  }
-  const form2 = {
-    id: '2',
-    type: 'long',
-    questions: [
-      '1.This is form with 3 questions',
-      '2.This is form with 3 questions',
-      '3.This is form with 3 questions',
-    ],
-  }
-  const form3 = {
-    id: '3',
-    type: 'yes/no',
-    questions: ['Yes', 'No'],
-  }
-
+export const Carousel = ({ form }) => {
   const formData = useFormStore((state) => state.formData)
   const isFirstNextAllowed = !!(formData.message && formData.rating)
   const isSecondNextAllowed = !!(formData.message && !formData?.ratings?.includes(0))
   const isThirdNextAllowed = !!formData.answer
   const allowsSliding = isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed
   const allowsSlidingClass = allowsSliding ? '' : 'opacity-50 hover:opacity-50 pointer-events-none'
-
   return (
     <Swiper
       modules={[Keyboard, Navigation, Pagination, Scrollbar, A11y]}
@@ -56,9 +36,11 @@ export const Carousel = () => {
       centeredSlides={true}
       setWrapperSize
       noSwipingClass="swiper-slide"
-      style={{ overflow: 'unset', marginTop: '68px' }}
+      style={{ overflow: 'unset', margin: '68px 10px 0' }}
     >
-      <SwiperSlide>{({ isActive }) => isActive && <QuestionForm form={form2} />}</SwiperSlide>
+      <SwiperSlide>
+        {({ isActive }) => isActive && form && <QuestionForm form={form} />}
+      </SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <DetailsForm />}</SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <ConfirmSubmit />}</SwiperSlide>
 

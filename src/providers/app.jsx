@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { NextIntlProvider } from 'next-intl'
-import { QueryClientProvider } from 'react-query'
+import { Hydrate, QueryClientProvider } from 'react-query'
 
 import { queryClient } from '@/lib/react-query'
 
@@ -22,10 +22,12 @@ export const AppProvider = ({ pageProps, children }) => {
     >
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <QueryClientProvider client={queryClient}>
-          {/*
+          <Hydrate state={pageProps.dehydratedState}>
+            {/*
             {process.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
             */}
-          <NextIntlProvider messages={pageProps.textContent}>{children}</NextIntlProvider>
+            <NextIntlProvider messages={pageProps.textContent}>{children}</NextIntlProvider>
+          </Hydrate>
         </QueryClientProvider>
       </ErrorBoundary>
     </Suspense>

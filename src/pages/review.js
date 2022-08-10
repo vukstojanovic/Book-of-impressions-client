@@ -1,19 +1,25 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
 import { useTranslations } from 'next-intl'
+import { dehydrate, QueryClient } from 'react-query'
 
 import { MainLayout } from '@/components/Layout'
 import { Loader } from '@/components/Loader'
 import { RingContainer } from '@/components/RingContainer'
-import { Garni } from '@/components/GarniAccordion'
 import styles from '@/styles/Home.module.css'
 import { Carousel } from '@/features/carousel'
 import { MainAccordion } from '@/features/Accordion'
+import { AboutCompany } from '@/features/AboutCompanySection'
 import { Success } from '@/features/Success'
 import { useFormStore } from '@/stores/form'
+import { useFormData } from '@/hooks/forms/useGetFormData'
+import { getFormData } from '@/services/form'
 
 export default function Review() {
   const t = useTranslations('General')
+  const { data: form, isLoading: formIsLoading } = useFormData({
+    id: '0a4a52a1-f4db-4832-9c0b-93478fa58954',
+  })
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
   const setIsLoading = useFormStore((state) => state.setIsLoading)
@@ -40,9 +46,8 @@ export default function Review() {
       </Head>
       <div className="flex justify-center w-screen">
         <div className="w-full max-w-2xl pt-16 overflow-hidden">
-          <div className="mt-1 lg:mt-20">
-            <Garni />
-          </div>
+          {!formIsLoading && <AboutCompany company={form?.company} />}
+          {!isLoading && !isSuccess && <Carousel form={form} />}
           <div className="mx-4 mb-8">
             {isLoading && (
               <div className="flex justify-center items-center py-6">
@@ -56,7 +61,6 @@ export default function Review() {
                 <Success />
               </div>
             )}
-            {!isLoading && !isSuccess && <Carousel />}
           </div>
           <MainAccordion />
         </div>
@@ -70,9 +74,14 @@ Review.getLayout = function getLayout(page) {
 }
 
 export async function getServerSideProps({ locale }) {
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery(['formData', '0a4a52a1-f4db-4832-9c0b-93478fa58954'], () =>
+    getFormData({ id: '0a4a52a1-f4db-4832-9c0b-93478fa58954' })
+  )
   return {
     props: {
       textContent: (await import(`../../locales/${locale}.json`)).default,
+      dehydratedState: dehydrate(queryClient),
     },
   }
 }

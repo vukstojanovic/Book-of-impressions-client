@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
+import { useTranslations } from 'next-intl'
 
 import { RatingStars } from '../RatingStars'
+
+import QuestionText from './QuestionText'
 
 import { ThumbsDown, ThumbsUp } from '@/assets/SvgSprite'
 import { useFormStore } from '@/stores/form'
@@ -9,6 +12,8 @@ import { useFormStore } from '@/stores/form'
 export const QuestionForm = ({ form }) => {
   const formData = useFormStore((state) => state.formData)
   const setFormData = useFormStore((state) => state.setFormData)
+
+  const t = useTranslations('QuestionForm')
 
   const {
     register: registerShort,
@@ -55,14 +60,14 @@ export const QuestionForm = ({ form }) => {
   }, [watchYesNo])
 
   switch (form.type) {
-    case 'short':
+    case 'Rating':
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-3"
           // onSubmit={handleSubmitShort(submitDataShort)}
         >
           <div className="space-y-2">
-            <p>{form.question}</p>
+            <QuestionText question={form.questions[0]} />
             <Controller
               control={controlShort}
               name="rating"
@@ -77,13 +82,13 @@ export const QuestionForm = ({ form }) => {
             id="message"
             cols="30"
             rows="1"
-            placeholder="Enter text here"
+            placeholder={t('questionPlaceholder')}
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
             {...registerShort('message')}
           />
         </form>
       )
-    case 'long':
+    case 'Ratings':
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-4"
@@ -94,8 +99,8 @@ export const QuestionForm = ({ form }) => {
               return
             }
             return (
-              <div key={question} className="space-y-2">
-                <p>{question}</p>
+              <div key={question.texts[0].text} className="space-y-2">
+                <QuestionText question={question} />
                 <Controller
                   control={controlLong}
                   name={`rating-${i}`}
@@ -110,20 +115,20 @@ export const QuestionForm = ({ form }) => {
           <input
             name="message"
             id="message"
-            placeholder="Enter text here"
+            placeholder={t('questionPlaceholder')}
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
             {...registerLong('message')}
           />
         </form>
       )
-    case 'yes/no':
+    case 'Answer':
       return (
         <form
           className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-[70px] px-9"
           // onSubmit={handleSubmitYesNo(submitDataYesNo)}
         >
-          <p className="pb-14">This is yes or no form</p>
-          <div className="flex space-x-7 justify-center">
+          <QuestionText question={form.questions[0]} />
+          <div className="flex space-x-7 justify-center pt-14">
             <div className="flex">
               <input
                 type="radio"
