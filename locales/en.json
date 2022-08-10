@@ -67,5 +67,8 @@
     "contactMe": "contact me",
     "goBack": "Go back",
     "confirm": "Confirm"
+  },
+  "QuestionForm": {
+    "questionPlaceholder": "Enter text here"
   }
 }

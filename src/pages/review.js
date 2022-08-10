@@ -12,13 +12,13 @@ import { MainAccordion } from '@/features/Accordion'
 import { AboutCompany } from '@/features/AboutCompanySection'
 import { Success } from '@/features/Success'
 import { useFormStore } from '@/stores/form'
-import { getFormData, useFormData } from '@/api/getFormData'
+import { getFormData, useFormData } from '@/hooks/forms/useGetFormData'
 
 export default function Review() {
   const t = useTranslations('General')
-  // const { data: form, isLoading: formIsLoading } = useFormData({ id })
-  const form = ''
-  const formIsLoading = false
+  const { data: form, isLoading: formIsLoading } = useFormData({
+    id: '0a4a52a1-f4db-4832-9c0b-93478fa58954',
+  })
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
   const setIsLoading = useFormStore((state) => state.setIsLoading)
@@ -73,14 +73,14 @@ Review.getLayout = function getLayout(page) {
 }
 
 export async function getServerSideProps({ locale }) {
-  // const queryClient = new QueryClient()
-  // await queryClient.prefetchQuery('formData', () =>
-  //   getFormData({ id: 'e6a32890-4848-461a-9d86-ad362ae392eb' })
-  // )
+  const queryClient = new QueryClient()
+  await queryClient.prefetchQuery(['formData', '0a4a52a1-f4db-4832-9c0b-93478fa58954'], () =>
+    getFormData({ id: '0a4a52a1-f4db-4832-9c0b-93478fa58954' })
+  )
   return {
     props: {
       textContent: (await import(`../../locales/${locale}.json`)).default,
-      // dehydratedState: dehydrate(queryClient),
+      dehydratedState: dehydrate(queryClient),
     },
   }
 }

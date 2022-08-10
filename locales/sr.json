@@ -67,5 +67,8 @@
     "contactMe": "obavestite me",
     "goBack": "Nazad",
     "confirm": "Pošalji"
+  },
+  "QuestionForm": {
+    "questionPlaceholder": "Unesite odgovor ovde"
   }
 }
