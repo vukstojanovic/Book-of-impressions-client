@@ -36,7 +36,7 @@ export const Carousel = ({ form }) => {
       centeredSlides={true}
       setWrapperSize
       noSwipingClass="swiper-slide"
-      style={{ overflow: 'unset', marginTop: '68px' }}
+      style={{ overflow: 'unset', margin: '68px 10px 0' }}
     >
       <SwiperSlide>
         {({ isActive }) => isActive && form && <QuestionForm form={form} />}
