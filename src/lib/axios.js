@@ -13,7 +13,7 @@ function authRequestInterceptor(config) {
 }
 
 export const axios = Axios.create({
-  baseURL: `${appConfig.appBaseUrl}`,
+  baseURL: `${appConfig.appBaseUrl}/api`,
 })
 
 axios.interceptors.request.use(authRequestInterceptor)
