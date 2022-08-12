@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-import { appConfig } from '@/config/'
+import { appConfig } from '@/config/appConfig'
 
 function authRequestInterceptor(config) {
   // const token = storage.getToken();
@@ -13,7 +13,7 @@ function authRequestInterceptor(config) {
 }
 
 export const axios = Axios.create({
-  baseURL: `${appConfig.appBaseUrl}`,
+  baseURL: `${appConfig.appBaseUrl}/api`,
 })
 
 axios.interceptors.request.use(authRequestInterceptor)

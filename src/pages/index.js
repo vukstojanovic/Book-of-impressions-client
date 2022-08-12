@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { useTranslations } from 'next-intl'
+import { useQuery } from 'react-query'
 
+import { axios } from '@/lib/axios'
 import { MainLayout } from '@/components/Layout'
 import { Hero } from '@/components/Hero'
 import { Testimonials } from '@/components/Testimonials'

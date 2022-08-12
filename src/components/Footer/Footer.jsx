@@ -11,7 +11,7 @@ export const Footer = () => {
 
   return (
     <>
-      <footer className="text-white text-center text-base font-light after:absolute after:top-0 after:right-0 after:w-full after:h-full after:clip-path-footer after:-z-50 after:bg-footer relative mt-10 px-6 pb-6 pt-24 lg:text-start lg:mt-24 lg:px-32 lg:pb-14 lg:pt-56 flex flex-col">
+      <footer className="text-white text-center text-base font-light after:absolute after:top-0 after:right-0 after:w-full after:h-full after:clip-path-footer after:-z-50 after:bg-footer relative mt-10 px-6 pb-6 pt-24 lg:text-start lg:mt-60 lg:px-32 lg:pb-14 lg:pt-56 flex flex-col">
         <div
           className="
             hidden
