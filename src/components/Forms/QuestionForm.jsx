@@ -19,13 +19,13 @@ export const QuestionForm = ({ form }) => {
     register: registerShort,
     control: controlShort,
     watch: watchShort,
-  } = useForm({ defaultValues: { message: formData?.message } })
+  } = useForm({ defaultValues: { comment: formData?.comment } })
 
   const {
     register: registerLong,
     control: controlLong,
     watch: watchLong,
-  } = useForm({ defaultValues: { message: formData?.message } })
+  } = useForm({ defaultValues: { comment: formData?.comment } })
 
   const { register: registerYesNo, watch: watchYesNo } = useForm({
     defaultValues: { answer: formData?.answer },
@@ -33,7 +33,7 @@ export const QuestionForm = ({ form }) => {
 
   useEffect(() => {
     const subscription = watchShort((data) => {
-      const modifiedData = { formId: form.id, message: data.message.trim(), ...data }
+      const modifiedData = { formId: form.id, comment: data.comment.trim(), ...data }
       setFormData(modifiedData)
     })
     return () => subscription.unsubscribe()
@@ -45,7 +45,7 @@ export const QuestionForm = ({ form }) => {
       const arrOfRatings = Object.keys(data)
         .filter((key) => key.includes('rating'))
         .map((k) => data[k])
-      const modifiedData = { formId: form.id, message: data.message.trim(), ratings: arrOfRatings }
+      const modifiedData = { formId: form.id, comment: data.comment.trim(), ratings: arrOfRatings }
       setFormData(modifiedData)
     })
     return () => subscription.unsubscribe()
@@ -78,13 +78,13 @@ export const QuestionForm = ({ form }) => {
             />
           </div>
           <textarea
-            name="message"
-            id="message"
+            name="comment"
+            id="comment"
             cols="30"
             rows="1"
             placeholder={t('questionPlaceholder')}
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
-            {...registerShort('message')}
+            {...registerShort('comment')}
           />
         </form>
       )
@@ -113,11 +113,11 @@ export const QuestionForm = ({ form }) => {
             )
           })}
           <input
-            name="message"
-            id="message"
+            name="comment"
+            id="comment"
             placeholder={t('questionPlaceholder')}
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
-            {...registerLong('message')}
+            {...registerLong('comment')}
           />
         </form>
       )

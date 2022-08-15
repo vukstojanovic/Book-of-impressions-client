@@ -13,8 +13,8 @@ import { useFormStore } from '@/stores/form'
 
 export const Carousel = ({ form }) => {
   const formData = useFormStore((state) => state.formData)
-  const isFirstNextAllowed = !!(formData.message && formData.rating)
-  const isSecondNextAllowed = !!(formData.message && !formData?.ratings?.includes(0))
+  const isFirstNextAllowed = !!(formData.comment && formData.rating)
+  const isSecondNextAllowed = !!(formData.comment && !formData?.ratings?.includes(0))
   const isThirdNextAllowed = !!formData.answer
   const allowsSliding = isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed
   const allowsSlidingClass = allowsSliding ? '' : 'opacity-50 hover:opacity-50 pointer-events-none'
@@ -42,7 +42,9 @@ export const Carousel = ({ form }) => {
         {({ isActive }) => isActive && form && <QuestionForm form={form} />}
       </SwiperSlide>
       <SwiperSlide>{({ isActive }) => isActive && <DetailsForm />}</SwiperSlide>
-      <SwiperSlide>{({ isActive }) => isActive && <ConfirmSubmit />}</SwiperSlide>
+      <SwiperSlide>
+        {({ isActive }) => isActive && <ConfirmSubmit formType={form.type} />}
+      </SwiperSlide>
 
       <div className="flex items-center mt-6 justify-center space-x-2 [&>div.pagination]:w-auto">
         <button className="button-prev w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 rotate-180 hover:opacity-90 disabled:opacity-50">

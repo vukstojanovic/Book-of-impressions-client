@@ -2,11 +2,16 @@ import { useTranslations } from 'next-intl'
 import { useSwiper } from 'swiper/react'
 
 import { useFormStore } from '@/stores/form'
+import { usePostReview } from '@/hooks/forms/usePostReview'
 
-export const ConfirmSubmit = () => {
+export const ConfirmSubmit = ({ formType }) => {
   const swiper = useSwiper()
   const t = useTranslations('Form')
   const setIsLoading = useFormStore((state) => state.setIsLoading)
+
+  const formData = useFormStore((state) => state.formData)
+  console.log(formData)
+  const mutateReview = usePostReview()
 
   return (
     <div className="shadow-box flex-col flex space-y-8 justify-center pt-9 pb-16 px-6 rounded-md">
@@ -18,7 +23,8 @@ export const ConfirmSubmit = () => {
         className="flex space-x-3 w-full"
         onSubmit={(e) => {
           e.preventDefault()
-          setIsLoading(true)
+          // setIsLoading(true)
+          mutateReview.mutate({ data: formData, type: formType })
         }}
       >
         <button

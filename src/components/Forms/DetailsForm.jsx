@@ -13,7 +13,7 @@ export const DetailsForm = () => {
   const formData = useFormStore((state) => state.formData)
   const setFormData = useFormStore((state) => state.setFormData)
   const validationSchema = yup.object().shape({
-    email: yup.string().email('Invalid email format'),
+    reviewEmail: yup.string().email('Invalid email format'),
   })
   const {
     register,
@@ -21,9 +21,9 @@ export const DetailsForm = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: formData.name,
-      email: formData.email,
-      contactMe: formData.contactMe,
+      reviewName: formData.reviewName,
+      reviewEmail: formData.reviewEmail,
+      contact: formData.contact,
     },
     resolver: yupResolver(validationSchema),
     mode: 'onChange',
@@ -31,15 +31,19 @@ export const DetailsForm = () => {
 
   useEffect(() => {
     const subscription = watch((data) => {
-      setFormData({ name: data.name.trim(), email: data.email.trim(), ...data })
+      setFormData({
+        reviewName: data.reviewName.trim(),
+        reviewEmail: data.reviewEmail.trim(),
+        ...data,
+      })
     })
 
     return () => subscription.unsubscribe()
   }, [watch])
 
   useEffect(() => {
-    console.log(errors.email)
-  }, [errors.email])
+    console.log(errors.reviewEmail)
+  }, [errors.reviewEmail])
 
   return (
     <div
@@ -52,26 +56,26 @@ export const DetailsForm = () => {
       <form className="space-y-4 grid">
         <input
           type="text"
-          name="name"
+          name="reviewName"
           placeholder={t('namePlaceholder')}
           className="bg-[#f5f5f5] rounded-md p-[11px] bg-none outline-none tracking-[.65px]"
-          {...register('name')}
+          {...register('reviewName')}
         />
         <input
           type="text"
-          name="email"
+          name="reviewEmail"
           placeholder={t('emailPlaceholder')}
           className="bg-[#f5f5f5] rounded-md p-[11px] bg-none outline-none tracking-[.65px]"
-          {...register('email')}
+          {...register('reviewEmail')}
         />
-        <p className="px-4 text-sm">{errors.email && errors.email.message}&nbsp;</p>
+        <p className="px-4 text-sm">{errors.reviewEmail && errors.reviewEmail.message}&nbsp;</p>
         <label className="items-center flex pl-3">
           <input
             type="checkbox"
             name="contact-me"
             className="mr-1 mt-1 w-[18px] h-[18px] tracking-[.65px]"
-            {...register('contactMe')}
-            disabled={!formData.name && (!formData.email || errors.email)}
+            {...register('contact')}
+            disabled={!formData.reviewName && (!formData.reviewEmail || errors.reviewEmail)}
           />
           {t('contactMe')}
         </label>

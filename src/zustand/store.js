@@ -1,7 +1,7 @@
 import create from 'zustand'
 
 const useFormStore = create((set) => ({
-  formData: { formId: '', name: '', email: '', contactMe: false },
+  formData: { formId: '', reviewName: '', reviewEmail: '', contact: false },
   setFormData: (data) => set((state) => ({ formData: { ...state.formData, ...data } })),
   setRating: (number) => set((state) => ({ formData: { ...state.formData, rating: number } })),
   setRatings: (index, number) =>
@@ -11,7 +11,7 @@ const useFormStore = create((set) => ({
       return { formData: { ...state.formData, ratings: ratingsCopy } }
     }),
   resetFormData: () =>
-    set(() => ({ formData: { formId: '', name: '', email: '', contactMe: false } })),
+    set(() => ({ formData: { formId: '', reviewName: '', reviewEmail: '', contact: false } })),
   isLoading: false,
   isSuccess: false,
   setIsLoading: (data) => set(() => ({ isLoading: data })),

@@ -6,3 +6,11 @@ export const getFormData = ({ id }) => {
     url: `/public/form/${id}`,
   })
 }
+
+export const postFormData = ({ data, type }) => {
+  return axios({
+    method: 'post',
+    url: `/public/review`,
+    data: data,
+  })
+}
