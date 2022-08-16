@@ -10,7 +10,6 @@ export const ConfirmSubmit = ({ formType }) => {
   const setIsLoading = useFormStore((state) => state.setIsLoading)
 
   const formData = useFormStore((state) => state.formData)
-  console.log(formData)
   const mutateReview = usePostReview()
 
   return (
@@ -23,7 +22,7 @@ export const ConfirmSubmit = ({ formType }) => {
         className="flex space-x-3 w-full"
         onSubmit={(e) => {
           e.preventDefault()
-          // setIsLoading(true)
+          setIsLoading(true)
           mutateReview.mutate({ data: formData, type: formType })
         }}
       >

@@ -53,6 +53,7 @@ export const QuestionForm = ({ form }) => {
 
   useEffect(() => {
     const subscription = watchYesNo((data) => {
+      data.answer = JSON.parse(data.answer)
       const modifiedData = { formId: form.id, ...data }
       setFormData(modifiedData)
     })
@@ -128,7 +129,7 @@ export const QuestionForm = ({ form }) => {
           // onSubmit={handleSubmitYesNo(submitDataYesNo)}
         >
           <QuestionText question={form.questions[0]} />
-          <div className="flex space-x-7 justify-center pt-14">
+          <div className="flex space-x-7 justify-center pt-14 ">
             <div className="flex">
               <input
                 type="radio"
@@ -139,7 +140,7 @@ export const QuestionForm = ({ form }) => {
               />
               <label
                 htmlFor="thumbsUp"
-                className="rounded-full bg-[#e3f0d9] peer-checked:bg-green-400"
+                className="rounded-full bg-[#e3f0d9] peer-checked:bg-green-400 hover:bg-green-400 hover:cursor-pointer"
               >
                 <ThumbsUp />
               </label>
@@ -154,7 +155,7 @@ export const QuestionForm = ({ form }) => {
               />
               <label
                 htmlFor="thumbsDown"
-                className="rounded-full bg-[#ffd5d5] peer-checked:bg-red-400"
+                className="rounded-full bg-[#ffd5d5] peer-checked:bg-red-400 hover:bg-red-400 hover:cursor-pointer"
               >
                 <ThumbsDown />
               </label>

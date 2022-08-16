@@ -21,11 +21,11 @@ export default function Review() {
   // const id = router.query.id
 
   // here also we should use dynamic id which we get from props.id who send getServerSideProps
-  const { status, isError, data, error } = useReviews('db98031d-ab31-4973-b6d2-bf10b8ac1862')
+  const { status, isError, data, error } = useReviews('f5847e5a-0068-4424-ac39-0bc3a5e17f21')
 
   const t = useTranslations('General')
   const { data: form, isLoading: formIsLoading } = useFormData({
-    id: 'db98031d-ab31-4973-b6d2-bf10b8ac1862',
+    id: 'f5847e5a-0068-4424-ac39-0bc3a5e17f21',
   })
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
@@ -82,13 +82,13 @@ Review.getLayout = function getLayout(page) {
 
 export async function getServerSideProps({ locale }) {
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery(['formData', 'db98031d-ab31-4973-b6d2-bf10b8ac1862'], () =>
-    getFormData({ id: 'db98031d-ab31-4973-b6d2-bf10b8ac1862' })
+  await queryClient.prefetchQuery(['formData', 'f5847e5a-0068-4424-ac39-0bc3a5e17f21'], () =>
+    getFormData({ id: 'f5847e5a-0068-4424-ac39-0bc3a5e17f21' })
   )
 
   await queryClient.prefetchQuery('reviews', () => {
     // here we should put dynamic id extracted from context
-    getReviews('db98031d-ab31-4973-b6d2-bf10b8ac1862')
+    getReviews('f5847e5a-0068-4424-ac39-0bc3a5e17f21')
   })
 
   return {

@@ -15,7 +15,7 @@ export const Carousel = ({ form }) => {
   const formData = useFormStore((state) => state.formData)
   const isFirstNextAllowed = !!(formData.comment && formData.rating)
   const isSecondNextAllowed = !!(formData.comment && !formData?.ratings?.includes(0))
-  const isThirdNextAllowed = !!formData.answer
+  const isThirdNextAllowed = Object.hasOwn(formData, 'answer')
   const allowsSliding = isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed
   const allowsSlidingClass = allowsSliding ? '' : 'opacity-50 hover:opacity-50 pointer-events-none'
   return (
