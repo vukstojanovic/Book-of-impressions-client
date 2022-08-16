@@ -35,8 +35,8 @@ export const MainAccordion = ({ status, isError, data, error }) => {
           </div>
         )}
         {!isSuccess && innerAccordion && <CommentsPreview data={data} />}
-        {/* {innerAccordion && <ReviewTypeThree />}
-        {innerAccordion && <ReviewTypeTwo />} */}
+        {innerAccordion && <ReviewTypeThree />}
+        {innerAccordion && <ReviewTypeTwo />}
       </div>
     </>
   )
