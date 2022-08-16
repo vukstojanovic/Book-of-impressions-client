@@ -21,12 +21,12 @@ export default function Review() {
   // const id = router.query.id
 
   // here also we should use dynamic id which we get from props.id who send getServerSideProps
-  const { status, isError, data, error } = useReviews('db98031d-ab31-4973-b6d2-bf10b8ac1862')
+  const { status, isError, data, error } = useReviews('7b87b5e3-f82a-409f-8a3c-fbec828fd5b5')
 
   const t = useTranslations('General')
 
   const { data: form, isLoading: formIsLoading } = useFormData({
-    id: 'db98031d-ab31-4973-b6d2-bf10b8ac1862',
+    id: '7b87b5e3-f82a-409f-8a3c-fbec828fd5b5',
   })
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
@@ -46,10 +46,6 @@ export default function Review() {
     }
   }, [isLoading])
 
-  useEffect(() => {
-    console.log(form)
-  }, [formIsLoading])
-
   return (
     <div className={styles.container}>
       <Head>
@@ -58,7 +54,7 @@ export default function Review() {
       </Head>
       <div className="flex justify-center w-screen">
         <div className="w-full max-w-2xl pt-16 overflow-hidden">
-          {!formIsLoading && <AboutCompany company={form?.company} />}
+          {!formIsLoading && `<AboutCompany company={form?.company} />`}
           {!isLoading && !isSuccess && <Carousel form={form} />}
           <div className="mx-4 mb-8">
             {isLoading && (
@@ -74,7 +70,13 @@ export default function Review() {
               </div>
             )}
           </div>
-          <MainAccordion status={status} isError={isError} data={data} error={error} />
+          <MainAccordion
+            status={status}
+            isError={isError}
+            data={data}
+            error={error}
+            formType={form?.type}
+          />
         </div>
       </div>
     </div>
