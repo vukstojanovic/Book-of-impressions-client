@@ -7,7 +7,7 @@ export const getFormData = ({ id }) => {
   })
 }
 
-export const postFormData = ({ data, type }) => {
+export const postFormData = ({ data }) => {
   return axios({
     method: 'post',
     url: `/public/review`,

@@ -4,7 +4,7 @@ import { useSwiper } from 'swiper/react'
 import { useFormStore } from '@/stores/form'
 import { usePostReview } from '@/hooks/forms/usePostReview'
 
-export const ConfirmSubmit = ({ formType }) => {
+export const ConfirmSubmit = () => {
   const swiper = useSwiper()
   const t = useTranslations('Form')
   const setIsLoading = useFormStore((state) => state.setIsLoading)
@@ -23,7 +23,7 @@ export const ConfirmSubmit = ({ formType }) => {
         onSubmit={(e) => {
           e.preventDefault()
           setIsLoading(true)
-          mutateReview.mutate({ data: formData, type: formType })
+          mutateReview.mutate({ data: formData })
         }}
       >
         <button
