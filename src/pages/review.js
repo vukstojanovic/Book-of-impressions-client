@@ -21,12 +21,12 @@ export default function Review() {
   // const id = router.query.id
 
   // here also we should use dynamic id which we get from props.id who send getServerSideProps
-  const { status, isError, data, error } = useReviews('7b87b5e3-f82a-409f-8a3c-fbec828fd5b5')
+  const { status, isError, data, error } = useReviews('f5847e5a-0068-4424-ac39-0bc3a5e17f21')
 
   const t = useTranslations('General')
 
   const { data: form, isLoading: formIsLoading } = useFormData({
-    id: '7b87b5e3-f82a-409f-8a3c-fbec828fd5b5',
+    id: 'f5847e5a-0068-4424-ac39-0bc3a5e17f21',
   })
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
@@ -54,7 +54,7 @@ export default function Review() {
       </Head>
       <div className="flex justify-center w-screen">
         <div className="w-full max-w-2xl pt-16 overflow-hidden">
-          {!formIsLoading && `<AboutCompany company={form?.company} />`}
+          {!formIsLoading && <AboutCompany company={form?.company} />}
           {!isLoading && !isSuccess && <Carousel form={form} />}
           <div className="mx-4 mb-8">
             {isLoading && (

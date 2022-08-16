@@ -7,7 +7,7 @@ const nextConfig = {
     localeDetection: false,
   },
   images: {
-    domains: ['lorempixel.com'],
+    domains: ['lorempixel.com', 'boi-files.s3.eu-central-1.amazonaws.com'],
   },
 }
 

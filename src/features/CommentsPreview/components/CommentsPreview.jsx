@@ -10,11 +10,32 @@ export const CommentsPreview = ({ data, formType }) => {
 
   function displayRightReview(review) {
     if (formType === 'Rating') {
-      return <ReviewFirst key={review.id} {...review} />
+      return (
+        <ReviewFirst
+          key={review.id}
+          reviewName={review.reviewName}
+          comment={review.comment}
+          rating={review.rating}
+        />
+      )
     } else if (formType === 'Ratings') {
-      return <SingleReviewTypeTwo key={review.id} {...review} />
+      return (
+        <SingleReviewTypeTwo
+          key={review.id}
+          reviewName={review.reviewName}
+          comment={review.comment}
+          ratings={review.ratings}
+        />
+      )
     } else if (formType === 'Answer') {
-      return <SingleReviewTypeThree key={review.id} {...review} />
+      return (
+        <SingleReviewTypeThree
+          key={review.id}
+          reviewName={review.reviewName}
+          comment={review.comment}
+          answer={review.answer}
+        />
+      )
     }
   }
 
