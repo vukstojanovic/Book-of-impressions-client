@@ -19,13 +19,13 @@ export const QuestionForm = ({ form }) => {
     register: registerShort,
     control: controlShort,
     watch: watchShort,
-  } = useForm({ defaultValues: { message: formData?.message } })
+  } = useForm({ defaultValues: { comment: formData?.comment } })
 
   const {
     register: registerLong,
     control: controlLong,
     watch: watchLong,
-  } = useForm({ defaultValues: { message: formData?.message } })
+  } = useForm({ defaultValues: { comment: formData?.comment } })
 
   const { register: registerYesNo, watch: watchYesNo } = useForm({
     defaultValues: { answer: formData?.answer },
@@ -33,7 +33,7 @@ export const QuestionForm = ({ form }) => {
 
   useEffect(() => {
     const subscription = watchShort((data) => {
-      const modifiedData = { formId: form.id, message: data.message.trim(), ...data }
+      const modifiedData = { formId: form.id, comment: data.comment.trim(), ...data }
       setFormData(modifiedData)
     })
     return () => subscription.unsubscribe()
@@ -45,7 +45,7 @@ export const QuestionForm = ({ form }) => {
       const arrOfRatings = Object.keys(data)
         .filter((key) => key.includes('rating'))
         .map((k) => data[k])
-      const modifiedData = { formId: form.id, message: data.message.trim(), ratings: arrOfRatings }
+      const modifiedData = { formId: form.id, comment: data.comment.trim(), ratings: arrOfRatings }
       setFormData(modifiedData)
     })
     return () => subscription.unsubscribe()
@@ -53,6 +53,7 @@ export const QuestionForm = ({ form }) => {
 
   useEffect(() => {
     const subscription = watchYesNo((data) => {
+      data.answer = JSON.parse(data.answer)
       const modifiedData = { formId: form.id, ...data }
       setFormData(modifiedData)
     })
@@ -78,13 +79,13 @@ export const QuestionForm = ({ form }) => {
             />
           </div>
           <textarea
-            name="message"
-            id="message"
+            name="comment"
+            id="comment"
             cols="30"
             rows="1"
             placeholder={t('questionPlaceholder')}
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
-            {...registerShort('message')}
+            {...registerShort('comment')}
           />
         </form>
       )
@@ -113,11 +114,11 @@ export const QuestionForm = ({ form }) => {
             )
           })}
           <input
-            name="message"
-            id="message"
+            name="comment"
+            id="comment"
             placeholder={t('questionPlaceholder')}
             className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
-            {...registerLong('message')}
+            {...registerLong('comment')}
           />
         </form>
       )
@@ -128,7 +129,7 @@ export const QuestionForm = ({ form }) => {
           // onSubmit={handleSubmitYesNo(submitDataYesNo)}
         >
           <QuestionText question={form.questions[0]} />
-          <div className="flex space-x-7 justify-center pt-14">
+          <div className="flex space-x-7 justify-center pt-14 ">
             <div className="flex">
               <input
                 type="radio"
@@ -139,7 +140,7 @@ export const QuestionForm = ({ form }) => {
               />
               <label
                 htmlFor="thumbsUp"
-                className="rounded-full bg-[#e3f0d9] peer-checked:bg-green-400"
+                className="rounded-full bg-[#e3f0d9] peer-checked:bg-green-400 hover:bg-green-400 hover:cursor-pointer"
               >
                 <ThumbsUp />
               </label>
@@ -154,7 +155,7 @@ export const QuestionForm = ({ form }) => {
               />
               <label
                 htmlFor="thumbsDown"
-                className="rounded-full bg-[#ffd5d5] peer-checked:bg-red-400"
+                className="rounded-full bg-[#ffd5d5] peer-checked:bg-red-400 hover:bg-red-400 hover:cursor-pointer"
               >
                 <ThumbsDown />
               </label>
