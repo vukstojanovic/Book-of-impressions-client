@@ -1,3 +1,5 @@
 export * from './components/CommentsPreview'
 export * from './components/ReviewFirst'
+export * from './components/SingleReviewTypeTwo'
+export * from './components/SingleReviewTypeThree'
 export * from './mockupData/comments'

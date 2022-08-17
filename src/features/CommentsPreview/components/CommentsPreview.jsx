@@ -1,49 +1,51 @@
-import { useState } from 'react'
-import { useTranslations } from 'use-intl'
+import { ReviewFirst } from '@/features/CommentsPreview'
+import { SingleReviewTypeThree } from '@/features/CommentsPreview'
+import { SingleReviewTypeTwo } from '@/features/CommentsPreview'
+import { useFormStore } from '@/stores/form'
 
-import { comments, ReviewFirst } from '@/features/CommentsPreview'
-
-export const CommentsPreview = ({ data }) => {
+export const CommentsPreview = ({ data, formType }) => {
   const firstTwo = data.slice(0, 2)
   const rest = data.slice(2)
-  const [blurClass, setBlurClass] = useState('blur-sm pointer-events-none')
-  const t = useTranslations('Home')
+  const isSuccess = useFormStore((state) => state.isSuccess)
 
-  function showAllComments() {
-    setBlurClass('')
+  function displayRightReview(review) {
+    if (formType === 'Rating') {
+      return (
+        <ReviewFirst
+          key={review.id}
+          reviewName={review.reviewName}
+          comment={review.comment}
+          rating={review.rating}
+        />
+      )
+    } else if (formType === 'Ratings') {
+      return (
+        <SingleReviewTypeTwo
+          key={review.id}
+          reviewName={review.reviewName}
+          comment={review.comment}
+          ratings={review.ratings}
+        />
+      )
+    } else if (formType === 'Answer') {
+      return (
+        <SingleReviewTypeThree
+          key={review.id}
+          reviewName={review.reviewName}
+          comment={review.comment}
+          answer={review.answer}
+        />
+      )
+    }
   }
 
   return (
     <>
-      <section>
-        {firstTwo.map((review) => (
-          <ReviewFirst
-            key={review.reviewName}
-            reviewName={review.reviewName}
-            comment={review.comment}
-            rating={review.rating}
-          />
-        ))}
-      </section>
+      <section>{firstTwo.map((review) => displayRightReview(review))}</section>
       <div className="relative">
-        <section className={`${blurClass}`}>
-          {rest.map((review) => (
-            <ReviewFirst
-              key={review.reviewName}
-              reviewName={review.reviewName}
-              comment={review.comment}
-              rating={review.rating}
-            />
-          ))}
+        <section className={isSuccess ? '' : 'blur-sm pointer-events-none select-none'}>
+          {rest.map((review) => displayRightReview(review))}
         </section>
-        {rest.length > 0 && blurClass && (
-          <button
-            onClick={showAllComments}
-            className="absolute top-[60px] left-1/2 -translate-x-2/4 w-11/12 md:w-96 py-3 bg-boiOrange hover:bg-boiOrangeHover rounded-md uppercase text-white font-medium"
-          >
-            {t('unlockReviews')}
-          </button>
-        )}
       </div>
     </>
   )

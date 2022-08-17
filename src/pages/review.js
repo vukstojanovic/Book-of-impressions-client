@@ -24,6 +24,7 @@ export default function Review() {
   const { status, isError, data, error } = useReviews('f5847e5a-0068-4424-ac39-0bc3a5e17f21')
 
   const t = useTranslations('General')
+
   const { data: form, isLoading: formIsLoading } = useFormData({
     id: 'f5847e5a-0068-4424-ac39-0bc3a5e17f21',
   })
@@ -69,7 +70,13 @@ export default function Review() {
               </div>
             )}
           </div>
-          <MainAccordion status={status} isError={isError} data={data} error={error} />
+          <MainAccordion
+            status={status}
+            isError={isError}
+            data={data}
+            error={error}
+            formType={form?.type}
+          />
         </div>
       </div>
     </div>
