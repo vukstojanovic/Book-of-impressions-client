@@ -89,13 +89,13 @@ Review.getLayout = function getLayout(page) {
 
 export async function getServerSideProps({ locale }) {
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery(['formData', '0a4a52a1-f4db-4832-9c0b-93478fa58954'], () =>
-    getFormData({ id: '0a4a52a1-f4db-4832-9c0b-93478fa58954' })
+  await queryClient.prefetchQuery(['formData', 'f5847e5a-0068-4424-ac39-0bc3a5e17f21'], () =>
+    getFormData({ id: 'f5847e5a-0068-4424-ac39-0bc3a5e17f21' })
   )
 
   await queryClient.prefetchQuery('reviews', () => {
     // here we should put dynamic id extracted from context
-    getReviews('0a4a52a1-f4db-4832-9c0b-93478fa58954')
+    getReviews('f5847e5a-0068-4424-ac39-0bc3a5e17f21')
   })
 
   return {

@@ -14,8 +14,8 @@ export const RatingStars = ({ value, onRatingChange, edit }) => {
       <ReactStars
         count={5}
         size={30}
-        value={value}
-        isHalf={true}
+        value={starValue}
+        isHalf={false}
         activeColor="#ff6900"
         color="#fbe9db"
         onChange={ratingValue}
