@@ -21,11 +21,12 @@ export default function Review() {
   // const id = router.query.id
 
   // here also we should use dynamic id which we get from props.id who send getServerSideProps
-  const { status, isError, data, error } = useReviews('0a4a52a1-f4db-4832-9c0b-93478fa58954')
+  const { status, isError, data, error } = useReviews('f5847e5a-0068-4424-ac39-0bc3a5e17f21')
 
   const t = useTranslations('General')
+
   const { data: form, isLoading: formIsLoading } = useFormData({
-    id: '0a4a52a1-f4db-4832-9c0b-93478fa58954',
+    id: 'f5847e5a-0068-4424-ac39-0bc3a5e17f21',
   })
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
@@ -69,7 +70,13 @@ export default function Review() {
               </div>
             )}
           </div>
-          <MainAccordion status={status} isError={isError} data={data} error={error} />
+          <MainAccordion
+            status={status}
+            isError={isError}
+            data={data}
+            error={error}
+            formType={form?.type}
+          />
         </div>
       </div>
     </div>
