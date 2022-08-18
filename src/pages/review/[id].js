@@ -24,21 +24,6 @@ export default function Review({ id }) {
 
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
-  const setIsLoading = useFormStore((state) => state.setIsLoading)
-  const setIsSuccess = useFormStore((state) => state.setIsSuccess)
-  const resetFormData = useFormStore((state) => state.resetFormData)
-
-  useEffect(() => {
-    if (isLoading) {
-      const timeout = setTimeout(() => {
-        resetFormData()
-        setIsLoading(false)
-        setIsSuccess(true)
-      }, 3000)
-
-      return () => clearTimeout(timeout)
-    }
-  }, [isLoading])
 
   return (
     <div className={styles.container}>

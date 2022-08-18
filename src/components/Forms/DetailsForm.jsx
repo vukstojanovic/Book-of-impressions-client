@@ -39,10 +39,6 @@ export const DetailsForm = () => {
     return () => subscription.unsubscribe()
   }, [watch])
 
-  useEffect(() => {
-    console.log(errors.reviewEmail)
-  }, [errors.reviewEmail])
-
   return (
     <div
       className="shadow-box rounded-lg grid justify-center px-5 py-9 space-y-6"
