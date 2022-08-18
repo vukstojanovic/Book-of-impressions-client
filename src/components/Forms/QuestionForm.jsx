@@ -41,7 +41,6 @@ export const QuestionForm = ({ form }) => {
 
   useEffect(() => {
     const subscription = watchLong((data) => {
-      console.log(Object.keys(data))
       const arrOfRatings = Object.keys(data)
         .filter((key) => key.includes('rating'))
         .map((k) => data[k])

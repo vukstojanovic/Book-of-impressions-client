@@ -16,35 +16,14 @@ import { getReviews, useReviews } from '@/api/getReviews'
 import { useFormData } from '@/hooks/forms/useGetFormData'
 import { getFormData } from '@/services/form'
 
-export default function Review() {
-  // const router = useRouter()
-  // const id = router.query.id
-
-  // here also we should use dynamic id which we get from props.id who send getServerSideProps
-  const { status, isError, data, error } = useReviews('ae83f657-be55-489c-8bdb-580c0e1839a6')
+export default function Review({ id }) {
+  const { status, isError, data, error } = useReviews({ id })
+  const { data: form, isLoading: formIsLoading } = useFormData({ id })
 
   const t = useTranslations('General')
 
-  const { data: form, isLoading: formIsLoading } = useFormData({
-    id: 'ae83f657-be55-489c-8bdb-580c0e1839a6',
-  })
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
-  const setIsLoading = useFormStore((state) => state.setIsLoading)
-  const setIsSuccess = useFormStore((state) => state.setIsSuccess)
-  const resetFormData = useFormStore((state) => state.resetFormData)
-
-  useEffect(() => {
-    if (isLoading) {
-      const timeout = setTimeout(() => {
-        resetFormData()
-        setIsLoading(false)
-        setIsSuccess(true)
-      }, 3000)
-
-      return () => clearTimeout(timeout)
-    }
-  }, [isLoading])
 
   return (
     <div className={styles.container}>
@@ -87,21 +66,17 @@ Review.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>
 }
 
-export async function getServerSideProps({ locale }) {
+export async function getServerSideProps({ locale, query: { id } }) {
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery(['formData', 'ae83f657-be55-489c-8bdb-580c0e1839a6'], () =>
-    getFormData({ id: 'ae83f657-be55-489c-8bdb-580c0e1839a6' })
-  )
 
-  await queryClient.prefetchQuery('reviews', () => {
-    // here we should put dynamic id extracted from context
-    getReviews('ae83f657-be55-489c-8bdb-580c0e1839a6')
-  })
+  await queryClient.prefetchQuery(['formData', id], () => getFormData({ id }))
+  await queryClient.prefetchQuery(['reviews', id], () => getReviews({ id }))
 
   return {
     props: {
-      textContent: (await import(`../../locales/${locale}.json`)).default,
+      textContent: (await import(`../../../locales/${locale}.json`)).default,
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+      id,
     },
   }
 }

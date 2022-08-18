@@ -4,8 +4,8 @@ import { SingleReviewTypeTwo } from '@/features/CommentsPreview'
 import { useFormStore } from '@/stores/form'
 
 export const CommentsPreview = ({ data, formType }) => {
-  const firstTwo = data.slice(0, 2)
-  const rest = data.slice(2)
+  const firstTwo = data?.slice(0, 2)
+  const rest = data?.slice(2)
   const isSuccess = useFormStore((state) => state.isSuccess)
 
   function displayRightReview(review) {
@@ -41,10 +41,10 @@ export const CommentsPreview = ({ data, formType }) => {
 
   return (
     <>
-      <section>{firstTwo.map((review) => displayRightReview(review))}</section>
+      <section>{firstTwo?.map((review) => displayRightReview(review))}</section>
       <div className="relative">
         <section className={isSuccess ? '' : 'blur-sm pointer-events-none select-none'}>
-          {rest.map((review) => displayRightReview(review))}
+          {rest?.map((review) => displayRightReview(review))}
         </section>
       </div>
     </>
