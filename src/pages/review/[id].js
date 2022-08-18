@@ -16,18 +16,12 @@ import { getReviews, useReviews } from '@/api/getReviews'
 import { useFormData } from '@/hooks/forms/useGetFormData'
 import { getFormData } from '@/services/form'
 
-export default function Review() {
-  // const router = useRouter()
-  // const id = router.query.id
-
-  // here also we should use dynamic id which we get from props.id who send getServerSideProps
-  const { status, isError, data, error } = useReviews('f5847e5a-0068-4424-ac39-0bc3a5e17f21')
+export default function Review({ id }) {
+  const { status, isError, data, error } = useReviews({ id })
+  const { data: form, isLoading: formIsLoading } = useFormData({ id })
 
   const t = useTranslations('General')
 
-  const { data: form, isLoading: formIsLoading } = useFormData({
-    id: 'f5847e5a-0068-4424-ac39-0bc3a5e17f21',
-  })
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
   const setIsLoading = useFormStore((state) => state.setIsLoading)
@@ -87,21 +81,17 @@ Review.getLayout = function getLayout(page) {
   return <MainLayout>{page}</MainLayout>
 }
 
-export async function getServerSideProps({ locale }) {
+export async function getServerSideProps({ locale, query: { id } }) {
   const queryClient = new QueryClient()
-  await queryClient.prefetchQuery(['formData', 'f5847e5a-0068-4424-ac39-0bc3a5e17f21'], () =>
-    getFormData({ id: 'f5847e5a-0068-4424-ac39-0bc3a5e17f21' })
-  )
 
-  await queryClient.prefetchQuery('reviews', () => {
-    // here we should put dynamic id extracted from context
-    getReviews('f5847e5a-0068-4424-ac39-0bc3a5e17f21')
-  })
+  await queryClient.prefetchQuery(['formData', id], () => getFormData({ id }))
+  await queryClient.prefetchQuery(['reviews', id], () => getReviews({ id }))
 
   return {
     props: {
-      textContent: (await import(`../../locales/${locale}.json`)).default,
+      textContent: (await import(`../../../locales/${locale}.json`)).default,
       dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
+      id,
     },
   }
 }

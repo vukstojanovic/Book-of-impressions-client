@@ -10,7 +10,7 @@ export const ConfirmSubmit = () => {
   const setIsLoading = useFormStore((state) => state.setIsLoading)
 
   const formData = useFormStore((state) => state.formData)
-  const mutateReview = usePostReview()
+  const mutateReview = usePostReview({ id: formData.formId })
 
   return (
     <div className="shadow-box flex-col flex space-y-8 justify-center pt-9 pb-16 px-6 rounded-md">
