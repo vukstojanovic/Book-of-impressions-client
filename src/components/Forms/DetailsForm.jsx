@@ -1,4 +1,3 @@
-import { useSwiper } from 'swiper/react'
 import { useTranslations } from 'use-intl'
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
@@ -8,7 +7,6 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useFormStore } from '@/stores/form'
 
 export const DetailsForm = () => {
-  const swiper = useSwiper()
   const t = useTranslations('Form')
   const formData = useFormStore((state) => state.formData)
   const setFormData = useFormStore((state) => state.setFormData)
@@ -40,10 +38,6 @@ export const DetailsForm = () => {
 
     return () => subscription.unsubscribe()
   }, [watch])
-
-  useEffect(() => {
-    console.log(errors.reviewEmail)
-  }, [errors.reviewEmail])
 
   return (
     <div

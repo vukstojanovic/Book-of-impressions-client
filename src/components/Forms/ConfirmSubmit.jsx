@@ -8,9 +8,16 @@ export const ConfirmSubmit = () => {
   const swiper = useSwiper()
   const t = useTranslations('Form')
   const setIsLoading = useFormStore((state) => state.setIsLoading)
-
+  const setIsSuccess = useFormStore((state) => state.setIsSuccess)
+  const resetFormData = useFormStore((state) => state.resetFormData)
   const formData = useFormStore((state) => state.formData)
-  const mutateReview = usePostReview()
+
+  const mutateReview = usePostReview({
+    id: formData.formId,
+    setIsLoading,
+    setIsSuccess,
+    resetFormData,
+  })
 
   return (
     <div className="shadow-box flex-col flex space-y-8 justify-center pt-9 pb-16 px-6 rounded-md">

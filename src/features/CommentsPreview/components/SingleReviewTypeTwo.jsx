@@ -4,7 +4,9 @@ import { ReviewWrapper } from '@/components/ReviewWrapper'
 export const SingleReviewTypeTwo = ({ reviewName, ratings, comment }) => {
   return (
     <ReviewWrapper>
-      <h3 className="text-lg mb-1.5 font-medium uppercase">{reviewName}</h3>
+      <h3 className="text-lg mb-1.5 font-medium uppercase">
+        {reviewName ? reviewName : 'Anonimous'}
+      </h3>
       <p>{comment || 'No comment'}</p>
       {ratings.map((review, index) => {
         return (
