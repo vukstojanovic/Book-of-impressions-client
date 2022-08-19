@@ -1,3 +1,5 @@
+import { appConfig } from '@/config/appConfig'
+
 export const CONSTS = {
   NavbarLinks: [
     {
@@ -22,7 +24,7 @@ export const CONSTS = {
     },
     {
       key: 'navbar:signUp',
-      href: 'https://boi-wapp.vercel.app/',
+      href: appConfig.wappUrl,
       type: 'button',
     },
   ],
