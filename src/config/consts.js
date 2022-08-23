@@ -24,7 +24,7 @@ export const CONSTS = {
     },
     {
       key: 'navbar:signUp',
-      href: appConfig.wappUrl,
+      href: appConfig.siteUrl,
       type: 'button',
     },
   ],
