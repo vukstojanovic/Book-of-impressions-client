@@ -30,10 +30,7 @@ export const AboutCompany = ({ company }) => {
       </div>
       {toggle && (
         <div className="bg-[#04375B] px-6 pb-6">
-          <p className="text-white">
-            {/*Company Description*/}
-            {companyDescription}
-          </p>
+          <p className="text-white">{companyDescription}</p>
         </div>
       )}
     </div>
