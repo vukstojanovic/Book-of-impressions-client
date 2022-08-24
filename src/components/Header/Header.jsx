@@ -34,7 +34,7 @@ export const Header = () => {
     items.map((item) => {
       return (
         <li key={item.key} className="px-3 py-2 font-semibold text-white" onClick={item.onclick}>
-          <Link href={item.href || '/'}>
+          <Link href={item.href || ''}>
             <a
               className={`${
                 item.type !== 'button'
