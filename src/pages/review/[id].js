@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
 import { dehydrate, QueryClient } from 'react-query'
 import { useTranslations } from 'next-intl'
@@ -12,10 +11,11 @@ import { MainAccordion } from '@/features/Accordion'
 import { AboutCompany } from '@/features/AboutCompanySection'
 import { Success } from '@/features/Success'
 import { useFormStore } from '@/stores/form'
+import { useModalStore } from '@/stores/modal'
 import { getReviews, useReviews } from '@/api/getReviews'
 import { useFormData } from '@/hooks/forms/useGetFormData'
 import { getFormData } from '@/services/form'
-
+import { Portal } from '@/components/Portal'
 export default function Review({ id }) {
   const { status, isError, data, error } = useReviews({ id })
   const { data: form, isLoading: formIsLoading } = useFormData({ id })
@@ -24,6 +24,8 @@ export default function Review({ id }) {
 
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
+
+  const isModalOpen = useModalStore((state) => state.isModalOpen)
 
   return (
     <div className={styles.container}>
@@ -49,6 +51,7 @@ export default function Review({ id }) {
               </div>
             )}
           </div>
+          {isModalOpen && <Portal />}
           <MainAccordion
             status={status}
             isError={isError}

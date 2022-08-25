@@ -2,22 +2,32 @@ import { useTranslations } from 'next-intl'
 import { useSwiper } from 'swiper/react'
 
 import { useFormStore } from '@/stores/form'
-import { usePostReview } from '@/hooks/forms/usePostReview'
+import { useModalStore } from '@/stores/modal'
+import { usePostReview } from '@/hooks/forms/usePostReview' // import { useFormData } from '@/hooks/forms/useGetFormData'
 
-export const ConfirmSubmit = () => {
+export const ConfirmSubmit = ({ formType }) => {
   const swiper = useSwiper()
   const t = useTranslations('Form')
+
   const setIsLoading = useFormStore((state) => state.setIsLoading)
   const setIsSuccess = useFormStore((state) => state.setIsSuccess)
   const resetFormData = useFormStore((state) => state.resetFormData)
   const formData = useFormStore((state) => state.formData)
 
+  const setIsModalOpen = useModalStore((state) => state.setIsModalOpen)
+
   const mutateReview = usePostReview({
     id: formData.formId,
     setIsLoading,
     setIsSuccess,
+    setIsModalOpen,
     resetFormData,
+    formType,
   })
+
+  const sessionIdAnswer = localStorage.getItem('sessionIdAnswer')
+  const sessionIdRating = localStorage.getItem('sessionIdRating')
+  const sessionIdRatings = localStorage.getItem('sessionIdRatings')
 
   return (
     <div className="shadow-box flex-col flex space-y-8 justify-center pt-9 pb-16 px-6 rounded-md">
@@ -30,7 +40,25 @@ export const ConfirmSubmit = () => {
         onSubmit={(e) => {
           e.preventDefault()
           setIsLoading(true)
-          mutateReview.mutate({ data: formData })
+
+          let currentFormSessionId
+
+          if (!sessionIdAnswer || !sessionIdRating || !sessionIdRatings) {
+            currentFormSessionId = null
+          }
+          if (formType === 'Answer' && sessionIdAnswer) {
+            currentFormSessionId = [sessionIdAnswer]
+          }
+          if (formType === 'Rating' && sessionIdRating) {
+            currentFormSessionId = [sessionIdRating]
+          }
+          if (formType === 'Ratings' && sessionIdRatings) {
+            currentFormSessionId = [sessionIdRatings]
+          }
+
+          mutateReview.mutate({
+            data: { ...formData, sessionIds: currentFormSessionId },
+          })
         }}
       >
         <button
