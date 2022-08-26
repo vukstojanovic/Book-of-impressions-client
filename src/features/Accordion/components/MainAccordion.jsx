@@ -21,7 +21,7 @@ export const MainAccordion = ({ status, isError, data, error, formType }) => {
         </div>
       </div>
       <div className="px-6">
-        {innerAccordion && <CommentsPreview data={data} formType={formType} />}
+        {innerAccordion && <CommentsPreview data={data[0]} formType={formType} />}
       </div>
     </>
   )
