@@ -8,7 +8,7 @@ export const SingleReviewTypeTwo = ({ reviewName, ratings, comment }) => {
         {reviewName ? reviewName : 'Anonimous'}
       </h3>
       <p>{comment || 'No comment'}</p>
-      {ratings.map((review, index) => {
+      {ratings?.map((review, index) => {
         return (
           <div key={`review-second-${index}`} className="my-2">
             <RatingStars value={review} edit={false} />
