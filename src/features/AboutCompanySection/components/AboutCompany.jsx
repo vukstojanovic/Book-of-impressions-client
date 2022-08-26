@@ -13,13 +13,13 @@ export const AboutCompany = ({ company }) => {
 
   const t = useTranslations('Home')
 
-  const companyDescription = company?.description.filter((item) => item.key === locale)[0].text
+  const companyDescription = company?.description?.filter((item) => item.key === locale)[0]?.text
 
   return (
     <div className="bg-[#04375B] mt-1 lg:mt-20">
       <div className="flex justify-between items-center p-6 text-white">
         <div className="flex items-center">
-          <Image src={company.logo} alt="company logo" width={50} height={50} />
+          <Image src={company.logo || '/'} alt="company logo" width={50} height={50} />
           <p className="ml-2">
             {t('about')} {company?.name}
           </p>
@@ -30,10 +30,7 @@ export const AboutCompany = ({ company }) => {
       </div>
       {toggle && (
         <div className="bg-[#04375B] px-6 pb-6">
-          <p className="text-white">
-            {/*Company Description*/}
-            {companyDescription}
-          </p>
+          <p className="text-white">{companyDescription}</p>
         </div>
       )}
     </div>
