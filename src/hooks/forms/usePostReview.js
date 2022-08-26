@@ -29,7 +29,8 @@ export const usePostReview = ({
       queryClient.invalidateQueries(['review', id])
     },
     onError: (error) => {
-      if (error.response.data.message === 'Already rated! Try again in one hour') {
+      console.log(error)
+      if (error.response.data.statusCode === 400) {
         setIsModalOpen(true)
       }
       setIsLoading(false)
