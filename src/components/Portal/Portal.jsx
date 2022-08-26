@@ -14,5 +14,3 @@ export const Portal = () => {
 
   return mounted ? createPortal(<ModalError />, document.querySelector('#modal')) : null
 }
-
-// export default Portal
