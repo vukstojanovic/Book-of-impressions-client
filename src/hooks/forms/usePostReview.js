@@ -29,7 +29,6 @@ export const usePostReview = ({
       queryClient.invalidateQueries(['review', id])
     },
     onError: (error) => {
-      console.log(error)
       if (error.response.data.statusCode === 400) {
         setIsModalOpen(true)
       }
