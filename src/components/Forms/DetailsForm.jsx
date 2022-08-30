@@ -52,14 +52,14 @@ export const DetailsForm = () => {
           type="text"
           name="reviewName"
           placeholder={t('namePlaceholder')}
-          className="bg-[#f5f5f5] rounded-md p-[11px] bg-none outline-none tracking-[.65px]"
+          className="bg-[#f5f5f5] rounded-md p-[11px] bg-none outline-none tracking-[.65px] border-[1px] focus:border-[#ff6900]"
           {...register('reviewName')}
         />
         <input
           type="text"
           name="reviewEmail"
           placeholder={t('emailPlaceholder')}
-          className="bg-[#f5f5f5] rounded-md p-[11px] bg-none outline-none tracking-[.65px]"
+          className="bg-[#f5f5f5] rounded-md p-[11px] bg-none outline-none tracking-[.65px] border-[1px] focus:border-[#ff6900]"
           {...register('reviewEmail')}
         />
         <p className="px-4 text-sm">{errors.reviewEmail && errors.reviewEmail.message}&nbsp;</p>

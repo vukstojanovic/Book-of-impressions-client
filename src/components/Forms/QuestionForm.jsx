@@ -81,9 +81,10 @@ export const QuestionForm = ({ form }) => {
             name="comment"
             id="comment"
             cols="30"
-            rows="1"
+            rows="3"
             placeholder={t('questionPlaceholder')}
-            className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
+            // className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
+            className="bg-[#f5f5f5] rounded-md py-2 px-1 bg-none outline-none tracking-[.65px] border-[1px] focus:border-[#ff6900]"
             {...registerShort('comment')}
           />
         </form>
@@ -112,12 +113,15 @@ export const QuestionForm = ({ form }) => {
               </div>
             )
           })}
-          <input
+          <textarea
             name="comment"
             id="comment"
+            cols="30"
+            rows="3"
             placeholder={t('questionPlaceholder')}
-            className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
-            {...registerLong('comment')}
+            // className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
+            className="bg-[#f5f5f5] rounded-md py-2 px-1 bg-none outline-none tracking-[.65px] border-[1px] focus:border-[#ff6900]"
+            {...registerShort('comment')}
           />
         </form>
       )
