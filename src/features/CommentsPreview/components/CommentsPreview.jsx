@@ -34,7 +34,6 @@ export const CommentsPreview = ({ data, formType }) => {
         <SingleReviewTypeThree
           key={review.id}
           reviewName={review.reviewName}
-          comment={review.comment}
           createdDate={review.createdDate}
           answer={review.answer}
         />
