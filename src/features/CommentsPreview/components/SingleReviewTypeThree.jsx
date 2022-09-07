@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import * as SvgSprite from '@/assets/SvgSprite'
 import { ReviewWrapper } from '@/components/ReviewWrapper'
 
-export const SingleReviewTypeThree = ({ reviewName, comment, answer, createdDate }) => {
+export const SingleReviewTypeThree = ({ reviewName, answer, createdDate }) => {
   return (
     <ReviewWrapper>
       <div className="flex justify-between items-center">
