@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import { dehydrate, QueryClient } from 'react-query'
 import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/router'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 import { MainLayout } from '@/components/Layout'
 import { Loader } from '@/components/Loader'
@@ -16,11 +19,18 @@ import { getReviews, useReviews } from '@/api/getReviews'
 import { useFormData } from '@/hooks/forms/useGetFormData'
 import { getFormData } from '@/services/form'
 import { Portal } from '@/components/Portal'
+import 'dayjs/locale/sr'
+
 export default function Review({ id }) {
   const { status, isError, data, error } = useReviews({ id })
   const { data: form, isLoading: formIsLoading } = useFormData({ id })
 
   const t = useTranslations('General')
+  const router = useRouter()
+  const { locale } = router
+
+  dayjs.locale(locale)
+  dayjs.extend(relativeTime)
 
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
