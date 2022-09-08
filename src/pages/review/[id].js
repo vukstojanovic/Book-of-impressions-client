@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { dehydrate, QueryClient } from 'react-query'
 import { useTranslations } from 'next-intl'
+import { getCookie } from 'cookies-next'
+import { useEffect } from 'react'
 
 import { MainLayout } from '@/components/Layout'
 import { Loader } from '@/components/Loader'
@@ -11,21 +13,46 @@ import { MainAccordion } from '@/features/Accordion'
 import { AboutCompany } from '@/features/AboutCompanySection'
 import { Success } from '@/features/Success'
 import { useFormStore } from '@/stores/form'
-import { useModalStore } from '@/stores/modal'
 import { getReviews, useReviews } from '@/api/getReviews'
 import { useFormData } from '@/hooks/forms/useGetFormData'
 import { getFormData } from '@/services/form'
-import { Portal } from '@/components/Portal'
+import { usePostSessionId } from '@/hooks/sessionId/usePostSessionId'
+import { ErrorMessage } from '@/components/ErrorMessage'
+
 export default function Review({ id }) {
   const { status, isError, data, error } = useReviews({ id })
   const { data: form, isLoading: formIsLoading } = useFormData({ id })
+
+  const sessionIdRating = getCookie('sessionIdRating')
+  const sessionIdRatings = getCookie('sessionIdRatings')
+  const sessionIdAnswer = getCookie('sessionIdAnswer')
+
+  const { mutate: mutateSessionId, isError: sessionError } = usePostSessionId()
+
+  useEffect(() => {
+    let currentSessionId
+
+    if (!sessionIdRating || !sessionIdRatings || !sessionIdAnswer) {
+      currentSessionId = []
+    }
+
+    if (form.type === 'Rating' && sessionIdRating) {
+      currentSessionId = [sessionIdRating]
+    }
+    if (form.type === 'Ratings' && sessionIdRatings) {
+      currentSessionId = [sessionIdRatings]
+    }
+    if (form.type === 'Answer' && sessionIdAnswer) {
+      currentSessionId = [sessionIdAnswer]
+    }
+
+    mutateSessionId({ formId: id, sessionIds: currentSessionId })
+  }, [])
 
   const t = useTranslations('General')
 
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
-
-  const isModalOpen = useModalStore((state) => state.isModalOpen)
 
   return (
     <div className={styles.container}>
@@ -36,7 +63,8 @@ export default function Review({ id }) {
       <div className="flex justify-center w-screen">
         <div className="w-full max-w-2xl pt-16 overflow-hidden">
           {!formIsLoading && <AboutCompany company={form?.company} />}
-          {!isLoading && !isSuccess && <Carousel form={form} />}
+          {sessionError && <ErrorMessage />}
+          {!isSuccess && !sessionError && <Carousel form={form} />}
           <div className="mx-4 mb-8">
             {isLoading && (
               <div className="flex justify-center items-center py-6">
@@ -51,7 +79,6 @@ export default function Review({ id }) {
               </div>
             )}
           </div>
-          {isModalOpen && <Portal />}
           <MainAccordion
             status={status}
             isError={isError}

@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl'
 import { useSwiper } from 'swiper/react'
+import { getCookie } from 'cookies-next'
 
 import { useFormStore } from '@/stores/form'
-import { useModalStore } from '@/stores/modal'
 import { usePostReview } from '@/hooks/forms/usePostReview' // import { useFormData } from '@/hooks/forms/useGetFormData'
 
 export const ConfirmSubmit = ({ formType }) => {
@@ -14,20 +14,17 @@ export const ConfirmSubmit = ({ formType }) => {
   const resetFormData = useFormStore((state) => state.resetFormData)
   const formData = useFormStore((state) => state.formData)
 
-  const setIsModalOpen = useModalStore((state) => state.setIsModalOpen)
-
   const mutateReview = usePostReview({
     id: formData.formId,
     setIsLoading,
     setIsSuccess,
-    setIsModalOpen,
     resetFormData,
     formType,
   })
 
-  const sessionIdAnswer = localStorage.getItem('sessionIdAnswer')
-  const sessionIdRating = localStorage.getItem('sessionIdRating')
-  const sessionIdRatings = localStorage.getItem('sessionIdRatings')
+  const sessionIdAnswer = getCookie('sessionIdAnswer')
+  const sessionIdRating = getCookie('sessionIdRating')
+  const sessionIdRatings = getCookie('sessionIdRatings')
 
   return (
     <div className="shadow-box flex-col flex space-y-8 justify-center pt-9 pb-16 px-6 rounded-md">
