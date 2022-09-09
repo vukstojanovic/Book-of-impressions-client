@@ -22,10 +22,6 @@ export const ConfirmSubmit = ({ formType }) => {
     formType,
   })
 
-  const sessionIdAnswer = getCookie('sessionIdAnswer')
-  const sessionIdRating = getCookie('sessionIdRating')
-  const sessionIdRatings = getCookie('sessionIdRatings')
-
   return (
     <div className="shadow-box flex-col flex space-y-8 justify-center pt-9 pb-16 px-6 rounded-md">
       <div className="px-3 space-y-3">
@@ -36,25 +32,9 @@ export const ConfirmSubmit = ({ formType }) => {
         className="flex space-x-3 w-full"
         onSubmit={(e) => {
           e.preventDefault()
-          setIsLoading(true)
-
-          let currentFormSessionId
-
-          if (!sessionIdAnswer || !sessionIdRating || !sessionIdRatings) {
-            currentFormSessionId = null
-          }
-          if (formType === 'Answer' && sessionIdAnswer) {
-            currentFormSessionId = [sessionIdAnswer]
-          }
-          if (formType === 'Rating' && sessionIdRating) {
-            currentFormSessionId = [sessionIdRating]
-          }
-          if (formType === 'Ratings' && sessionIdRatings) {
-            currentFormSessionId = [sessionIdRatings]
-          }
 
           mutateReview.mutate({
-            data: { ...formData, sessionIds: currentFormSessionId },
+            data: { ...formData, sessionIds: null },
           })
         }}
       >

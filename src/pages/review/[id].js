@@ -23,11 +23,15 @@ export default function Review({ id }) {
   const { status, isError, data, error } = useReviews({ id })
   const { data: form, isLoading: formIsLoading } = useFormData({ id })
 
-  const sessionIdRating = getCookie('sessionIdRating')
-  const sessionIdRatings = getCookie('sessionIdRatings')
-  const sessionIdAnswer = getCookie('sessionIdAnswer')
+  const sessionIdRating = getCookie(id)
+  const sessionIdRatings = getCookie(id)
+  const sessionIdAnswer = getCookie(id)
 
-  const { mutate: mutateSessionId, isError: sessionError } = usePostSessionId()
+  const {
+    mutate: mutateSessionId,
+    isError: sessionError,
+    isLoading: sessionLoading,
+  } = usePostSessionId()
 
   useEffect(() => {
     let currentSessionId
@@ -53,6 +57,10 @@ export default function Review({ id }) {
 
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
+
+  if (sessionLoading) {
+    return <p>Loading...</p>
+  }
 
   return (
     <div className={styles.container}>

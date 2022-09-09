@@ -70,5 +70,8 @@
   },
   "QuestionForm": {
     "questionPlaceholder": "Unesite odgovor ovde"
+  },
+  "ErrorMessage": {
+    "errorMessage": "Vec ste poslali ovaj tip forme jednom, molimo pokusajte opet za 1 sat!"
   }
 }

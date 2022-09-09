@@ -7,28 +7,22 @@ export const usePostReview = ({ id, setIsLoading, setIsSuccess, resetFormData, f
   const queryClient = useQueryClient()
   return useMutation({
     onSuccess: (data) => {
+      setIsLoading(true)
       if (formType === 'Answer' && !getCookie('sessionIdAnswer')) {
-        setCookie('sessionIdAnswer', data[1].session)
+        setCookie(id, data[1].session)
       }
       if (formType === 'Rating' && !getCookie('sessionIdRating')) {
-        setCookie('sessionIdRating', data[1].session)
+        setCookie(id, data[1].session)
       }
       if (formType === 'Ratings' && !getCookie('sessionIdRatings')) {
-        setCookie('sessionIdRatings', data[1].session)
+        setCookie(id, data[1].session)
       }
 
-      setIsLoading(false)
       setIsSuccess(true)
-      resetFormData()
       queryClient.invalidateQueries(['review', id])
     },
-    onError: (error) => {
-      if (error.response.data.statusCode === 400) {
-        console.log('vec ste submitovali taj tip forme, probajte za sat vremena')
-      }
-      setIsLoading(false)
-    },
     onSettled: () => {
+      setIsLoading(false)
       resetFormData()
     },
     mutationFn: postFormData,
