@@ -15,6 +15,7 @@ export const CommentsPreview = ({ data, formType }) => {
           key={review.id}
           reviewName={review.reviewName}
           comment={review.comment}
+          createdDate={review.createdDate}
           rating={review.rating}
         />
       )
@@ -24,6 +25,7 @@ export const CommentsPreview = ({ data, formType }) => {
           key={review.id}
           reviewName={review.reviewName}
           comment={review.comment}
+          createdDate={review.createdDate}
           ratings={review.ratings}
         />
       )
@@ -32,7 +34,7 @@ export const CommentsPreview = ({ data, formType }) => {
         <SingleReviewTypeThree
           key={review.id}
           reviewName={review.reviewName}
-          comment={review.comment}
+          createdDate={review.createdDate}
           answer={review.answer}
         />
       )
