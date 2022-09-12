@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { dehydrate, QueryClient } from 'react-query'
 import { useTranslations } from 'next-intl'
+import { getCookie } from 'cookies-next'
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -14,16 +16,47 @@ import { MainAccordion } from '@/features/Accordion'
 import { AboutCompany } from '@/features/AboutCompanySection'
 import { Success } from '@/features/Success'
 import { useFormStore } from '@/stores/form'
-import { useModalStore } from '@/stores/modal'
 import { getReviews, useReviews } from '@/api/getReviews'
 import { useFormData } from '@/hooks/forms/useGetFormData'
 import { getFormData } from '@/services/form'
+import { usePostSessionId } from '@/hooks/sessionId/usePostSessionId'
+import { ErrorMessage } from '@/components/ErrorMessage'
 import { Portal } from '@/components/Portal'
 import 'dayjs/locale/sr'
 
 export default function Review({ id }) {
   const { status, isError, data, error } = useReviews({ id })
   const { data: form, isLoading: formIsLoading } = useFormData({ id })
+
+  const sessionIdRating = getCookie(id)
+  const sessionIdRatings = getCookie(id)
+  const sessionIdAnswer = getCookie(id)
+
+  const {
+    mutate: mutateSessionId,
+    isError: sessionError,
+    isLoading: sessionLoading,
+  } = usePostSessionId()
+
+  useEffect(() => {
+    let currentSessionId
+
+    if (!sessionIdRating || !sessionIdRatings || !sessionIdAnswer) {
+      currentSessionId = []
+    }
+
+    if (form.type === 'Rating' && sessionIdRating) {
+      currentSessionId = [sessionIdRating]
+    }
+    if (form.type === 'Ratings' && sessionIdRatings) {
+      currentSessionId = [sessionIdRatings]
+    }
+    if (form.type === 'Answer' && sessionIdAnswer) {
+      currentSessionId = [sessionIdAnswer]
+    }
+
+    mutateSessionId({ formId: id, sessionIds: currentSessionId })
+  }, [])
 
   const t = useTranslations('General')
   const router = useRouter()
@@ -35,7 +68,9 @@ export default function Review({ id }) {
   const isLoading = useFormStore((state) => state.isLoading)
   const isSuccess = useFormStore((state) => state.isSuccess)
 
-  const isModalOpen = useModalStore((state) => state.isModalOpen)
+  if (sessionLoading) {
+    return <p>Loading...</p>
+  }
 
   return (
     <div className={styles.container}>
@@ -46,7 +81,8 @@ export default function Review({ id }) {
       <div className="flex justify-center w-screen">
         <div className="w-full max-w-2xl pt-16 overflow-hidden">
           {!formIsLoading && <AboutCompany company={form?.company} />}
-          {!isLoading && !isSuccess && <Carousel form={form} />}
+          {sessionError && <ErrorMessage />}
+          {!isSuccess && !sessionError && <Carousel form={form} />}
           <div className="mx-4 mb-8">
             {isLoading && (
               <div className="flex justify-center items-center py-6">
@@ -61,7 +97,6 @@ export default function Review({ id }) {
               </div>
             )}
           </div>
-          {isModalOpen && <Portal />}
           <MainAccordion
             status={status}
             isError={isError}

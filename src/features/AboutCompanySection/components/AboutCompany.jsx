@@ -17,14 +17,21 @@ export const AboutCompany = ({ company }) => {
 
   return (
     <div className="bg-[#04375B] mt-1 lg:mt-20">
-      <div className="flex justify-between items-center p-6 text-white">
+      <div
+        className="flex justify-between items-center p-6 text-white"
+        onClick={() => setToggle(!toggle)}
+      >
         <div className="flex items-center">
-          <Image src={company.logo || '/'} alt="company logo" width={50} height={50} />
+          {company?.logo ? (
+            <Image src={company.logo || '/'} alt="company logo" width={50} height={50} />
+          ) : (
+            <div className="w-[50px] h-[50px]"></div>
+          )}
           <p className="ml-2">
             {t('about')} {company?.name}
           </p>
         </div>
-        <div className="flex items-center cursor-pointer" onClick={() => setToggle(!toggle)}>
+        <div className="flex items-center cursor-pointer">
           {toggle ? <IoIosArrowUp className="ml-2" /> : <IoIosArrowDown className="ml-2" />}
         </div>
       </div>

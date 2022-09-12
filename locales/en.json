@@ -70,5 +70,8 @@
   },
   "QuestionForm": {
     "questionPlaceholder": "Enter text here"
+  },
+  "ErrorMessage": {
+    "errorMessage": "You have already submitted this type of form, please try again in 1 hour!"
   }
 }
