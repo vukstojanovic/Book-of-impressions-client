@@ -17,6 +17,7 @@ export const DetailsForm = () => {
     register,
     watch,
     formState: { errors },
+    setValue,
   } = useForm({
     defaultValues: {
       reviewName: formData.reviewName,
@@ -38,6 +39,10 @@ export const DetailsForm = () => {
 
     return () => subscription.unsubscribe()
   }, [watch])
+
+  useEffect(() => {
+    if (!formData.reviewEmail || errors.reviewEmail) setValue('contact', false)
+  }, [formData.reviewEmail, errors.reviewEmail])
 
   return (
     <div
@@ -69,7 +74,7 @@ export const DetailsForm = () => {
             name="contact-me"
             className="mr-1 mt-1 w-[18px] h-[18px] tracking-[.65px]"
             {...register('contact')}
-            disabled={!formData.reviewName && (!formData.reviewEmail || errors.reviewEmail)}
+            disabled={!formData.reviewEmail || errors.reviewEmail}
           />
           {t('contactMe')}
         </label>

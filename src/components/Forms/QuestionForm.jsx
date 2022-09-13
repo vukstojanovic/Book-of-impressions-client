@@ -28,7 +28,7 @@ export const QuestionForm = ({ form }) => {
   } = useForm({ defaultValues: { comment: formData?.comment } })
 
   const { register: registerYesNo, watch: watchYesNo } = useForm({
-    defaultValues: { answer: formData?.answer },
+    defaultValues: { answer: String(formData?.answer) },
   })
 
   useEffect(() => {
@@ -62,10 +62,7 @@ export const QuestionForm = ({ form }) => {
   switch (form.type) {
     case 'Rating':
       return (
-        <form
-          className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-3"
-          // onSubmit={handleSubmitShort(submitDataShort)}
-        >
+        <form className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-3">
           <div className="space-y-2">
             <QuestionText question={form.questions[0]} />
             <Controller
@@ -83,7 +80,6 @@ export const QuestionForm = ({ form }) => {
             cols="30"
             rows="3"
             placeholder={t('questionPlaceholder')}
-            // className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
             className="bg-[#f5f5f5] rounded-md py-2 px-1 bg-none outline-none tracking-[.65px] border-[1px] focus:border-[#ff6900]"
             {...registerShort('comment')}
           />
@@ -91,10 +87,7 @@ export const QuestionForm = ({ form }) => {
       )
     case 'Ratings':
       return (
-        <form
-          className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-4"
-          // onSubmit={handleSubmitLong(submitDataLong)}
-        >
+        <form className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-20 px-9 space-y-4">
           {form.questions.map((question, i) => {
             if (i > 2) {
               return
@@ -119,18 +112,14 @@ export const QuestionForm = ({ form }) => {
             cols="30"
             rows="3"
             placeholder={t('questionPlaceholder')}
-            // className="border-b-[1px] border-b-[#e3e3e3] outline-none py-2 px-1"
             className="bg-[#f5f5f5] rounded-md py-2 px-1 bg-none outline-none tracking-[.65px] border-[1px] focus:border-[#ff6900]"
-            {...registerShort('comment')}
+            {...registerLong('comment')}
           />
         </form>
       )
     case 'Answer':
       return (
-        <form
-          className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-[70px] px-9"
-          // onSubmit={handleSubmitYesNo(submitDataYesNo)}
-        >
+        <form className="shadow-box grid rounded-lg justify-center w-full pt-9 pb-[70px] px-9">
           <QuestionText question={form.questions[0]} />
           <div className="flex space-x-7 justify-center pt-14 ">
             <div className="flex">
