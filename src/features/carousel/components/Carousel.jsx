@@ -22,6 +22,7 @@ export const Carousel = ({ form }) => {
   const isThirdNextAllowed = Object.hasOwn(formData, 'answer')
   const allowsSliding = isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed
   const allowsSlidingClass = allowsSliding ? '' : 'opacity-50 hover:opacity-50 pointer-events-none'
+
   return (
     <Swiper
       modules={[Keyboard, Navigation, Pagination, Scrollbar, A11y]}
