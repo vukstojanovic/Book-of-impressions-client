@@ -6,12 +6,12 @@ import { ReviewWrapper } from '@/components/ReviewWrapper'
 export const SingleReviewTypeThree = ({ reviewName, answer, createdDate }) => {
   return (
     <ReviewWrapper>
-      <div className="flex justify-between items-center">
-        <h3 className="w-[30%] text-lg mb-1.5 font-medium uppercase break-words px-2">
+      <div>
+        <h3 className="text-lg mb-1.5 font-medium uppercase">
           {reviewName ? reviewName : 'Anonimous'}
         </h3>
-        <p className="w-[50%] text-center break-words">{dayjs(createdDate).fromNow()}</p>
-        <div className="w-[20%] flex justify-end">
+        <span className="text-gray-400 text-sm">{dayjs(createdDate).fromNow()}</span>
+        <div className="pt-2">
           {answer ? <SvgSprite.ThumbsUpRounded /> : <SvgSprite.ThumbsDownRounded />}
         </div>
       </div>
