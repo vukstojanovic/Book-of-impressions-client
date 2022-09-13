@@ -22,14 +22,14 @@ export const LanguagePicker = () => {
   })
 
   return (
-    <div ref={ref} className="">
+    <div ref={ref}>
       <div
         className="flex items-center mx-3 relative cursor-pointer"
         onClick={() => {
           setOpened(!opened)
         }}
       >
-        <div className="w-6 ">
+        <div className="w-6">
           <Image
             src={selectedLocale.flag}
             width={640}
