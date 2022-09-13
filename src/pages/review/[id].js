@@ -21,7 +21,6 @@ import { useFormData } from '@/hooks/forms/useGetFormData'
 import { getFormData } from '@/services/form'
 import { usePostSessionId } from '@/hooks/sessionId/usePostSessionId'
 import { ErrorMessage } from '@/components/ErrorMessage'
-import { Portal } from '@/components/Portal'
 import 'dayjs/locale/sr'
 
 export default function Review({ id }) {
