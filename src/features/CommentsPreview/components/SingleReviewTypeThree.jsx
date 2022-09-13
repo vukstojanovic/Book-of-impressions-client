@@ -11,7 +11,7 @@ export const SingleReviewTypeThree = ({ reviewName, answer, createdDate }) => {
           {reviewName ? reviewName : 'Anonimous'}
         </h3>
         <span className="text-gray-400 text-sm">{dayjs(createdDate).fromNow()}</span>
-        <div className="pt-2">
+        <div className="pt-3">
           {answer ? <SvgSprite.ThumbsUpRounded /> : <SvgSprite.ThumbsDownRounded />}
         </div>
       </div>
