@@ -14,7 +14,7 @@ const useFormStore = create((set) => ({
     set(() => ({
       formData: { formId: '', reviewName: '', comment: '', reviewEmail: '', contact: false },
     })),
-  isLoading: false,
+  isLoading: true,
   isSuccess: false,
   setIsLoading: (data) => set(() => ({ isLoading: data })),
   setIsSuccess: (data) => set(() => ({ isSuccess: data })),

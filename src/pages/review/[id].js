@@ -22,7 +22,6 @@ import { getFormData } from '@/services/form'
 import { usePostSessionId } from '@/hooks/sessionId/usePostSessionId'
 import { ErrorMessage } from '@/components/ErrorMessage'
 import 'dayjs/locale/sr'
-
 export default function Review({ id }) {
   const { status, isError, data, error } = useReviews({ id })
   const { data: form, isLoading: formIsLoading } = useFormData({ id })
@@ -31,11 +30,15 @@ export default function Review({ id }) {
   const sessionIdRatings = getCookie(id)
   const sessionIdAnswer = getCookie(id)
 
+  const isLoading = useFormStore((state) => state.isLoading)
+  const isSuccess = useFormStore((state) => state.isSuccess)
+  const setIsLoading = useFormStore((state) => state.setIsLoading)
+
   const {
     mutate: mutateSessionId,
     isError: sessionError,
     isLoading: sessionLoading,
-  } = usePostSessionId()
+  } = usePostSessionId({ setIsLoading })
 
   useEffect(() => {
     let currentSessionId
@@ -64,13 +67,6 @@ export default function Review({ id }) {
   dayjs.locale(locale)
   dayjs.extend(relativeTime)
 
-  const isLoading = useFormStore((state) => state.isLoading)
-  const isSuccess = useFormStore((state) => state.isSuccess)
-
-  if (sessionLoading) {
-    return <p>Loading...</p>
-  }
-
   return (
     <div className={styles.container}>
       <Head>
@@ -81,7 +77,10 @@ export default function Review({ id }) {
         <div className="w-full max-w-2xl pt-16 overflow-hidden">
           {!formIsLoading && <AboutCompany company={form?.company} />}
           {sessionError && <ErrorMessage />}
-          {!isSuccess && !sessionError && <Carousel form={form} />}
+          {isLoading ||
+            (!isSuccess && !sessionError && !sessionLoading && !formIsLoading && (
+              <Carousel form={form} />
+            ))}
           <div className="mx-4 mb-8">
             {isLoading && (
               <div className="flex justify-center items-center py-6">

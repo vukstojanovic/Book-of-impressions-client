@@ -7,7 +7,6 @@ export const usePostReview = ({ id, setIsLoading, setIsSuccess, resetFormData, f
   const queryClient = useQueryClient()
   return useMutation({
     onSuccess: (data) => {
-      setIsLoading(true)
       if (formType === 'Answer' && !getCookie('sessionIdAnswer')) {
         setCookie(id, data[1].session)
       }

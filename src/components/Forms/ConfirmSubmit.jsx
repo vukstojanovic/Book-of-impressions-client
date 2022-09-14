@@ -32,7 +32,7 @@ export const ConfirmSubmit = ({ formType }) => {
         className="flex space-x-3 w-full"
         onSubmit={(e) => {
           e.preventDefault()
-
+          setIsLoading(true)
           mutateReview.mutate({
             data: { ...formData, sessionIds: null },
           })
