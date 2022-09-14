@@ -22,9 +22,9 @@ export const LanguagePicker = () => {
   })
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="relative">
       <div
-        className="flex items-center mx-3 relative cursor-pointer"
+        className="flex items-center mx-3 cursor-pointer"
         onClick={() => {
           setOpened(!opened)
         }}
