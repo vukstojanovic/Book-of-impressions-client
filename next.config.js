@@ -11,6 +11,7 @@ const nextConfig = {
       'lorempixel.com',
       'boi-files.s3.eu-central-1.amazonaws.com',
       'boi-files.s3.amazonaws.com',
+      'book-of-impressions.s3.eu-central-1.amazonaws.com',
     ],
   },
 }
