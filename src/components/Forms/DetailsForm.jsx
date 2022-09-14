@@ -19,6 +19,7 @@ export const DetailsForm = () => {
     watch,
     formState: { errors },
     setValue,
+    trigger,
   } = useForm({
     defaultValues: {
       reviewName: formData.reviewName,
@@ -28,6 +29,10 @@ export const DetailsForm = () => {
     resolver: yupResolver(validationSchema),
     mode: 'onChange',
   })
+
+  useEffect(() => {
+    trigger('reviewEmail')
+  }, [])
 
   useEffect(() => {
     const subscription = watch((data) => {

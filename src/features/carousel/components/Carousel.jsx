@@ -1,5 +1,6 @@
 import { Keyboard, Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { useState } from 'react'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -12,6 +13,7 @@ import { DetailsForm, QuestionForm, ConfirmSubmit } from '@/components/Forms'
 import { useFormStore } from '@/stores/form'
 
 export const Carousel = ({ form }) => {
+  const [currentIndex, setCurrentIndex] = useState(0)
   const formData = useFormStore((state) => state.formData)
   const emailError = useFormStore((state) => state.emailError)
   const isFirstNextAllowed = !!(formData.comment && formData.rating)
@@ -21,15 +23,20 @@ export const Carousel = ({ form }) => {
     !formData?.ratings?.includes(0)
   )
   const isThirdNextAllowed = Object.hasOwn(formData, 'answer')
-  const allowsSliding =
-    (isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed) && !emailError
-  const allowsSlidingClass = allowsSliding ? '' : 'opacity-50 hover:opacity-50 pointer-events-none'
+  const allowsSliding = isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed
+  const allowsSlidingFirstPage = allowsSliding
+  const allowsSlidingSecondPage = allowsSliding && !emailError
+  const allowsSlidingClassFirst = allowsSlidingFirstPage
+    ? ''
+    : 'opacity-50 hover:opacity-50 pointer-events-none'
+  const allowsSlidingClassSecond = allowsSlidingSecondPage
+    ? ''
+    : 'opacity-50 hover:opacity-50 pointer-events-none'
 
   return (
     <Swiper
       modules={[Keyboard, Navigation, Pagination, Scrollbar, A11y]}
-      allowSlideNext={allowsSliding}
-      allowSlidePrev={allowsSliding}
+      allowSlideNext={currentIndex === 1 ? allowsSlidingSecondPage : allowsSlidingFirstPage}
       spaceBetween={35}
       slidesPerView={1}
       navigation={{
@@ -44,6 +51,7 @@ export const Carousel = ({ form }) => {
       setWrapperSize
       noSwipingClass="swiper-slide"
       style={{ overflow: 'unset', margin: '68px 10px 0' }}
+      onSlideChange={(e) => setCurrentIndex(e.realIndex)}
     >
       <SwiperSlide>
         {({ isActive }) => isActive && form && <QuestionForm form={form} />}
@@ -55,7 +63,7 @@ export const Carousel = ({ form }) => {
 
       <div className={`flex items-center mt-6 justify-center space-x-2 [&>div.pagination]:w-auto`}>
         <button
-          className={`button-prev w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 rotate-180 hover:opacity-90 disabled:opacity-50  ${allowsSlidingClass}`}
+          className={`button-prev w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 rotate-180 hover:opacity-90 disabled:opacity-50`}
         >
           <NavArrow />
         </button>
@@ -65,7 +73,9 @@ export const Carousel = ({ form }) => {
         ></div>
 
         <button
-          className={`button-next w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 hover:opacity-90 disabled:opacity-50 ${allowsSlidingClass}`}
+          className={`button-next w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 hover:opacity-90 disabled:opacity-50 ${
+            currentIndex === 1 ? allowsSlidingClassSecond : allowsSlidingClassFirst
+          }`}
         >
           <NavArrow />
         </button>
