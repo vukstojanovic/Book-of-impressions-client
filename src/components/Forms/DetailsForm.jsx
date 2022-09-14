@@ -10,6 +10,7 @@ export const DetailsForm = () => {
   const t = useTranslations('Form')
   const formData = useFormStore((state) => state.formData)
   const setFormData = useFormStore((state) => state.setFormData)
+  const setEmailError = useFormStore((state) => state.setEmailError)
   const validationSchema = yup.object().shape({
     reviewEmail: yup.string().email('Invalid email format'),
   })
@@ -42,6 +43,7 @@ export const DetailsForm = () => {
 
   useEffect(() => {
     if (!formData.reviewEmail || errors.reviewEmail) setValue('contact', false)
+    setEmailError(errors.reviewEmail)
   }, [formData.reviewEmail, errors.reviewEmail])
 
   return (

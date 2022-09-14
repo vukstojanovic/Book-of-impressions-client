@@ -2,6 +2,8 @@ import create from 'zustand'
 
 const useFormStore = create((set) => ({
   formData: { formId: '', reviewName: '', reviewEmail: '', comment: '', contact: false },
+  emailError: undefined,
+  setEmailError: (data) => set(() => ({ emailError: data })),
   setFormData: (data) => set((state) => ({ formData: { ...state.formData, ...data } })),
   setRating: (number) => set((state) => ({ formData: { ...state.formData, rating: number } })),
   setRatings: (index, number) =>
