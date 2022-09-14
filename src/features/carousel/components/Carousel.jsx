@@ -13,6 +13,7 @@ import { useFormStore } from '@/stores/form'
 
 export const Carousel = ({ form }) => {
   const formData = useFormStore((state) => state.formData)
+  const emailError = useFormStore((state) => state.emailError)
   const isFirstNextAllowed = !!(formData.comment && formData.rating)
   const isSecondNextAllowed = !!(
     formData.comment &&
@@ -20,7 +21,8 @@ export const Carousel = ({ form }) => {
     !formData?.ratings?.includes(0)
   )
   const isThirdNextAllowed = Object.hasOwn(formData, 'answer')
-  const allowsSliding = isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed
+  const allowsSliding =
+    (isFirstNextAllowed || isSecondNextAllowed || isThirdNextAllowed) && !emailError
   const allowsSlidingClass = allowsSliding ? '' : 'opacity-50 hover:opacity-50 pointer-events-none'
 
   return (
@@ -51,13 +53,15 @@ export const Carousel = ({ form }) => {
         {({ isActive }) => isActive && <ConfirmSubmit formType={form.type} />}
       </SwiperSlide>
 
-      <div className="flex items-center mt-6 justify-center space-x-2 [&>div.pagination]:w-auto">
-        <button className="button-prev w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 rotate-180 hover:opacity-90 disabled:opacity-50">
+      <div className={`flex items-center mt-6 justify-center space-x-2 [&>div.pagination]:w-auto`}>
+        <button
+          className={`button-prev w-8 h-8 bg-[#054a7b] rounded-full grid items-center justify-center pr-1 rotate-180 hover:opacity-90 disabled:opacity-50  ${allowsSlidingClass}`}
+        >
           <NavArrow />
         </button>
 
         <div
-          className={`pagination space-x-3 [&>span]:w-[13px] [&>span]:h-[13px] [&>span]:pt-[2px] [&>span]:bg-[#46494b] ${allowsSlidingClass}`}
+          className={`pagination space-x-3 [&>span]:w-[13px] [&>span]:h-[13px] [&>span]:pt-[2px] [&>span]:bg-[#46494b]`}
         ></div>
 
         <button
