@@ -101,6 +101,7 @@ export default function Review({ id }) {
             data={data}
             error={error}
             formType={form?.type}
+            sessionError={sessionError}
           />
         </div>
       </div>
