@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 import { CommentsPreview } from '@/features/CommentsPreview'
 
-export const MainAccordion = ({ status, isError, data, error, formType }) => {
+export const MainAccordion = ({ status, sessionError, data, formType }) => {
   const [innerAccordion, setInnerAccordion] = useState(true)
   const t = useTranslations('Home')
 
@@ -21,7 +21,9 @@ export const MainAccordion = ({ status, isError, data, error, formType }) => {
         </div>
       </div>
       <div className="px-6">
-        {innerAccordion && <CommentsPreview data={data[0]} formType={formType} />}
+        {innerAccordion && (
+          <CommentsPreview data={data[0]} formType={formType} sessionError={sessionError} />
+        )}
       </div>
     </>
   )
