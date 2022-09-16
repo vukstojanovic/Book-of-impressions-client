@@ -18,7 +18,7 @@ export const usePostReview = ({ id, setIsLoading, setIsSuccess, resetFormData, f
       }
 
       setIsSuccess(true)
-      queryClient.invalidateQueries(['review', id])
+      queryClient.invalidateQueries(['reviews', id])
     },
     onSettled: () => {
       setIsLoading(false)
