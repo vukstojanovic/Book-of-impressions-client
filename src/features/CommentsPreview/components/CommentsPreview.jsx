@@ -45,7 +45,9 @@ export const CommentsPreview = ({ data, formType, sessionError }) => {
     <>
       <section>{firstTwo?.map((review) => displayRightReview(review))}</section>
       <div className="relative">
-        <section className={sessionError ? '' : 'blur-sm pointer-events-none select-none'}>
+        <section
+          className={sessionError || isSuccess ? '' : 'blur-sm pointer-events-none select-none'}
+        >
           {rest?.map((review) => displayRightReview(review))}
         </section>
       </div>
